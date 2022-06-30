@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from "../core/services/user.service";
 
 @Component({
   selector: 'app-helloworld',
@@ -8,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class HelloworldComponent implements OnInit {
   title = 'checasavuoi-fe';
 
-  constructor() { }
+  constructor( private _userService: UserService ) { }
 
   ngOnInit(): void {
+  }
+
+  async logconsole(): Promise<void> {
+    let response = this._userService.get(1);
+    console.log(response);
   }
 
 }
