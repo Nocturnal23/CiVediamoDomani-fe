@@ -15,7 +15,7 @@ export class HelloworldComponent implements OnInit {
   }
 
   async logconsole(): Promise<void> {
-    let response = this._userService.get(1);
+    let response = await this._userService.get(1).toPromise();
     console.log(response);
   }
 

@@ -70,6 +70,10 @@
               "browserTarget": "checasavuoi-fe:build:development"
             }
           },
+          "options": {
+            "browserTarget": "che-casa-vuoi:build",
+            "proxyConfig": "proxy.conf.json"
+          },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
@@ -97,5 +101,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  BE_URL: 'http://localhost:8095'
 };

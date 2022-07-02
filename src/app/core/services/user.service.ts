@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {Page} from "../commons/filter.response";
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +15,7 @@ export class UserService implements AbstractService<UserDto, UserCriteria> {
 
     constructor(
         private _http: HttpClient) {
-        this.baseUrl = '/users';
+        this.baseUrl = environment.BE_URL + '/users';
     }
 
     get(id: number | string): Observable<UserDto> {
