@@ -8,13 +8,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { HelloworldComponent } from './helloworld/helloworld.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
 import {HttpClientModule} from "@angular/common/http";
+import { LoginComponent } from './layout/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContainerComponent,
     HelloworldComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
