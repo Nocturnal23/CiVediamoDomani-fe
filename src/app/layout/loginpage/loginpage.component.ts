@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-logintest',
-  templateUrl: './logintest.component.html',
-  styleUrls: ['./logintest.component.css']
+  selector: 'app-loginpage',
+  templateUrl: './loginpage.component.html',
+  styleUrls: ['./loginpage.component.css']
 })
-export class LogintestComponent implements OnInit {
+export class LoginpageComponent implements OnInit {
 
 
   container: any;

@@ -8,8 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HelloworldComponent } from './helloworld/helloworld.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
 import {HttpClientModule} from "@angular/common/http";
-import { LoginComponent } from './layout/login/login.component';
-import { LogintestComponent } from './layout/logintest/logintest.component';
+import { LoginpageComponent } from './layout/loginpage/loginpage.component';
 import {GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthServiceConfig} from "@abacritt/angularx-social-login";
 
 @NgModule({
@@ -18,8 +17,7 @@ import {GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthServiceConfig} 
         ContainerComponent,
         HelloworldComponent,
         NotFoundComponent,
-        LoginComponent,
-        LogintestComponent
+        LoginpageComponent
     ],
     imports: [
         BrowserModule,
