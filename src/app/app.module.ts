@@ -9,6 +9,7 @@ import { HelloworldComponent } from './helloworld/helloworld.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
 import {HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './layout/login/login.component';
+import { LogintestComponent } from './layout/logintest/logintest.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LoginComponent } from './layout/login/login.component';
     ContainerComponent,
     HelloworldComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    LogintestComponent
   ],
   imports: [
     BrowserModule,
