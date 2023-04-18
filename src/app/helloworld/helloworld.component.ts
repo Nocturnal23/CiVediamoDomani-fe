@@ -7,7 +7,7 @@ import {UserService} from "../core/services/user.service";
   styleUrls: ['./helloworld.component.css']
 })
 export class HelloworldComponent implements OnInit {
-  title = 'checasavuoi-fe';
+  title = 'civediamodomani-fe';
 
   constructor( private _userService: UserService ) { }
 

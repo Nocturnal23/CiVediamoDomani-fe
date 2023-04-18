@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "checasavuoi-fe": {
+    "civediamodomani-fe": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/checasavuoi-fe",
+            "outputPath": "dist/civediamodomani-fe",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,14 +68,14 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "checasavuoi-fe:build:production"
+              "browserTarget": "civediamodomani-fe:build:production"
             },
             "development": {
-              "browserTarget": "checasavuoi-fe:build:development"
+              "browserTarget": "civediamodomani-fe:build:development"
             }
           },
           "options": {
-            "browserTarget": "che-casa-vuoi:build",
+            "browserTarget": "ci-vediamo-domani:build",
             "proxyConfig": "proxy.conf.json"
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "checasavuoi-fe:build"
+            "browserTarget": "civediamodomani-fe:build"
           }
         },
         "test": {
