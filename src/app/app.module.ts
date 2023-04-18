@@ -10,6 +10,7 @@ import { NotFoundComponent } from './layout/not-found/not-found.component';
 import {HttpClientModule} from "@angular/common/http";
 import { LoginpageComponent } from './layout/loginpage/loginpage.component';
 import {GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthServiceConfig} from "@abacritt/angularx-social-login";
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import {GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthServiceConfig} 
         ContainerComponent,
         HelloworldComponent,
         NotFoundComponent,
-        LoginpageComponent
+        LoginpageComponent,
+        HomepageComponent
     ],
     imports: [
         BrowserModule,
