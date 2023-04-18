@@ -3,27 +3,25 @@
         <form>
             <h1>Crea Account</h1>
             <div class="social-container">
-                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <asl-google-signin-button type="standard" size="medium" text="signup_with"></asl-google-signin-button>
             </div>
-            <span>oppure registrati con email</span>
+            <h5>oppure registrati con email</h5>
             <input type="text" placeholder="Name" />
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
-            <button>Sign Up</button>
+            <button>Registrati</button>
         </form>
     </div>
     <div class="form-container sign-in-container">
         <form>
             <h1>Accedi</h1>
             <div class="social-container">
-                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                <asl-google-signin-button type="standard" size="medium" text="signin_with"></asl-google-signin-button>
             </div>
-            <span>o accedi con la tua email</span>
+            <h5>o accedi con la tua email</h5>
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
-            <a href="#">Password dimenticata?</a>
+            <h5><a href="resetPassword">Password dimenticata?</a></h5>
             <button>Accedi</button>
         </form>
     </div>
@@ -35,7 +33,7 @@
                 <button class="ghost" id="signIn" (click)="signIn()">Accedi</button>
             </div>
             <div class="overlay-panel overlay-right">
-                <h1>Ciao!</h1>
+                <h1>Benvenuto!</h1>
                 <p>Registrati qui per continuare</p>
                 <button class="ghost" id="signUp" (click)="signUp()">Registrati</button>
             </div>

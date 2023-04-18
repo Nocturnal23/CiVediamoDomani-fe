@@ -10,23 +10,41 @@ import { NotFoundComponent } from './layout/not-found/not-found.component';
 import {HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './layout/login/login.component';
 import { LogintestComponent } from './layout/logintest/logintest.component';
+import {GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthServiceConfig} from "@abacritt/angularx-social-login";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ContainerComponent,
-    HelloworldComponent,
-    NotFoundComponent,
-    LoginComponent,
-    LogintestComponent
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        ContainerComponent,
+        HelloworldComponent,
+        NotFoundComponent,
+        LoginComponent,
+        LogintestComponent
+    ],
+    imports: [
+        BrowserModule,
+        RouterModule,
+        AppRoutingModule,
+        HttpClientModule,
+        GoogleSigninButtonModule
+    ],
+    providers: [{
+        provide: 'SocialAuthServiceConfig',
+        useValue: {
+            autoLogin: false,
+            providers: [
+                {
+                    id: GoogleLoginProvider.PROVIDER_ID,
+                    provider: new GoogleLoginProvider(
+                        'clientId'
+                    )
+                }
+            ],
+            onError: (err) => {
+                console.error(err);
+            }
+        } as SocialAuthServiceConfig,
+    }],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
