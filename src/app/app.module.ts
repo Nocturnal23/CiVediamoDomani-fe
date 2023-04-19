@@ -11,6 +11,9 @@ import {HttpClientModule} from "@angular/common/http";
 import { LoginpageComponent } from './layout/loginpage/loginpage.component';
 import {GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthServiceConfig} from "@abacritt/angularx-social-login";
 import { HomepageComponent } from './homepage/homepage.component';
+import { HeaderBarComponent } from './layout/header-bar/header-bar.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -19,14 +22,17 @@ import { HomepageComponent } from './homepage/homepage.component';
         HelloworldComponent,
         NotFoundComponent,
         LoginpageComponent,
-        HomepageComponent
+        HomepageComponent,
+        HeaderBarComponent
     ],
     imports: [
         BrowserModule,
         RouterModule,
         AppRoutingModule,
         HttpClientModule,
-        GoogleSigninButtonModule
+        GoogleSigninButtonModule,
+        BrowserAnimationsModule,
+            MatToolbarModule
     ],
     providers: [{
         provide: 'SocialAuthServiceConfig',
