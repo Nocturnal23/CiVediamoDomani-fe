@@ -14,6 +14,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { HeaderBarComponent } from './layout/header-bar/header-bar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProfileCardComponent } from './layout/profile-card/profile-card.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         NotFoundComponent,
         LoginpageComponent,
         HomepageComponent,
-        HeaderBarComponent
+        HeaderBarComponent,
+        ProfileCardComponent
     ],
     imports: [
         BrowserModule,
