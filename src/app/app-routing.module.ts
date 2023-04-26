@@ -10,10 +10,9 @@ const routes: Routes = [
   { path: 'not_found', component: NotFoundComponent },
   { path: 'login', component:LoginpageComponent },
   { path: '', component: ContainerComponent, children: [
-      { path: '', redirectTo: '/homepage', pathMatch: 'full' },
       { path: 'homepage', component: HomepageComponent },
       { path: 'helloworld', component: HelloworldComponent },
-      { path: '**', redirectTo: 'not_found', pathMatch: 'full' }
+      { path: '**', redirectTo: '/homepage', pathMatch: 'full' }
     ]
   }
 ];
