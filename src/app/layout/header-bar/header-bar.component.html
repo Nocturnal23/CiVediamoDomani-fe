@@ -4,14 +4,16 @@
 
 
     <div class="sidenav-toolbar-center">
+      <form [formGroup]="searchForm">
       <div class="wrap">
         <div class="search">
-          <input type="text" class="searchTerm" placeholder="What are you looking for?">
-          <button type="submit" class="searchButton">
-            <i class="fa fa-search"></i>
-          </button>
+          <mat-form-field>
+            <input matInput type="text" formControlName="searchBar" (keydown.enter)="search()" class="searchTerm" placeholder="What are you looking for?" >
+          </mat-form-field>
+          <button type="submit" class="searchButton" (click)="search()"><mat-icon>search</mat-icon></button>
         </div>
       </div>
+      </form>
     </div>
 
 

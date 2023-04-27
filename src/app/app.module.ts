@@ -15,6 +15,9 @@ import { HeaderBarComponent } from './layout/header-bar/header-bar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileCardComponent } from './layout/profile-card/profile-card.component';
+import {MatIconModule} from "@angular/material/icon";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
     declarations: [
@@ -34,7 +37,11 @@ import { ProfileCardComponent } from './layout/profile-card/profile-card.compone
         HttpClientModule,
         GoogleSigninButtonModule,
         BrowserAnimationsModule,
-            MatToolbarModule
+        MatToolbarModule,
+        MatIconModule,
+        MatInputModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
     providers: [{
         provide: 'SocialAuthServiceConfig',
