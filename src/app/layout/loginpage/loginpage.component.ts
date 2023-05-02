@@ -9,19 +9,26 @@ export class LoginpageComponent implements OnInit {
 
 
   container: any;
+  login: boolean;
 
+  constructor(private _formBuilder: FormBuilder,
+              private _authService: AuthenticationService) {
+
+    this.login = true
+  }
   ngOnInit() {
     this.container = document.getElementById('container');
   }
 
-  signUp() {
-    // @ts-ignore
-    this.container.classList.add("right-panel-active");
-    console.log('ciao')
-  }
 
-  signIn() {
-    // @ts-ignore
-    this.container.classList.remove("right-panel-active");
+  switchForm() {
+    if (this.login) {
+      this.container.classList.add("right-panel-active");
+      this.login = false;
+    }
+    else {
+      this.container.classList.remove("right-panel-active");
+      this.login = true;
+    }
   }
 }
