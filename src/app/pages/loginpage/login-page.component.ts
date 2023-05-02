@@ -6,10 +6,10 @@ import {UserDto} from "../../core/dto/user-dto";
 
 @Component({
   selector: 'app-loginpage',
-  templateUrl: './loginpage.component.html',
-  styleUrls: ['./loginpage.component.css']
+  templateUrl: './login-page.component.html',
+  styleUrls: ['./login-page.component.css']
 })
-export class LoginpageComponent implements OnInit {
+export class LoginPageComponent implements OnInit {
 
 
   container: any;

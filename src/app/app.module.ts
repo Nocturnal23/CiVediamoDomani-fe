@@ -8,9 +8,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { HelloworldComponent } from './helloworld/helloworld.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
 import {HttpClientModule} from "@angular/common/http";
-import { LoginpageComponent } from './layout/loginpage/loginpage.component';
+import { LoginPageComponent } from './pages/loginpage/login-page.component';
 import {GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthServiceConfig} from "@abacritt/angularx-social-login";
-import { HomepageComponent } from './homepage/homepage.component';
+import { HomePageComponent } from './pages/homepage/home-page.component';
 import { HeaderBarComponent } from './layout/header-bar/header-bar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,7 +18,7 @@ import { ProfileCardComponent } from './layout/profile-card/profile-card.compone
 import {MatIconModule} from "@angular/material/icon";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
-import { SearchPageComponent } from './layout/search-page/search-page.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 @NgModule({
     declarations: [
@@ -26,8 +26,8 @@ import { SearchPageComponent } from './layout/search-page/search-page.component'
         ContainerComponent,
         HelloworldComponent,
         NotFoundComponent,
-        LoginpageComponent,
-        HomepageComponent,
+        LoginPageComponent,
+        HomePageComponent,
         HeaderBarComponent,
         ProfileCardComponent,
         SearchPageComponent
