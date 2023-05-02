@@ -5,47 +5,48 @@ import {AuthenticationService} from "../../core/services/authentication.service"
 import {UserDto} from "../../core/dto/user-dto";
 
 @Component({
-  selector: 'app-loginpage',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.css']
+    selector: 'app-loginpage',
+    templateUrl: './login-page.component.html',
+    styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
 
 
-  container: any;
-  signUpForm: FormGroup;
-  login: boolean;
+    container: any;
+    signUpForm: FormGroup;
+    login: boolean;
 
-  constructor(private _formBuilder: FormBuilder,
-              private _authService: AuthenticationService) {
-    this.signUpForm = _formBuilder.group({
-      firstname: [''],
-      lastname: [''],
-      email: [''],
-      password: ['']
-    })
-    this.login = true
-  }
-  ngOnInit() {
-    this.container = document.getElementById('container');
-  }
-
-
-  switchForm() {
-    if (this.login) {
-      this.container.classList.add("right-panel-active");
-      this.login = false;
+    constructor(private _formBuilder: FormBuilder,
+                private _authService: AuthenticationService) {
+        this.signUpForm = _formBuilder.group({
+            firstName: [''],
+            lastName: [''],
+            email: [''],
+            password: ['']
+        })
+        this.login = true
     }
-    else {
-      this.container.classList.remove("right-panel-active");
-      this.login = true;
+    ngOnInit() {
+        this.container = document.getElementById('container');
     }
-  }
 
-  signUp() {
-    const user : UserDto = {
-      ...this.signUpForm.value
+
+    switchForm() {
+        if (this.login) {
+            this.container.classList.add("right-panel-active");
+            this.login = false;
+        }
+        else {
+            this.container.classList.remove("right-panel-active");
+            this.login = true;
+        }
     }
-    this._authService.signUp(user).subscribe()
-  }
+
+    signUp() {
+        const user : UserDto = {
+            ...this.signUpForm.value
+        }
+        this._authService.signUp(user).subscribe()
+
+    }
 }
