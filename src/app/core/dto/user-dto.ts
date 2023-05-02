@@ -1,27 +1,22 @@
 import {BaseDto} from "./base-dto";
-import {AdvertDto} from "./advert-dto";
-import {ReviewDto} from "./review-dto";
+import {CategoryDto} from "./category-dto";
 
 export interface UserDto extends BaseDto{
+  email ?: string;
+
+  password ?: string;
+
   firstName ?: string;
 
   lastName ?: string;
 
-  email ?: string;
-
-  phoneNum ?: string;
-
-  birthday ?: string;
-
-  city ?: string;
-
-  country ?: string;
-
   appRole ?: number;
 
-  postedAds ?: Array<AdvertDto>;
+  organisedEvents ?: number;
 
-  savedAds ?: Array<AdvertDto>;
+  favorites ?: number;
 
-  postedReviews ?: Array<ReviewDto>;
+  attending ?: number;
+
+  categories ?: Array<CategoryDto>;
 }
