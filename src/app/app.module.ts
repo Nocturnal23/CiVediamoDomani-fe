@@ -18,6 +18,7 @@ import { ProfileCardComponent } from './layout/profile-card/profile-card.compone
 import {MatIconModule} from "@angular/material/icon";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
+import { SearchPageComponent } from './layout/search-page/search-page.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import {MatInputModule} from "@angular/material/input";
         LoginpageComponent,
         HomepageComponent,
         HeaderBarComponent,
-        ProfileCardComponent
+        ProfileCardComponent,
+        SearchPageComponent
     ],
     imports: [
         BrowserModule,
