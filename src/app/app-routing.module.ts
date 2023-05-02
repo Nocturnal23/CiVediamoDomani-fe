@@ -6,6 +6,7 @@ import {LoginpageComponent} from "./layout/loginpage/loginpage.component";
 import {ContainerComponent} from "./layout/container/container.component";
 import {HomepageComponent} from "./homepage/homepage.component";
 import {ProfileCardComponent} from "./layout/profile-card/profile-card.component";
+import {SearchPageComponent} from "./layout/search-page/search-page.component";
 
 const routes: Routes = [
   { path: 'not_found', component: NotFoundComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: '', component: ContainerComponent, children: [
       { path: 'homepage', component: HomepageComponent },
       { path: 'helloworld', component: HelloworldComponent },
+      { path: 'search/:query', component: SearchPageComponent  },
       { path: '**', redirectTo: '/homepage', pathMatch: 'full' }
     ]
   },

@@ -17,11 +17,9 @@ export class HeaderBarComponent {
             searchBar: ['']
         })
     }
-
     search() {
-        console.log(this.searchForm.value.searchBar)
-        // console.log(this._searchBar)
-        // this._router.navigateByUrl("/helloworld")
-        // this._route.navigate(['/addCollaborator', this._selectedDelegated.id]);
+      console.log("Da header-bar: " + this.searchForm.value.searchBar)
+      this._router.navigate(['/search', this.searchForm.value.searchBar] )
     }
+
 }
