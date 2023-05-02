@@ -11,7 +11,7 @@ export class EventService implements AbstractService<EventDto, EventCriteria> {
     private baseUrl: string;
 
     constructor(private _http: HttpClient) {
-        this.baseUrl = '/adverts'
+        this.baseUrl = '/events'
     }
 
     get(id: number | string): Observable<EventDto> {
