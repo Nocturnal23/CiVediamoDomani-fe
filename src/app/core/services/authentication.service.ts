@@ -15,4 +15,10 @@ export class AuthenticationService {
     const url = this.baseUrl + "/signUp"
     return this._http.post<UserDto>(url, user)
   }
+
+  signIn(user : UserDto) : Observable<UserDto> {
+    const url = this.baseUrl + "/signIn"
+    return this._http.post<UserDto>(url, user)
+    //TODO: Deve restituire un Token.
+  }
 }

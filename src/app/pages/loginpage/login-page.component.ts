@@ -24,6 +24,12 @@ export class LoginPageComponent implements OnInit {
             email: [''],
             password: ['']
         })
+
+        this.signInForm = _formBuilder.group({
+            email: [''],
+            password: ['']
+        })
+
         this.login = true
     }
     ngOnInit() {
@@ -48,5 +54,12 @@ export class LoginPageComponent implements OnInit {
         }
         this._authService.signUp(user).subscribe()
 
+    }
+
+    signIn() {
+        const user : UserDto = {
+            ...this.signInForm.value
+        }
+        this._authService.signIn(user).subscribe()
     }
 }
