@@ -19,6 +19,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import { SearchPageComponent } from './pages/search-page/search-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
         HomePageComponent,
         HeaderBarComponent,
         ProfileCardComponent,
-        SearchPageComponent
+        SearchPageComponent,
+        ProfilePageComponent
     ],
     imports: [
         BrowserModule,
