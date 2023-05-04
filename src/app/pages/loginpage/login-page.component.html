@@ -18,16 +18,16 @@
 
 
     <div class="form-container sign-in-container">
-        <form>
+        <form [formGroup]="signInForm">
             <h1>Accedi</h1>
             <div class="social-container">
                 <asl-google-signin-button type="standard" size="medium" text="signin_with"></asl-google-signin-button>
             </div>
             <h5>o accedi con la tua email</h5>
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
+            <input type="email" placeholder="Email" formControlName="email"/>
+            <input type="password" placeholder="Password" formControlName="password"/>
             <h5><a href="resetPassword">Password dimenticata?</a></h5>
-            <button>Accedi</button>
+            <button (click)="signIn()">Accedi</button>
         </form>
     </div>
     <div class="overlay-container">

@@ -14,6 +14,7 @@ export class LoginPageComponent implements OnInit {
 
     container: any;
     signUpForm: FormGroup;
+    signInForm: FormGroup;
     login: boolean;
 
     constructor(private _formBuilder: FormBuilder,
@@ -53,7 +54,6 @@ export class LoginPageComponent implements OnInit {
             ...this.signUpForm.value
         }
         this._authService.signUp(user).subscribe()
-
     }
 
     signIn() {
