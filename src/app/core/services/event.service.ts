@@ -5,13 +5,14 @@ import {EventCriteria} from "../criteria/event-criteria";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Page} from "../commons/filter.response";
+import {environment} from "../../../environments/environment";
 
 @Injectable({ providedIn: 'root' })
 export class EventService implements AbstractService<EventDto, EventCriteria> {
     private baseUrl: string;
 
     constructor(private _http: HttpClient) {
-        this.baseUrl = '/events'
+        this.baseUrl = environment.BE_URL + '/events'
     }
 
     get(id: number | string): Observable<EventDto> {
