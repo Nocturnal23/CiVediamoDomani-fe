@@ -16,10 +16,10 @@ const routes: Routes = [
     { path: 'testcard', component: ProfileCardComponent},
     { path: '', component: ContainerComponent, children: [
         { path: 'helloworld', component: HelloworldComponent },
-            { path: 'homepage', component: HomePageComponent },
-            { path: 'search/:query', component: SearchPageComponent  },
-            { path: '**', redirectTo: '/homepage', pathMatch: 'full' }
-        ]
+        { path: 'homepage', component: HomePageComponent },
+        { path: 'search/:query', component: SearchPageComponent  },
+        { path: '**', redirectTo: '/homepage', pathMatch: 'full' }
+      ]
   },
 
 ];
