@@ -16,9 +16,12 @@ export class AuthenticationService {
     return this._http.post<UserDto>(url, user)
   }
 
-  signIn(user : UserDto) : Observable<UserDto> {
+  signIn(user : UserDto) {
     const url = this.baseUrl + "/signIn"
-    return this._http.post<UserDto>(url, user)
+    return this._http.post<any>(url, user, {observe: 'response'}).subscribe(resp => {
+      console.log(resp);
+      console.log(resp.headers.get('Authorization'));
+    })
     //TODO: Deve restituire un Token.
   }
 }

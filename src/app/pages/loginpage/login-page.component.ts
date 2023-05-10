@@ -60,6 +60,6 @@ export class LoginPageComponent implements OnInit {
         const user : UserDto = {
             ...this.signInForm.value
         }
-        this._authService.signIn(user).subscribe()
+        this._authService.signIn(user)
     }
 }
