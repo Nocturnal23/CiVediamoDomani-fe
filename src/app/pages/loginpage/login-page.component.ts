@@ -18,7 +18,8 @@ export class LoginPageComponent implements OnInit {
     login: boolean;
 
     constructor(private _formBuilder: FormBuilder,
-                private _authService: AuthenticationService) {
+                private _authService: AuthenticationService,
+                private _router: Router) {
         this.signUpForm = _formBuilder.group({
             firstName: [''],
             lastName: [''],
@@ -60,6 +61,11 @@ export class LoginPageComponent implements OnInit {
         const user : UserDto = {
             ...this.signInForm.value
         }
-        this._authService.signIn(user)
+        this._authService.signIn(user).subscribe( next => {
+            console.log("Sto cambiando pagina")
+            console.log(AuthenticationService.getAuthToken)
+            console.log(AuthenticationService.getAppUser)
+            this._router.navigate(['/homepage'] )
+        })
     }
 }

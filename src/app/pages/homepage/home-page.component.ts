@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthenticationService} from "../../core/services/authentication.service";
 
 @Component({
   selector: 'app-homepage',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent {
+
+  constructor() {
+    console.log('Homepage: ' + AuthenticationService.getAuthToken)
+  }
 
 }

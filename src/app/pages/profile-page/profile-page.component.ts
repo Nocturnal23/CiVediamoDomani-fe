@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthenticationService} from "../../core/services/authentication.service";
 
 @Component({
   selector: 'app-profile-page',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./profile-page.component.css']
 })
 export class ProfilePageComponent {
+  user;
+
+  constructor() {
+    this.user = AuthenticationService.getAuthToken;
+    console.log(AuthenticationService.getAuthToken)
+  }
 
 }
