@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../core/services/authentication.service";
 import {UserDto} from "../../core/dto/user-dto";
+import {SocialAuthService} from "@abacritt/angularx-social-login";
 
 @Component({
     selector: 'app-loginpage',
@@ -19,6 +20,7 @@ export class LoginPageComponent implements OnInit {
 
     constructor(private _formBuilder: FormBuilder,
                 private _authService: AuthenticationService,
+                private _socialauthService: SocialAuthService,
                 private _router: Router) {
         this.signUpForm = _formBuilder.group({
             firstName: [''],
@@ -36,6 +38,14 @@ export class LoginPageComponent implements OnInit {
     }
     ngOnInit() {
         this.container = document.getElementById('container');
+        this._socialauthService.authState.subscribe((user) => {
+            // let awtToken = sendBackendforValidation(user.idToken).subscribe()
+
+            console.log('ciao auth google')
+            console.log(user)
+            // this.user = user;
+            // this.loggedIn = (user != null);
+        });
     }
 
 

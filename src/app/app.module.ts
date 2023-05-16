@@ -55,7 +55,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
                 {
                     id: GoogleLoginProvider.PROVIDER_ID,
                     provider: new GoogleLoginProvider(
-                        'clientId'
+                        '672828380043-ls8399lk3opou7ajkduou2ntuij5r8cb.apps.googleusercontent.com'
                     )
                 }
             ],
