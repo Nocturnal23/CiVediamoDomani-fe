@@ -3,16 +3,34 @@ import {UserDto} from "../dto/user-dto";
 import {Observable, tap} from "rxjs";
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-import {SocialUser} from "@abacritt/angularx-social-login";
+import {SocialAuthService, SocialUser} from "@abacritt/angularx-social-login";
+import {Router} from "@angular/router";
 
 @Injectable({providedIn: "root"})
 export class AuthenticationService {
     private baseUrl : string
     private static _token: string
-    private static _appuser: UserDto
+    private static _appuser: UserDto | null
 
-    constructor( private _http: HttpClient) {
+    constructor( private _http: HttpClient,
+                 private _socialauthService: SocialAuthService,
+                 private _router: Router) {
         this.baseUrl = environment.BE_URL + "/v1"
+        this._socialauthService.authState.subscribe((user) => {
+            if (user !== null) {
+                this.googleSignIn(user).subscribe( next => {
+                    this._router.navigate(['/homepage'] )
+                })
+                //     this.loginToBackend(user.email, user.firstName, user.lastName, user.idToken).subscribe((loggedIn) => {
+                //         this._loginState.next(loggedIn);
+                //     });
+                // } else {
+                //     this._loginState.next(false);
+            } else {
+                //sloggo l'utente
+            }
+
+        });
     }
     static get getAuthToken(): string {
         if (this._token == null) {
@@ -25,7 +43,7 @@ export class AuthenticationService {
         return this._token;
     }
 
-    static get getAppUser(): UserDto {
+    static get getAppUser(): UserDto | null{
         if (this._appuser == null) {
             const local = localStorage.getItem('user');
             if (local != null) {
@@ -48,7 +66,7 @@ export class AuthenticationService {
     }
 
     googleSignIn(user : SocialUser) {
-        const url = this.baseUrl + "/signIn"
+        const url = this.baseUrl + "/googleSignIn"
         return this._http.post<UserDto>(url, user, {observe: 'response'}).pipe(
             tap(resp => this._setLoggedUser(resp))
         );
@@ -56,15 +74,15 @@ export class AuthenticationService {
 
     private _setLoggedUser(response : HttpResponse<UserDto>) {
         let authToken  = response.headers.get('Authorization');
-        if (authToken != null) {
+        let loggedUser = response.body;
+        if (authToken != null && loggedUser != null) {
             localStorage.setItem('token', JSON.stringify(authToken));
             AuthenticationService._token = authToken;
-        }
-
-        let loggedUser = response.body;
-        if (loggedUser != null) {
             localStorage.setItem('user', JSON.stringify(loggedUser));
             AuthenticationService._appuser = loggedUser;
+        } else {
+            AuthenticationService._token = "";
+            AuthenticationService._appuser = null;
         }
     }
 }

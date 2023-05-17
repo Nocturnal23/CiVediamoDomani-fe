@@ -39,20 +39,6 @@ export class LoginPageComponent implements OnInit {
 
     ngOnInit() {
         this.container = document.getElementById('container');
-        this._socialauthService.authState.subscribe((user) => {
-            if (user !== null) {
-              this.loginToBackend(user.email, user.firstName, user.lastName, user.idToken).subscribe((loggedIn) => {
-                this._loginState.next(loggedIn);
-              });
-            } else {
-              this._loginState.next(false);
-            }
-
-            console.log('ciao auth google')
-            console.log(user)
-            // this.user = user;
-            // this.loggedIn = (user != null);
-        });
     }
 
     switchForm() {
@@ -78,9 +64,6 @@ export class LoginPageComponent implements OnInit {
             ...this.signInForm.value
         }
         this._authService.signIn(user).subscribe( next => {
-            console.log("Sto cambiando pagina")
-            console.log(AuthenticationService.getAuthToken)
-            console.log(AuthenticationService.getAppUser)
             this._router.navigate(['/homepage'] )
         })
     }
