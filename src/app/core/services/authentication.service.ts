@@ -1,8 +1,9 @@
 import {Injectable} from "@angular/core";
 import {UserDto} from "../dto/user-dto";
 import {Observable, tap} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpResponse} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
+import {SocialUser} from "@abacritt/angularx-social-login";
 
 @Injectable({providedIn: "root"})
 export class AuthenticationService {
@@ -19,9 +20,6 @@ export class AuthenticationService {
             if (local != null) {
                 this._token = JSON.parse(local)
             }
-            // let guagliuna = "guagliuna";
-            // let anni = 20;
-            // morta(guagliuna, 'luzzi', anni);
         }
 
         return this._token;
@@ -44,22 +42,29 @@ export class AuthenticationService {
 
     signIn(user : UserDto) {
         const url = this.baseUrl + "/signIn"
-        return this._http.post<UserDto>(url, user, {observe: 'response'}).pipe(tap(resp => {
-            let authToken  = resp.headers.get('Authorization');
-            if (authToken != null) {
-                localStorage.setItem('token', JSON.stringify(authToken));
-                AuthenticationService._token = authToken;
-            }
+        return this._http.post<UserDto>(url, user, {observe: 'response'}).pipe(
+            tap(resp => this._setLoggedUser(resp))
+        );
+    }
 
-            let loggedUser = resp.body;
-            if (loggedUser != null) {
-                localStorage.setItem('user', JSON.stringify(loggedUser));
-                AuthenticationService._appuser = loggedUser;
-            }
+    googleSignIn(user : SocialUser) {
+        const url = this.baseUrl + "/signIn"
+        return this._http.post<UserDto>(url, user, {observe: 'response'}).pipe(
+            tap(resp => this._setLoggedUser(resp))
+        );
+    }
 
-            console.log('CIAO ' + AuthenticationService.getAuthToken) //TODO Da togliere
-            console.log(AuthenticationService.getAppUser) //TODO Da togliere
-            console.log('Auth service') //TODO Da togliere
-        }));
+    private _setLoggedUser(response : HttpResponse<UserDto>) {
+        let authToken  = response.headers.get('Authorization');
+        if (authToken != null) {
+            localStorage.setItem('token', JSON.stringify(authToken));
+            AuthenticationService._token = authToken;
+        }
+
+        let loggedUser = response.body;
+        if (loggedUser != null) {
+            localStorage.setItem('user', JSON.stringify(loggedUser));
+            AuthenticationService._appuser = loggedUser;
+        }
     }
 }

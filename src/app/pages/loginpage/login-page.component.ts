@@ -36,10 +36,17 @@ export class LoginPageComponent implements OnInit {
 
         this.login = true
     }
+
     ngOnInit() {
         this.container = document.getElementById('container');
         this._socialauthService.authState.subscribe((user) => {
-            // let awtToken = sendBackendforValidation(user.idToken).subscribe()
+            if (user !== null) {
+              this.loginToBackend(user.email, user.firstName, user.lastName, user.idToken).subscribe((loggedIn) => {
+                this._loginState.next(loggedIn);
+              });
+            } else {
+              this._loginState.next(false);
+            }
 
             console.log('ciao auth google')
             console.log(user)
@@ -47,7 +54,6 @@ export class LoginPageComponent implements OnInit {
             // this.loggedIn = (user != null);
         });
     }
-
 
     switchForm() {
         if (this.login) {
