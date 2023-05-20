@@ -21,13 +21,8 @@ export class AuthenticationService {
                 this.googleSignIn(user).subscribe( next => {
                     this._router.navigate(['/homepage'] )
                 })
-                //     this.loginToBackend(user.email, user.firstName, user.lastName, user.idToken).subscribe((loggedIn) => {
-                //         this._loginState.next(loggedIn);
-                //     });
-                // } else {
-                //     this._loginState.next(false);
             } else {
-                //sloggo l'utente
+                this.logOut();
             }
 
         });
@@ -66,7 +61,10 @@ export class AuthenticationService {
     }
 
     logOut() {
-        this._setLoggedUser(null);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        AuthenticationService._token = "";
+        AuthenticationService._appuser = null;
         this._router.navigate(['/homepage'] )
     }
 
@@ -77,7 +75,7 @@ export class AuthenticationService {
         );
     }
 
-    private _setLoggedUser(response : HttpResponse<UserDto> | any ) {
+    private _setLoggedUser(response : HttpResponse<UserDto>) {
         let authToken = response?.headers.get('Authorization');
         let loggedUser = response?.body;
         if (authToken != null && loggedUser != null) {
@@ -85,11 +83,6 @@ export class AuthenticationService {
             AuthenticationService._token = authToken;
             localStorage.setItem('user', JSON.stringify(loggedUser));
             AuthenticationService._appuser = loggedUser;
-        } else {
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
-            AuthenticationService._token = "";
-            AuthenticationService._appuser = null;
         }
     }
 }
