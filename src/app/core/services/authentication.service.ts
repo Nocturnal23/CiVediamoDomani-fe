@@ -65,6 +65,11 @@ export class AuthenticationService {
         );
     }
 
+    logOut() {
+        this._setLoggedUser(null);
+        this._router.navigate(['/homepage'] )
+    }
+
     googleSignIn(user : SocialUser) {
         const url = this.baseUrl + "/googleSignIn"
         return this._http.post<UserDto>(url, user, {observe: 'response'}).pipe(
@@ -72,15 +77,17 @@ export class AuthenticationService {
         );
     }
 
-    private _setLoggedUser(response : HttpResponse<UserDto>) {
-        let authToken  = response.headers.get('Authorization');
-        let loggedUser = response.body;
+    private _setLoggedUser(response : HttpResponse<UserDto> | any ) {
+        let authToken = response?.headers.get('Authorization');
+        let loggedUser = response?.body;
         if (authToken != null && loggedUser != null) {
             localStorage.setItem('token', JSON.stringify(authToken));
             AuthenticationService._token = authToken;
             localStorage.setItem('user', JSON.stringify(loggedUser));
             AuthenticationService._appuser = loggedUser;
         } else {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
             AuthenticationService._token = "";
             AuthenticationService._appuser = null;
         }
