@@ -17,9 +17,13 @@
     </div>
 
 
-    <div class="sidenav-toolbar-right">
+    <div class="sidenav-toolbar-right" *ngIf="isLogged()">
       <button class="event">I miei eventi</button>
       <app-profile-card></app-profile-card>
+    </div>
+
+    <div *ngIf="!isLogged()">
+      <button class="event" (click)="goToLogin()">Login</button>
     </div>
 
   </mat-toolbar>

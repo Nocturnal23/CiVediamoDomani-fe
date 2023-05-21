@@ -85,4 +85,8 @@ export class AuthenticationService {
             AuthenticationService._appuser = loggedUser;
         }
     }
+
+    isLogged() {
+        return AuthenticationService.getAuthToken != null && AuthenticationService.getAppUser != null;
+    }
 }
