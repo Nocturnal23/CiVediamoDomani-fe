@@ -10,8 +10,8 @@ export class ProfilePageComponent {
   user;
 
   constructor() {
-    this.user = AuthenticationService.getAuthToken;
-    console.log(AuthenticationService.getAuthToken)
+    this.user = AuthenticationService.getAppUser?.firstName;
+    //console.log(AuthenticationService.getAuthToken)
   }
 
 }
