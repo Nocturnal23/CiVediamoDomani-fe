@@ -1,2 +1,12 @@
-<a href="homepage"> Torna alla homepage </a>
-<p> Messaggio ricevuto: "{{values}}"  </p>
+<div>
+    <h1> Risultati per: "{{values}}"</h1>
+</div>
+<div>
+    <mat-icon>room</mat-icon> {{searchLocation}}
+</div>
+<div>
+    <mat-slider [min]="sliderMinRange" [max]="sliderMaxRange" [step]="sliderStep">
+        <input matSliderThumb [(value)]="searchRange">
+    </mat-slider>
+    Cerca entro: {{searchRange}} KM
+</div>

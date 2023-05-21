@@ -10,6 +10,11 @@ import {CategoryService} from "../../core/services/category.service";
   styleUrls: ['./search-page.component.css']
 })
 export class SearchPageComponent implements OnInit{
+  public searchLocation: string = '';
+  public searchRange: number = 0;
+  public sliderMinRange: number = 10;
+  public sliderMaxRange: number = 100;
+  public sliderStep: number = 10;
   public values: any = '';
   public stampa: any;
   public stampaUser: any;
@@ -33,6 +38,7 @@ export class SearchPageComponent implements OnInit{
   }
   ngOnInit() {
     this.activatedRoute.params.subscribe( routeParams => {this._loadData(routeParams)} )
+    this.searchLocation = 'Milano';
   }
 
   private _loadData( routeParams : any ) {

@@ -18,6 +18,7 @@ import { ProfileCardComponent } from './layout/profile-card/profile-card.compone
 import {MatIconModule} from "@angular/material/icon";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
+import {MatSliderModule} from '@angular/material/slider';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 
@@ -44,6 +45,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
         MatToolbarModule,
         MatIconModule,
         MatInputModule,
+        MatSliderModule,
         FormsModule,
         ReactiveFormsModule,
     ],
