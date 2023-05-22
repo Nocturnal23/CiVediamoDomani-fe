@@ -12,12 +12,16 @@ export class HeaderBarComponent {
 
     searchForm : FormGroup;
 
+    searchLocation: string;
+
     constructor(private _router: Router,
                 private _formBuilder: FormBuilder,
                 private _authService : AuthenticationService) {
         this.searchForm = _formBuilder.group({
             searchBar: ['']
         })
+
+        this.searchLocation = "Milano"
     }
     search() {
       console.log("Da header-bar: " + this.searchForm.value.searchBar)

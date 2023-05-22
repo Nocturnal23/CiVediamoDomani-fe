@@ -1,5 +1,6 @@
 <div class="main-container" layout="row" layout-align="space-around center">
   <mat-toolbar>
+
     <div class="sidenav-toolbar-left" routerLink="/"> <span>Ci Vediamo Domani</span> </div>
 
 
@@ -7,6 +8,7 @@
       <form [formGroup]="searchForm">
       <div class="wrap">
         <div class="search">
+          <mat-icon>room</mat-icon> {{searchLocation}}
           <mat-form-field>
             <input matInput type="text" formControlName="searchBar" (keydown.enter)="search()" class="searchTerm" placeholder="What are you looking for?" >
           </mat-form-field>
