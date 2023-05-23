@@ -3,7 +3,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {HelloworldComponent} from "./helloworld/helloworld.component";
 import {NotFoundComponent} from "./layout/not-found/not-found.component";
 import {LoginPageComponent} from "./pages/loginpage/login-page.component";
-import {ContainerComponent} from "./layout/container/container.component";
+import {HeaderContainerComponent} from "./layout/container/header-container.component";
 import {HomePageComponent} from "./pages/homepage/home-page.component";
 import {SearchPageComponent} from "./pages/search-page/search-page.component";
 import {ProfilePageComponent} from "./pages/profile-page/profile-page.component";
@@ -18,7 +18,7 @@ const routes: Routes = [
     { path: 'profile', component:ProfilePageComponent },
     { path: 'settings', component:SettingsPageComponent },
     { path: 'test', component: TreeListComponent},
-    { path: '', component: ContainerComponent, children: [
+    { path: '', component: HeaderContainerComponent, children: [
         { path: 'helloworld', component: HelloworldComponent },
         { path: 'homepage', component: HomePageComponent },
         { path: 'search/:query', component: SearchPageComponent  },
