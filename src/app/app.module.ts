@@ -22,6 +22,8 @@ import {MatSliderModule} from '@angular/material/slider';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
+import { TreeListComponent } from './layout/tree-list/tree-list.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
     declarations: [
@@ -35,7 +37,8 @@ import { SettingsPageComponent } from './pages/settings-page/settings-page.compo
         ProfileCardComponent,
         SearchPageComponent,
         ProfilePageComponent,
-        SettingsPageComponent
+        SettingsPageComponent,
+        TreeListComponent
     ],
     imports: [
         BrowserModule,
@@ -50,6 +53,7 @@ import { SettingsPageComponent } from './pages/settings-page/settings-page.compo
         MatSliderModule,
         FormsModule,
         ReactiveFormsModule,
+        MatExpansionModule,
     ],
     providers: [{
         provide: 'SocialAuthServiceConfig',

@@ -9,6 +9,7 @@ import {SearchPageComponent} from "./pages/search-page/search-page.component";
 import {ProfilePageComponent} from "./pages/profile-page/profile-page.component";
 import {ProfileCardComponent} from "./layout/profile-card/profile-card.component";
 import {SettingsPageComponent} from "./pages/settings-page/settings-page.component";
+import {TreeListComponent} from "./layout/tree-list/tree-list.component";
 
 const routes: Routes = [
     { path: 'not_found', component: NotFoundComponent },
@@ -16,7 +17,7 @@ const routes: Routes = [
     //TODO: Spostare profile e login sotto?
     { path: 'profile', component:ProfilePageComponent },
     { path: 'settings', component:SettingsPageComponent },
-    { path: 'testcard', component: ProfileCardComponent},
+    { path: 'test', component: TreeListComponent},
     { path: '', component: ContainerComponent, children: [
         { path: 'helloworld', component: HelloworldComponent },
         { path: 'homepage', component: HomePageComponent },
