@@ -1,0 +1,14 @@
+<mat-sidenav-container>
+    <mat-sidenav position="start" mode="side" opened [disableClose]="true">
+        <h2 class="goTo" routerLink="/homepage"> <mat-icon>arrow_back</mat-icon> Homepage</h2>
+
+        <div> <h4 class="goTo" routerLink="/user/profile">Profilo</h4> </div>
+        <div> <h4 class="goTo" routerLink="/not_found">Gestisci eventi</h4> </div>
+        <div> <h4 class="goTo" routerLink="/not_found">Le tue categorie</h4> </div>
+        <div> <h4 class="goTo" routerLink="/user/settings">Impostazioni</h4> </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

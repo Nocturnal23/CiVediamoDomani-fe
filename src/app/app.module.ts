@@ -24,6 +24,8 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { TreeListComponent } from './layout/tree-list/tree-list.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import { LeftMenuComponent } from './layout/left-menu/left-menu.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 @NgModule({
     declarations: [
@@ -38,7 +40,8 @@ import {MatExpansionModule} from "@angular/material/expansion";
         SearchPageComponent,
         ProfilePageComponent,
         SettingsPageComponent,
-        TreeListComponent
+        TreeListComponent,
+        LeftMenuComponent
     ],
     imports: [
         BrowserModule,
@@ -54,6 +57,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
         FormsModule,
         ReactiveFormsModule,
         MatExpansionModule,
+        MatSidenavModule,
     ],
     providers: [{
         provide: 'SocialAuthServiceConfig',
