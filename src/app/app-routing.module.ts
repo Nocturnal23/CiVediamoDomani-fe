@@ -10,22 +10,27 @@ import {ProfilePageComponent} from "./pages/profile-page/profile-page.component"
 import {ProfileCardComponent} from "./layout/profile-card/profile-card.component";
 import {SettingsPageComponent} from "./pages/settings-page/settings-page.component";
 import {TreeListComponent} from "./layout/tree-list/tree-list.component";
+import {LeftMenuComponent} from "./layout/left-menu/left-menu.component";
 
 const routes: Routes = [
     { path: 'not_found', component: NotFoundComponent },
     { path: 'login', component:LoginPageComponent },
-    //TODO: Spostare profile e login sotto?
-    { path: 'profile', component:ProfilePageComponent },
-    { path: 'settings', component:SettingsPageComponent },
     { path: 'test', component: TreeListComponent},
-    { path: '', component: HeaderContainerComponent, children: [
-        { path: 'helloworld', component: HelloworldComponent },
-        { path: 'homepage', component: HomePageComponent },
-        { path: 'search/:query', component: SearchPageComponent  },
-        { path: '**', redirectTo: '/homepage', pathMatch: 'full' }
-      ]
-  },
 
+    { path: 'user', component: LeftMenuComponent, children: [
+            { path: '', redirectTo: 'profile', pathMatch: 'full' },
+            { path: 'profile', component:ProfilePageComponent },
+            { path: 'settings', component:SettingsPageComponent }
+        ]
+    },
+
+    { path: '', component: HeaderContainerComponent, children: [
+            { path: 'helloworld', component: HelloworldComponent },
+            { path: 'homepage', component: HomePageComponent },
+            { path: 'search/:query', component: SearchPageComponent  },
+            { path: '**', redirectTo: '/homepage', pathMatch: 'full' }
+        ]
+    },
 ];
 
 @NgModule({
