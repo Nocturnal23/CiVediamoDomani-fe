@@ -1,1 +1,7 @@
-<p>settings-page works!</p>
+<p>Cambia password</p>
+<form [formGroup]="restorePassword">
+    <input type="password" placeholder="Password" formControlName="password"/>
+    <button (click)="restore()">Ripristina</button>
+</form>
+
+<p>Elimina profilo</p>

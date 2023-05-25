@@ -11,6 +11,7 @@ import {ProfileCardComponent} from "./layout/profile-card/profile-card.component
 import {SettingsPageComponent} from "./pages/settings-page/settings-page.component";
 import {TreeListComponent} from "./layout/tree-list/tree-list.component";
 import {LeftMenuComponent} from "./layout/left-menu/left-menu.component";
+import {EventPageComponent} from "./pages/event-page/event-page.component";
 
 const routes: Routes = [
     { path: 'not_found', component: NotFoundComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
     { path: 'user', component: LeftMenuComponent, children: [
             { path: '', redirectTo: 'profile', pathMatch: 'full' },
             { path: 'profile', component:ProfilePageComponent },
-            { path: 'settings', component:SettingsPageComponent }
+            { path: 'settings', component:SettingsPageComponent},
+            { path: 'event', component:EventPageComponent }
         ]
     },
 
