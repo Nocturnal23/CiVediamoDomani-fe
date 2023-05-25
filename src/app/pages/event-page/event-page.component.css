@@ -1,0 +1,7 @@
+.bordi{
+    border-style: solid;
+    border-color: red;
+    height: 100%;
+    width: 80%;
+    margin-left: 10%;
+}
