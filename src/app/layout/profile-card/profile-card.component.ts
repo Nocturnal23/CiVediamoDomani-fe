@@ -17,10 +17,10 @@ export class ProfileCardComponent {
     }
 
     profile() {
-        this._router.navigate(['/profile'] );
+        this._router.navigate(['/user/profile'] );
     }
 
     settings() {
-        this._router.navigate(['/settings'] );
+        this._router.navigate(['/user/settings'] );
     }
 }
