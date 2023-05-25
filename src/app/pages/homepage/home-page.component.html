@@ -9,10 +9,12 @@
         <div class="center-carousel">Categoria</div>
         <div class="right-carousel"><mat-icon>keyboard_arrow_right</mat-icon></div>
     </div>
-    <div class="center-text">
-        <h4>oppure</h4>
-    </div>
-    <div class="event-button">
-        <button>Organizza un evento...</button>
+    <div *ngIf="showCreateButton()">
+        <div class="center-text">
+            <h4>oppure</h4>
+        </div>
+        <div class="event-button">
+            <button>Organizza un evento...</button>
+        </div>
     </div>
 </div>
