@@ -10,3 +10,8 @@
     </mat-slider>
     Cerca entro: {{searchRange}} KM
 </div>
+<div>
+    <div *ngFor="let event of eventList$ | async">
+        {{event.title}}{{event.description}}
+    </div>
+</div>
