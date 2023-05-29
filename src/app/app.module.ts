@@ -28,6 +28,7 @@ import { LeftMenuComponent } from './layout/left-menu/left-menu.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import { EventPageComponent } from './pages/event-page/event-page.component';
 import {MatTabsModule} from "@angular/material/tabs";
+import { InfoEventComponent } from './pages/info-event/info-event.component';
 
 @NgModule({
     declarations: [
@@ -44,7 +45,8 @@ import {MatTabsModule} from "@angular/material/tabs";
         SettingsPageComponent,
         TreeListComponent,
         LeftMenuComponent,
-        EventPageComponent
+        EventPageComponent,
+        InfoEventComponent
     ],
     imports: [
         BrowserModule,

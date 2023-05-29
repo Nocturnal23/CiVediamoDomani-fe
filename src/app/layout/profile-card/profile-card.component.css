@@ -80,8 +80,8 @@
     padding: 5px;
     background-color: #111;
     top: 70px;
-    left: 0;
-    width: 100%;
+    left: 80%;
+    width: 80%;
     border-radius: 4px;
     display: block;
     box-shadow: 0 14px 35px 0 rgba(9,9,12,0.4);
@@ -109,7 +109,7 @@
 .section-dropdown:after {
     position: absolute;
     top: -7px;
-    left: 30px;
+    left: 50px;
     width: 0;
     height: 0;
     border-left: 8px solid transparent;
