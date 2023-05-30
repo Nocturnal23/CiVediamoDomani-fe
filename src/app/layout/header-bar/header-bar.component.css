@@ -1,88 +1,138 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+/*@import url(https://fonts.googleapis.com/css?family=Open+Sans);*/
 
-.main-container {
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*!*position: absolute;*!*/
-    /*top: 0;*/
-    /*bottom: 0;*/
-    /*left: 0;*/
-    /*right: 0;*/
+/*.main-container {*/
+/*    !*display: flex;*!*/
+/*    !*flex-direction: column;*!*/
+/*    !*!*position: absolute;*!*!*/
+/*    !*top: 0;*!*/
+/*    !*bottom: 0;*!*/
+/*    !*left: 0;*!*/
+/*    !*right: 0;*!*/
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /*padding: 0 16px;*/
-}
-
-.sidenav-toolbar-left {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.sidenav-toolbar-center {
-    /*flex: 1 1 auto;*/
-    /*text-align: center;*/
-    /*justify-content: center;*/
-    display: flex;
-    /*margin-left: auto;*/
-}
-
-/*Resize the wrap to see the search bar change!*/
-.wrap{
-    position: sticky;
-    width: 40%;
-    /*position: relative;*/
-    /*top: 50%;*/
-    /*left: 25%;*/
-    transform: translate(50%, 15%);
-    margin-left: auto;
-}
-
-/*.search {*/
-/*    width: 100%;*/
-/*    !*position: relative;*!*/
 /*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: space-between;*/
+/*    !*padding: 0 16px;*!*/
 /*}*/
 
-.searchTerm {
-    /*position: sticky;*/
-    border-bottom: 2px;
-    color: #9DBFAF;
+/*.sidenav-toolbar-left {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: flex-start;*/
+/*}*/
+
+/*.sidenav-toolbar-center {*/
+/*    !*flex: 1 1 auto;*!*/
+/*    !*text-align: center;*!*/
+/*    !*justify-content: center;*!*/
+/*    !*display: flex;*!*/
+/*    !*margin-left: auto;*!*/
+/*}*/
+
+/*!*Resize the wrap to see the search bar change!*!*/
+/*.wrap{*/
+/*    position: sticky;*/
+/*    width: 40%;*/
+/*    !*position: relative;*!*/
+/*    !*top: 50%;*!*/
+/*    !*left: 25%;*!*/
+/*    transform: translate(50%, 15%);*/
+/*    margin-left: auto;*/
+/*}*/
+
+
+/*.searchTerm {*/
+/*    !*position: sticky;*!*/
+/*    border-bottom: 2px;*/
+/*    color: #9DBFAF;*/
+/*}*/
+
+/*.searchTerm:focus{*/
+/*    color: #000000;*/
+/*}*/
+
+/*.sidenav-toolbar-right {*/
+/*    !*display: inline-flex;*!*/
+/*    !*align-items: center;*!*/
+/*    !*justify-content: flex-end;*!*/
+/*    margin-left: auto;*/
+
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: flex-end;*/
+/*}*/
+
+/*.event {*/
+/*    !*position: sticky;*!*/
+/*    !*right: 10%;*!*/
+
+/*    margin-right: 16px;*/
+/*}*/
+
+
+.row {
+    display: flex;
+    /*background-color: yellow;*/
 }
 
-.searchTerm:focus{
-    color: #000000;
+.column {
+    flex: 50%;
+    /*background-color: green;*/
+}
+
+#toolbarLeft{
+    display: flex;
+    align-items: center;
+    background-color: brown;
+}
+
+.projectName{
+    cursor: pointer;
+    background-color: purple;
+}
+
+#toolbarCenter{
+    display: flex;
+    align-items: center;
+    background-color: red;
+}
+
+.position{
+    cursor: pointer;
+    /*justify-content: flex-start;*/
+    /*align-items: center;*/
+    background-color: purple;
+}
+
+#toolbarRight{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: orange;
+}
+
+.search {
+    /*width: 100%;*/
+    /*display: flex;*/
+    /*margin-left: 10px;*/
+    /*height: 100px;*/
+    /*justify-content: flex-start;*/
+    /*align-items: center;*/
 }
 
 .searchButton {
-    /*position: sticky;*/
-    width: 40px;
-    height: 40px;
+    /*width: 40px;*/
+    /*height: 40px;*/
     border: 1px solid #0052cc;
     background: #0052cc;
     text-align: center;
     color: #fff;
-    border-radius: 0 5px 5px 0;
+    /*border-radius: 0 5px 5px 0;*/
     cursor: pointer;
-    font-size: 20px;
-}
-
-.sidenav-toolbar-right {
-    /*display: inline-flex;*/
-    /*align-items: center;*/
-    /*justify-content: flex-end;*/
-    margin-left: auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    /*font-size: 20px;*/
 }
 
 .event {
-    /*position: sticky;*/
-    /*right: 10%;*/
-
     margin-right: 16px;
 }

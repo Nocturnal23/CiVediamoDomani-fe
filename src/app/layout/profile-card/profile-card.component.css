@@ -43,8 +43,9 @@
     justify-content: center;
     -ms-flex-pack: center;
     text-align: center;
-    border: none;
-    background-color: #ffeba7;
+    /*border: none;*/
+    /*background-color: #ffeba7;*/
+    border: 1px solid;
     cursor: pointer;
     color: #102770;
     box-shadow: 0 12px 35px 0 rgba(255,235,167,.15);

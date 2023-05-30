@@ -16,32 +16,32 @@
 .carousel {
     display: flex;
     background-color: #9DBFAF;
-    /*grid-row: 2;*/
-    /*display: table-row;*/
 }
 
 .left-carousel {
+    /*z-index: 999;*/
+    /*position: sticky;*/
     cursor: pointer;
-    position: sticky;
-    z-index: 999;
-    top: 30%;
-    left: 16px;
-    width: 200px;
-    height: auto;
+    /*top: 30%;*/
+    /*left: 16px;*/
+    /*width: 200px;*/
+    /*height: auto;*/
 }
 
 .center-carousel {
-
+    flex: 50%;
+    align-items: center;
+    text-align: center;
 }
 
 .right-carousel {
-    z-index: 999;
+    /*z-index: 999;*/
     /*position: relative;*/
     cursor: pointer;
-    top: 30%;
-    right: 16px;
-    width: 200px;
-    height: auto;
+    /*top: 30%;*/
+    /*right: 16px;*/
+    /*width: 200px;*/
+    /*height: auto;*/
 }
 
 .center-text {

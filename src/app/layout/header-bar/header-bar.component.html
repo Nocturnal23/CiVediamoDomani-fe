@@ -1,31 +1,56 @@
-<div class="main-container" layout="row" layout-align="space-around center">
-  <mat-toolbar>
+<!--<div class="main-container" layout="row" layout-align="space-around center">-->
+<!--  <mat-toolbar>-->
 
-        <div class="sidenav-toolbar-left" routerLink="/"> <span>Ci Vediamo Domani</span> </div>
+<!--        <div class="sidenav-toolbar-left" routerLink="/"> <span>Ci Vediamo Domani</span> </div>-->
 
 
-        <div class="sidenav-toolbar-center">
-            <form [formGroup]="searchForm">
-                <div class="wrap">
-<!--                    <div class="search">-->
-                        <mat-icon>room</mat-icon> {{searchLocation}}
-                        <mat-form-field>
-                            <input matInput type="text" formControlName="searchBar" (keydown.enter)="search()" class="searchTerm" placeholder="What are you looking for?" >
-                        </mat-form-field>
-                        <button type="submit" class="searchButton" (click)="search()"><mat-icon>search</mat-icon></button>
-<!--                    </div>-->
-                </div>
-            </form>
-        </div>
+<!--        <div class="sidenav-toolbar-center">-->
+<!--            <form [formGroup]="searchForm">-->
+<!--                <div class="wrap">-->
+<!--&lt;!&ndash;                    <div class="search">&ndash;&gt;-->
+<!--                        <mat-icon>room</mat-icon> {{searchLocation}}-->
+<!--                        <mat-form-field>-->
+<!--                            <input matInput type="text" formControlName="searchBar" (keydown.enter)="search()" class="searchTerm" placeholder="What are you looking for?" >-->
+<!--                        </mat-form-field>-->
+<!--                        <button type="submit" class="searchButton" (click)="search()"><mat-icon>search</mat-icon></button>-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
 
-        <div class="sidenav-toolbar-right" *ngIf="isLogged()">
-            <button class="event">I miei eventi</button>
-            <app-profile-card></app-profile-card>
-        </div>
+<!--        <div class="sidenav-toolbar-right" *ngIf="isLogged()">-->
+<!--            <button class="event">I miei eventi</button>-->
+<!--            <app-profile-card></app-profile-card>-->
+<!--        </div>-->
 
-        <div *ngIf="!isLogged()">
-            <button class="event" (click)="goToLogin()">Login</button>
-        </div>
+<!--        <div *ngIf="!isLogged()">-->
+<!--            <button class="event" (click)="goToLogin()">Login</button>-->
+<!--        </div>-->
 
-    </mat-toolbar>
-</div>
+<!--    </mat-toolbar>-->
+<!--</div>-->
+
+<mat-toolbar class="row">
+    <div class="column" id="toolbarLeft" routerLink="/">
+        <span class="projectName">Ci Vediamo Domani</span>
+    </div>
+
+    <div class="column" id="toolbarCenter">
+        <form [formGroup]="searchForm">
+            <mat-icon class="position">room</mat-icon> <span class="projectName"> {{searchLocation}} </span>
+            <mat-form-field class="search">
+                <input matInput type="text" formControlName="searchBar" (keydown.enter)="search()" placeholder="What are you looking for?">
+            </mat-form-field>
+            <button type="submit" (click)="search()" class="searchButton"><mat-icon>search</mat-icon></button>
+        </form>
+    </div>
+
+    <div class="column" id="toolbarRight" *ngIf="isLogged()">
+        <button class="event">I miei eventi</button>
+        <app-profile-card></app-profile-card>
+    </div>
+
+    <div class="column" *ngIf="!isLogged()">
+        <button class="event" (click)="goToLogin()">Login</button>
+    </div>
+</mat-toolbar>
