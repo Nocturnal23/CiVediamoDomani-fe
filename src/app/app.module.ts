@@ -29,6 +29,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import { EventPageComponent } from './pages/event-page/event-page.component';
 import {MatTabsModule} from "@angular/material/tabs";
 import { InfoEventComponent } from './pages/info-event/info-event.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
     declarations: [
@@ -64,6 +65,7 @@ import { InfoEventComponent } from './pages/info-event/info-event.component';
         MatExpansionModule,
         MatSidenavModule,
         MatTabsModule,
+        FlexLayoutModule
     ],
     providers: [{
         provide: 'SocialAuthServiceConfig',
