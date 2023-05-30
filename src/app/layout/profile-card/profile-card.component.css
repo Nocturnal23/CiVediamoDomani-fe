@@ -82,7 +82,7 @@
     background-color: #111;
     top: 70px;
     left: 80%;
-    width: 80%;
+    /*width: 80%;*/
     border-radius: 4px;
     display: block;
     box-shadow: 0 14px 35px 0 rgba(9,9,12,0.4);

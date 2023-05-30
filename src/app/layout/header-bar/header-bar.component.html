@@ -7,13 +7,13 @@
 <!--        <div class="sidenav-toolbar-center">-->
 <!--            <form [formGroup]="searchForm">-->
 <!--                <div class="wrap">-->
-<!--&lt;!&ndash;                    <div class="search">&ndash;&gt;-->
+<!--                    <div class="search">-->
 <!--                        <mat-icon>room</mat-icon> {{searchLocation}}-->
 <!--                        <mat-form-field>-->
 <!--                            <input matInput type="text" formControlName="searchBar" (keydown.enter)="search()" class="searchTerm" placeholder="What are you looking for?" >-->
 <!--                        </mat-form-field>-->
 <!--                        <button type="submit" class="searchButton" (click)="search()"><mat-icon>search</mat-icon></button>-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                    </div>-->
 <!--                </div>-->
 <!--            </form>-->
 <!--        </div>-->
@@ -30,27 +30,34 @@
 <!--    </mat-toolbar>-->
 <!--</div>-->
 
-<mat-toolbar class="row">
-    <div class="column" id="toolbarLeft" routerLink="/">
+<mat-toolbar class="toolbar" fxLayout="row">
+    <div class="toolbarLeft" fxFlex="25%" routerLink="/">
         <span class="projectName">Ci Vediamo Domani</span>
     </div>
 
-    <div class="column" id="toolbarCenter">
-        <form [formGroup]="searchForm">
-            <mat-icon class="position">room</mat-icon> <span class="projectName"> {{searchLocation}} </span>
-            <mat-form-field class="search">
-                <input matInput type="text" formControlName="searchBar" (keydown.enter)="search()" placeholder="What are you looking for?">
-            </mat-form-field>
-            <button type="submit" (click)="search()" class="searchButton"><mat-icon>search</mat-icon></button>
-        </form>
+    <div class="toolbarCenter" fxFlex="45%">
+        <div fxFlex="25%" class="position">
+            <mat-icon>room</mat-icon>
+            <span> {{searchLocation}} </span>
+        </div>
+        <div class="searchForm" fxFlex="60%">
+            <form [formGroup]="searchForm">
+                <mat-form-field class="search" fxFlex="100%">
+                    <input matInput type="text" formControlName="searchBar" (keydown.enter)="search()" placeholder="Cosa stai cercando?">
+                </mat-form-field>
+                <button type="submit" (click)="search()" class="searchButton"><mat-icon>search</mat-icon></button>
+            </form>
+        </div>
     </div>
 
-    <div class="column" id="toolbarRight" *ngIf="isLogged()">
-        <button class="event">I miei eventi</button>
-        <app-profile-card></app-profile-card>
-    </div>
+    <div class="toolbarRight" fxFlex="25%">
+        <div *ngIf="isLogged()">
+            <div fxFlex="30%"><button>I miei eventi</button></div>
+            <div class="profileCard"><app-profile-card></app-profile-card></div>
+        </div>
 
-    <div class="column" *ngIf="!isLogged()">
-        <button class="event" (click)="goToLogin()">Login</button>
+        <div *ngIf="!isLogged()">
+            <button (click)="goToLogin()">Login</button>
+        </div>
     </div>
 </mat-toolbar>

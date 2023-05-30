@@ -16,6 +16,8 @@
 .carousel {
     display: flex;
     background-color: #9DBFAF;
+    /*grid-row: 2;*/
+    /*display: table-row;*/
 }
 
 .left-carousel {
