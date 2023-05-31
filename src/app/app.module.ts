@@ -30,6 +30,7 @@ import { EventPageComponent } from './pages/event-page/event-page.component';
 import {MatTabsModule} from "@angular/material/tabs";
 import { InfoEventComponent } from './pages/info-event/info-event.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {SearchResolver} from "./core/resolvers/search.resolver";
 
 @NgModule({
     declarations: [
@@ -67,8 +68,9 @@ import {FlexLayoutModule} from "@angular/flex-layout";
         MatTabsModule,
         FlexLayoutModule
     ],
-    providers: [{
-        provide: 'SocialAuthServiceConfig',
+    providers: [
+        SearchResolver,
+        { provide: 'SocialAuthServiceConfig',
         useValue: {
             autoLogin: false,
             providers: [
