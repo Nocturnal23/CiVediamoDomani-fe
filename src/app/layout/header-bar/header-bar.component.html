@@ -42,17 +42,20 @@
         </div>
         <div class="searchForm" fxFlex="60%">
             <form [formGroup]="searchForm">
-                <mat-form-field class="search" fxFlex="100%">
-                    <input matInput type="text" formControlName="searchBar" (keydown.enter)="search()" placeholder="Cosa stai cercando?">
-                </mat-form-field>
-                <button type="submit" (click)="search()" class="searchButton"><mat-icon>search</mat-icon></button>
+                <div>
+<!--                <mat-form-field class="search" fxFlex="100%">-->
+                    <input matInput type="text" class="search" formControlName="searchBar" (keydown.enter)="search()" placeholder="Cosa stai cercando?">
+<!--                </mat-form-field>-->
+                    <mat-icon (click)="search()" class="searchButton">search</mat-icon>
+<!--                    <button type="submit" (click)="search()" class="searchButton"><mat-icon>search</mat-icon></button>-->
+                </div>
             </form>
         </div>
     </div>
 
     <div class="toolbarRight" fxFlex="25%">
         <div *ngIf="isLogged()">
-            <div fxFlex="30%"><button>I miei eventi</button></div>
+            <div fxFlex="30%" class="event"><button>I miei eventi</button></div>
             <div class="profileCard"><app-profile-card></app-profile-card></div>
         </div>
 
