@@ -24,7 +24,10 @@ export class SearchPageComponent implements OnInit{
                 private eventService: EventService) {
     }
     ngOnInit() {
-        this.activatedRoute.params.subscribe( routeParams => {this._loadData(routeParams)} )
+        // @ts-ignore
+        this.eventList$ = this.activatedRoute.snapshot.data.eventList;
+        console.log(this.eventList$)
+        // this.activatedRoute.params.subscribe( routeParams => {this._loadData(routeParams)} )
         this.searchLocation = 'Milano';
     }
 
