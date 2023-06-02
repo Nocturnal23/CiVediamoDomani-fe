@@ -14,13 +14,15 @@ import {LeftMenuComponent} from "./layout/left-menu/left-menu.component";
 import {EventPageComponent} from "./pages/event-page/event-page.component";
 import {InfoEventComponent} from "./pages/info-event/info-event.component";
 import {searchResolver} from "./core/resolvers/search.resolver";
+import {isLoggedUser} from "./core/guards/UserGuard"
 
 const routes: Routes = [
     { path: 'not_found', component: NotFoundComponent },
     { path: 'login', component:LoginPageComponent },
     { path: 'test', component: TreeListComponent},
 
-    { path: 'user', component: LeftMenuComponent, children: [
+    { path: 'user', component: LeftMenuComponent,
+        canActivate: [isLoggedUser], children: [
             { path: '', redirectTo: 'profile', pathMatch: 'full' },
             { path: 'profile', component:ProfilePageComponent },
             { path: 'settings', component:SettingsPageComponent},
