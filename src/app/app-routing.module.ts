@@ -13,7 +13,7 @@ import {TreeListComponent} from "./layout/tree-list/tree-list.component";
 import {LeftMenuComponent} from "./layout/left-menu/left-menu.component";
 import {EventPageComponent} from "./pages/event-page/event-page.component";
 import {InfoEventComponent} from "./pages/info-event/info-event.component";
-import {SearchResolver} from "./core/resolvers/search.resolver";
+import {searchResolver} from "./core/resolvers/search.resolver";
 
 const routes: Routes = [
     { path: 'not_found', component: NotFoundComponent },
@@ -32,7 +32,7 @@ const routes: Routes = [
             { path: 'helloworld', component: HelloworldComponent },
             { path: 'homepage', component: HomePageComponent },
             { path: 'search/:query', component: SearchPageComponent,
-                // resolve: { eventList: SearchResolver }
+                resolve: { eventList: searchResolver }
             },
             { path: 'infoevent', component: InfoEventComponent },
             { path: '**', redirectTo: '/homepage', pathMatch: 'full' }

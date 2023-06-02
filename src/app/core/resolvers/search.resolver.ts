@@ -1,32 +1,21 @@
-import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
+import {ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot} from "@angular/router";
 import {EventService} from "../services/event.service";
-import {EventCriteria} from "../criteria/event-criteria";
-import {map, Observable} from "rxjs";
-import {Injectable} from "@angular/core";
+import {inject, Injectable} from "@angular/core";
 import {EventDto} from "../dto/event-dto";
 import {Page} from "../commons/filter.response";
 
+export const searchResolver: ResolveFn<Page<EventDto>> =
+    (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+        return inject(SearchResolver).getEvents(route.paramMap.get('query')!);
+    };
+
 @Injectable()
-export class SearchResolver implements Resolve<any>{
+export class SearchResolver {
 
     constructor(private _eventService: EventService) {
     }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<EventDto[]> {
-        let query = route.paramMap.get('query')
-        console.log('ciao ciao')
-        // if (query === null) {
-            // let criteria : EventCriteria = { searchvalue: query }
-            // let observ = this._eventService.filter({});
-            // console.log('ciao ciao')
-            // return observ;
-        let observable = this._eventService.filter({}).pipe(map(res => res.content));
-        console.log(observable);
-        // @ts-ignore
-        return observable;
-        // }
-        // @ts-ignore
-        // return null;
+    getEvents(query: string) {
+        return this._eventService.filter({});
     }
-
 }

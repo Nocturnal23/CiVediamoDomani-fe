@@ -11,7 +11,7 @@
     Cerca entro: {{searchRange}} KM
 </div>
 <div>
-    <div *ngFor="let event of eventList$ | async">
+    <div *ngFor="let event of eventList">
         {{event.title}}{{event.description}}
     </div>
 </div>
