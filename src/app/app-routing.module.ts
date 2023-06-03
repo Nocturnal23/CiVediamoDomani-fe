@@ -14,32 +14,33 @@ import {LeftMenuComponent} from "./layout/left-menu/left-menu.component";
 import {EventPageComponent} from "./pages/event-page/event-page.component";
 import {InfoEventComponent} from "./pages/info-event/info-event.component";
 import {searchResolver} from "./core/resolvers/search.resolver";
-import {isLoggedUser} from "./core/guards/UserGuard"
+import {canLogin, isAdmin, isLoggedUser} from "./core/guards/UserGuard"
 
 const routes: Routes = [
-    { path: 'not_found', component: NotFoundComponent },
-    { path: 'login', component:LoginPageComponent },
-    { path: 'test', component: TreeListComponent},
+  { path: 'not_found', component: NotFoundComponent},
+  { path: 'login', component:LoginPageComponent,
+    canActivate: [canLogin]},
+  { path: 'test', component: TreeListComponent},
 
-    { path: 'user', component: LeftMenuComponent,
-        canActivate: [isLoggedUser], children: [
-            { path: '', redirectTo: 'profile', pathMatch: 'full' },
-            { path: 'profile', component:ProfilePageComponent },
-            { path: 'settings', component:SettingsPageComponent},
-            { path: 'event', component:EventPageComponent }
-        ]
-    },
+  { path: 'user', component: LeftMenuComponent,
+    canActivate: [isLoggedUser], children: [
+      { path: '', redirectTo: 'profile', pathMatch: 'full' },
+      { path: 'profile', component:ProfilePageComponent },
+      { path: 'settings', component:SettingsPageComponent},
+      { path: 'event', component:EventPageComponent }
+    ]
+  },
 
-    { path: '', component: HeaderContainerComponent, children: [
-            { path: 'helloworld', component: HelloworldComponent },
-            { path: 'homepage', component: HomePageComponent },
-            { path: 'search/:query', component: SearchPageComponent,
-                resolve: { eventList: searchResolver }
-            },
-            { path: 'infoevent', component: InfoEventComponent },
-            { path: '**', redirectTo: '/homepage', pathMatch: 'full' }
-        ]
-    },
+  { path: '', component: HeaderContainerComponent, children: [
+      { path: 'helloworld', component: HelloworldComponent },
+      { path: 'homepage', component: HomePageComponent },
+      { path: 'search/:query', component: SearchPageComponent,
+        resolve: { eventList: searchResolver }
+      },
+      { path: 'infoevent', component: InfoEventComponent },
+      { path: '**', redirectTo: '/homepage', pathMatch: 'full' }
+    ]
+  },
 ];
 
 @NgModule({
