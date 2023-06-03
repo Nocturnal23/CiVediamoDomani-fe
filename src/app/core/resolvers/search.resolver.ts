@@ -16,6 +16,6 @@ export class SearchResolver {
     }
 
     getEvents(query: string) {
-        return this._eventService.filter({});
+        return this._eventService.filter({searchValue: query});
     }
 }
