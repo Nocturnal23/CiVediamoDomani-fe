@@ -31,6 +31,9 @@ import {MatTabsModule} from "@angular/material/tabs";
 import { InfoEventComponent } from './pages/info-event/info-event.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {SearchResolver} from "./core/resolvers/search.resolver";
+import { EditEventComponent } from './pages/edit-event/edit-event.component';
+import { DashboardUserComponent } from './pages/dashboard-user/dashboard-user.component';
+import { DashboardEventComponent } from './pages/dashboard-event/dashboard-event.component';
 
 @NgModule({
     declarations: [
@@ -48,7 +51,10 @@ import {SearchResolver} from "./core/resolvers/search.resolver";
         TreeListComponent,
         LeftMenuComponent,
         EventPageComponent,
-        InfoEventComponent
+        InfoEventComponent,
+        EditEventComponent,
+        DashboardUserComponent,
+        DashboardEventComponent
     ],
     imports: [
         BrowserModule,

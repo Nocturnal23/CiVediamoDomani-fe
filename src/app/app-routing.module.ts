@@ -15,6 +15,9 @@ import {EventPageComponent} from "./pages/event-page/event-page.component";
 import {InfoEventComponent} from "./pages/info-event/info-event.component";
 import {searchResolver} from "./core/resolvers/search.resolver";
 import {canLogin, isAdmin, isLoggedUser} from "./core/guards/UserGuard"
+import {EditEventComponent} from "./pages/edit-event/edit-event.component";
+import {DashboardUserComponent} from "./pages/dashboard-user/dashboard-user.component";
+import {DashboardEventComponent} from "./pages/dashboard-event/dashboard-event.component";
 
 const routes: Routes = [
   { path: 'not_found', component: NotFoundComponent},
@@ -27,7 +30,9 @@ const routes: Routes = [
       { path: '', redirectTo: 'profile', pathMatch: 'full' },
       { path: 'profile', component:ProfilePageComponent },
       { path: 'settings', component:SettingsPageComponent},
-      { path: 'event', component:EventPageComponent }
+      { path: 'event', component:EventPageComponent },
+      { path: 'dashboarduser', component: DashboardUserComponent},
+      { path: 'dashboardevent', component: DashboardEventComponent }
     ]
   },
 
@@ -38,6 +43,7 @@ const routes: Routes = [
         resolve: { eventList: searchResolver }
       },
       { path: 'infoevent', component: InfoEventComponent },
+      { path: 'editevent', component: EditEventComponent },
       { path: '**', redirectTo: '/homepage', pathMatch: 'full' }
     ]
   },
