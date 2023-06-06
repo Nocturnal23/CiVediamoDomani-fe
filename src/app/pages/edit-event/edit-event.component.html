@@ -1,0 +1,34 @@
+<h2>Crea Evento</h2>
+
+<div class="color1">
+    <form [formGroup]="editEvent" fxLayout="column" fxLayoutGap="10px">
+        <div>
+            <input type="text" placeholder="Titolo" formControlName="title"/>
+        </div>
+
+        <div>
+            <input type="datetime-local" formControlName="dateTime"/>
+        </div>
+
+        <div>
+            <input type="text" placeholder="Luogo" formControlName="place"/>
+        </div>
+
+        <div>
+            <input type="text" placeholder="Prezzo" formControlName="price"/>
+        </div>
+
+        <div>
+            <input type="text" placeholder="Categorie" formControlName="categories"/>
+        </div>
+
+        <div>
+            <input type="text" (click)="createEvent()" placeholder="Descrizione" formControlName="description"/>
+        </div>
+
+        <div>
+            <button>Pubblica</button>
+        </div>
+    </form>
+</div>
+
