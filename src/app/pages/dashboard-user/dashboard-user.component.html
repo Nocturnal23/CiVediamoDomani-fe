@@ -3,39 +3,39 @@
 <input type="text" placeholder="Cerca utente.."/>
 
 <table>
-    <tr>
-      <th>
-          Nome
-      </th>
-      <th>
-          Cognome
-      </th>
-      <th>
-          Tipo utente
-      </th>
-      <th>
-          Eventi creati
-      </th>
-      <th>
-          Gestisci
-      </th>
-    </tr>
-
   <tr>
+    <th>
+      Nome
+    </th>
+    <th>
+      Cognome
+    </th>
+    <th>
+      Tipo utente
+    </th>
+    <th>
+      Eventi creati
+    </th>
+    <th>
+      Gestisci
+    </th>
+  </tr>
+
+  <tr *ngFor="let user of userData | async">
     <td>
-      {{nome}}
+      {{user.firstName}}
     </td>
-    <td>
-      {{cognome}}
-    </td>
-    <td>
-      {{tipo_utente}}
-    </td>
-    <td>
-      {{eventi_creati}}
-    </td>
-    <td>
-    </td>
+    <th>
+      {{user.lastName}}
+    </th>
+    <th>
+      {{user.appRole}}
+    </th>
+    <th>
+      {{user.organisedEvents}}
+    </th>
+    <th>
+    </th>
   </tr>
 </table>
 
