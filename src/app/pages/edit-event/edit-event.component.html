@@ -15,19 +15,19 @@
         </div>
 
         <div>
-            <input type="text" placeholder="Prezzo" formControlName="price"/>
+            <input type="number" placeholder="Prezzo" formControlName="price"/>
+        </div>
+
+<!--        <div>-->
+<!--            <input type="text" placeholder="Categorie" formControlName="categories"/>-->
+<!--        </div>-->
+
+        <div>
+            <input type="text" placeholder="Descrizione" formControlName="description"/>
         </div>
 
         <div>
-            <input type="text" placeholder="Categorie" formControlName="categories"/>
-        </div>
-
-        <div>
-            <input type="text" (click)="createEvent()" placeholder="Descrizione" formControlName="description"/>
-        </div>
-
-        <div>
-            <button>Pubblica</button>
+            <button (click)="createEvent()">Pubblica</button>
         </div>
     </form>
 </div>

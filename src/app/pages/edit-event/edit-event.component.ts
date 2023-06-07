@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {EventDto} from "../../core/dto/event-dto";
 import {EventService} from "../../core/services/event.service";
+import {UserDto} from "../../core/dto/user-dto";
 
 @Component({
   selector: 'app-edit-event',
@@ -18,12 +19,19 @@ export class EditEventComponent {
             dateTime: [''],
             place: [''],
             price: [''],
-            categories: [''],
+            // categories: [''],
             description: ['']
         })
     }
 
     createEvent(){
+      const event : EventDto = {
+        ...this.editEvent.value,
+        coordinates: "10.00000 10.000000"
+      }
 
+      this._eventService.save(event).subscribe(
+
+      )
     }
 }
