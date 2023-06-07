@@ -30,10 +30,11 @@ import { EventPageComponent } from './pages/event-page/event-page.component';
 import {MatTabsModule} from "@angular/material/tabs";
 import { InfoEventComponent } from './pages/info-event/info-event.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
-import {SearchResolver} from "./core/resolvers/search.resolver";
 import { EditEventComponent } from './pages/edit-event/edit-event.component';
 import { DashboardUserComponent } from './pages/dashboard-user/dashboard-user.component';
 import { DashboardEventComponent } from './pages/dashboard-event/dashboard-event.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
     declarations: [
@@ -56,26 +57,27 @@ import { DashboardEventComponent } from './pages/dashboard-event/dashboard-event
         DashboardUserComponent,
         DashboardEventComponent
     ],
-    imports: [
-        BrowserModule,
-        RouterModule,
-        AppRoutingModule,
-        HttpClientModule,
-        GoogleSigninButtonModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatInputModule,
-        MatSliderModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatExpansionModule,
-        MatSidenavModule,
-        MatTabsModule,
-        FlexLayoutModule
-    ],
+  imports: [
+    BrowserModule,
+    RouterModule,
+    AppRoutingModule,
+    HttpClientModule,
+    GoogleSigninButtonModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatInputModule,
+    MatSliderModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatExpansionModule,
+    MatSidenavModule,
+    MatTabsModule,
+    FlexLayoutModule,
+    MatPaginatorModule,
+    MatTableModule
+  ],
     providers: [
-        SearchResolver,
         { provide: 'SocialAuthServiceConfig',
         useValue: {
             autoLogin: false,
