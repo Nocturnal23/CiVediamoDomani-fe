@@ -1,0 +1,72 @@
+<div class="iet-table">
+    <div class="table-container mat-elevation-z8">
+        <mat-table #table
+                   [dataSource]="dataSource"
+                   matSort
+                   class="table-striped">
+            <ng-container *ngFor="let column of columns">
+                <ng-container *ngIf="column.isModelProperty" [matColumnDef]="column.id">
+                    <mat-header-cell *matHeaderCellDef [mat-sort-header]="column.sort"> {{ column.name }}</mat-header-cell>
+                    <mat-cell *matCellDef="let row" [ngSwitch]="true">
+                        <ng-container *ngSwitchCase="column.isDate">{{  row | extractNestedProperty: column.path  | date: 'dd/MM/yyyy' }}</ng-container>
+                        <ng-container *ngSwitchCase="column.isDateTime">{{  row | extractNestedProperty: column.path  | date: ('dd/MM/yyyy HH:mm' + (column.showSeconds && ':ss' || '')) }}</ng-container>
+                        <ng-container *ngSwitchCase="column.isLink">
+                            <a [routerLink]="['/infoUtente', row[column.linkPath]]" style="text-decoration: underline; color: blue; cursor: pointer;" target="_blank">{{row | extractNestedProperty: column.path}}</a>
+                        </ng-container>
+                        <ng-container *ngSwitchDefault>{{ row | extractNestedProperty: column.path }}</ng-container>
+                    </mat-cell>
+                </ng-container>
+            </ng-container>
+
+            <ng-container matColumnDef="firstActions">
+                <mat-header-cell class="actions-cell" *matHeaderCellDef>{{firstActionColumnHeader}}</mat-header-cell>
+                <mat-cell class="actions-cell" *matCellDef="let row">
+                    <ng-container *ngIf="!tableRowActionsTemplateRef">
+                        <button (click)="doFirstActionEvent($event, row)" mat-raised-button color="primary">
+                            <mat-icon>{{firstActionButtonIcon}}</mat-icon>
+                            <span class="viewButton"> {{firstActionButtonLabel}}</span>
+                        </button>
+                    </ng-container>
+
+                    <ng-container *ngIf="tableRowActionsTemplateRef">
+                        <ng-container *ngTemplateOutlet="tableRowActionsTemplateRef; context: { $implicit: row };"></ng-container>
+                    </ng-container>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="secondaryActions">
+                <mat-header-cell class="actions-cell" *matHeaderCellDef>{{ secondaryActionColumnHeader }}</mat-header-cell>
+                <mat-cell class="actions-cell" *matCellDef="let row">
+                    <ng-container *ngIf="!tableRowActionsTemplateRef">
+                        <button (click)="doSecondaryActionEvent($event, row)" mat-raised-button color="primary">
+                            <mat-icon>{{ secondaryActionButtonIcon }}</mat-icon>
+                            <span class="viewButton"> {{ secondaryActionButtonLabel }}</span>
+                        </button>
+                    </ng-container>
+
+                    <ng-container *ngIf="tableRowActionsTemplateRef">
+                        <ng-container *ngTemplateOutlet="tableRowActionsTemplateRef; context: { $implicit: row };"></ng-container>
+                    </ng-container>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="visibleColumns"></mat-header-row>
+
+<!--            <mat-row *matRowDef="let row; columns: visibleColumns;"-->
+<!--                     [ngClass]="{-->
+<!--               'is-accepted': row.nominationStatus === nominationStatuses.ACCEPTED || row.nominationStatus === nominationStatuses.VIEWED,-->
+<!--               'is-rejected': row.nominationStatus === nominationStatuses.REJECTED,-->
+<!--               'is-modified': row.nominationStatus === nominationStatuses.MODIFIED,-->
+<!--               'is-canceled': row.nominationStatus === nominationStatuses.CANCELED,-->
+<!--               'is-revoked': row.nominationStatus === nominationStatuses.REVOKED,-->
+<!--               'is-pending': row.nominationStatus === nominationStatuses.PENDING,-->
+<!--               'is-redelegated': row.nominationStatus === nominationStatuses.REDELEGATED}">-->
+<!--            </mat-row>-->
+        </mat-table>
+
+        <mat-paginator class="paginator"
+                       [length]="totalElements"
+                       [pageSize]="pageSize"
+                       [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+    </div>
+</div>

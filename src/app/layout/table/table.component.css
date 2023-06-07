@@ -1,0 +1,57 @@
+.mat-icon{
+    color: #08347a;
+}
+
+.customText{
+    border:none;
+}
+
+@media only screen and (max-width: 768px) {
+    .viewButton {
+        display: none;
+    }
+}
+
+.mat-cell {
+    padding-right:10px;
+    word-break: break-all;
+}
+
+.mat-header-cell {
+    padding-right:10px;
+}
+
+/*.is-pending {*/
+/*    border-left: 6px solid yellow;*/
+/*    background-color: rgba(219, 217, 71, 0.5);*/
+/*}*/
+
+/*.is-modified {*/
+/*    border-left: 6px solid #546e7a;*/
+/*    background-color: rgba(84, 110, 122, .5);*/
+/*}*/
+
+/*.is-canceled {*/
+/*    border-left: 6px solid #808080;*/
+/*    background-color: rgba(128, 128, 128, .5);*/
+/*}*/
+
+/*.is-revoked {*/
+/*    border-left: 6px solid #f57c00;*/
+/*    background-color: rgba(245, 124, 0, .5);*/
+/*}*/
+
+/*.is-rejected {*/
+/*    border-left: 6px solid rgb(231, 71, 71);*/
+/*    background-color: rgba(245, 212, 199, 0.5);*/
+/*}*/
+
+/*.is-redelegated {*/
+/*    border-left: 6px solid rgba(52, 73, 192, 0.5);*/
+/*    background-color: rgba(92, 187, 224, 0.5);*/
+/*}*/
+
+/*.is-accepted {*/
+/*    border-left: 6px solid green;*/
+/*    background-color: rgba(92, 224, 98, 0.5);*/
+/*}*/

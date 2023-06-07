@@ -35,6 +35,8 @@ import { DashboardUserComponent } from './pages/dashboard-user/dashboard-user.co
 import { DashboardEventComponent } from './pages/dashboard-event/dashboard-event.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
+import {MatTreeModule} from "@angular/material/tree";
+import { TableComponent } from './layout/table/table.component';
 
 @NgModule({
     declarations: [
@@ -55,45 +57,47 @@ import {MatTableModule} from "@angular/material/table";
         InfoEventComponent,
         EditEventComponent,
         DashboardUserComponent,
-        DashboardEventComponent
+        DashboardEventComponent,
+        TableComponent
     ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    AppRoutingModule,
-    HttpClientModule,
-    GoogleSigninButtonModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatInputModule,
-    MatSliderModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatExpansionModule,
-    MatSidenavModule,
-    MatTabsModule,
-    FlexLayoutModule,
-    MatPaginatorModule,
-    MatTableModule
-  ],
+    imports: [
+        BrowserModule,
+        RouterModule,
+        AppRoutingModule,
+        HttpClientModule,
+        GoogleSigninButtonModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatInputModule,
+        MatSliderModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        MatSidenavModule,
+        MatTabsModule,
+        FlexLayoutModule,
+        MatPaginatorModule,
+        MatTableModule,
+        MatTreeModule
+    ],
     providers: [
         { provide: 'SocialAuthServiceConfig',
-        useValue: {
-            autoLogin: false,
-            providers: [
-                {
-                    id: GoogleLoginProvider.PROVIDER_ID,
-                    provider: new GoogleLoginProvider(
-                        '672828380043-ls8399lk3opou7ajkduou2ntuij5r8cb.apps.googleusercontent.com'
-                    )
+            useValue: {
+                autoLogin: false,
+                providers: [
+                    {
+                        id: GoogleLoginProvider.PROVIDER_ID,
+                        provider: new GoogleLoginProvider(
+                            '672828380043-ls8399lk3opou7ajkduou2ntuij5r8cb.apps.googleusercontent.com'
+                        )
+                    }
+                ],
+                onError: (err) => {
+                    console.error(err);
                 }
-            ],
-            onError: (err) => {
-                console.error(err);
-            }
-        } as SocialAuthServiceConfig,
-    }],
+            } as SocialAuthServiceConfig,
+        }],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
