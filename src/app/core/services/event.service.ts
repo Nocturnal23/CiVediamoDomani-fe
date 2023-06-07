@@ -24,4 +24,8 @@ export class EventService implements AbstractService<EventDto, EventCriteria> {
         const url = this.baseUrl + '/filter';
         return this._http.post<Page<EventDto>>(url, criteria);
     }
+
+    save(dto: EventDto): Observable<EventDto> {
+        return this._http.post<EventDto>(this.baseUrl, dto);
+    }
 }

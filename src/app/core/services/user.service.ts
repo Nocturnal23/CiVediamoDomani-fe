@@ -18,6 +18,10 @@ export class UserService implements AbstractService<UserDto, UserCriteria> {
         this.baseUrl = environment.BE_URL + '/users';
     }
 
+  save(dto: UserDto): Observable<UserDto> {
+      return this._http.post<UserDto>(this.baseUrl, dto);
+    }
+
     get(id: number | string): Observable<UserDto> {
         const url = this.baseUrl + '/' + id;
         return this._http.get<UserDto>(url);
