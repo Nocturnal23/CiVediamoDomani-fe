@@ -119,14 +119,14 @@ export class TableComponent implements AfterViewInit {
         this.doLazyLoad();
     }
 
-    doFirstActionEvent(event, row): void {
+    doFirstActionEvent(event: any, row: any): void {
         this.firstActionRowEventEmitter.emit({
             ...event,
             data: row
         });
     }
 
-    doSecondaryActionEvent(event, row): void {
+    doSecondaryActionEvent(event: any, row: any): void {
         this.secondaryActionRowEventEmitter.emit({
             ...event,
             data: row
@@ -147,7 +147,7 @@ export class TableComponent implements AfterViewInit {
     get visibleColumns(): Array<string> {
         const defaultColumns: Array<string> = [];
 
-        defaultColumns.push(...this.columns.filter(column => column.visible).map(column => column.id));
+        defaultColumns.push(...this.columns.filter(column => column.visible).map(column => column.id!));
 
         if (this.enableFirstAction) {
             defaultColumns.push('firstActions');
