@@ -36,7 +36,7 @@ import { DashboardEventComponent } from './pages/dashboard-event/dashboard-event
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
 import {MatTreeModule} from "@angular/material/tree";
-import { TableComponent } from './layout/table/table.component';
+import {TableComponent, TableRowActionsDirective} from './layout/table/table.component';
 
 @NgModule({
     declarations: [
@@ -58,7 +58,8 @@ import { TableComponent } from './layout/table/table.component';
         EditEventComponent,
         DashboardUserComponent,
         DashboardEventComponent,
-        TableComponent
+        TableComponent,
+        TableRowActionsDirective
     ],
     imports: [
         BrowserModule,

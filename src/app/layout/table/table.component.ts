@@ -18,20 +18,13 @@ export class TableRowActionsDirective {}
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TableComponent implements AfterViewInit {
-    @ViewChild(MatPaginator, {
-        static: true
-    })
+    @ViewChild(MatPaginator, {static: true})
     paginator: MatPaginator;
 
-    @ViewChild(MatSort, {
-        static: true
-    })
+    @ViewChild(MatSort, {static: true})
     sort: MatSort;
 
-    @ContentChild(TableRowActionsDirective, {
-        read: TemplateRef,
-        static: false
-    })
+    @ContentChild(TableRowActionsDirective, {read: TemplateRef, static: false})
     tableRowActionsTemplateRef: TemplateRef<any>;
 
     @Input() lazyLoad: boolean;
