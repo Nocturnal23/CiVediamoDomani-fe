@@ -39,6 +39,7 @@ import {MatTreeModule} from "@angular/material/tree";
 import {TableComponent, TableRowActionsDirective} from './layout/table';
 import {MatSortModule} from "@angular/material/sort";
 import {ExtractNestedPropertyPipe} from "./core/commons/pipes/extract-nested-property";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
     declarations: [
@@ -84,7 +85,8 @@ import {ExtractNestedPropertyPipe} from "./core/commons/pipes/extract-nested-pro
         MatPaginatorModule,
         MatTableModule,
         MatTreeModule,
-        MatSortModule
+        MatSortModule,
+        MatButtonModule
     ],
     providers: [
         { provide: 'SocialAuthServiceConfig',

@@ -22,7 +22,7 @@
                 <mat-header-cell class="actions-cell" *matHeaderCellDef>{{firstActionColumnHeader}}</mat-header-cell>
                 <mat-cell class="actions-cell" *matCellDef="let row">
                     <ng-container *ngIf="!tableRowActionsTemplateRef">
-                        <button (click)="doFirstActionEvent($event, row)" mat-raised-button color="primary">
+                        <button (click)="doFirstActionEvent($event, row)" mat-raised-button>
                             <mat-icon>{{firstActionButtonIcon}}</mat-icon>
                             <span class="viewButton"> {{firstActionButtonLabel}}</span>
                         </button>
@@ -38,7 +38,7 @@
                 <mat-header-cell class="actions-cell" *matHeaderCellDef>{{ secondaryActionColumnHeader }}</mat-header-cell>
                 <mat-cell class="actions-cell" *matCellDef="let row">
                     <ng-container *ngIf="!tableRowActionsTemplateRef">
-                        <button (click)="doSecondaryActionEvent($event, row)" mat-raised-button color="primary">
+                        <button (click)="doSecondaryActionEvent($event, row)" mat-raised-button>
                             <mat-icon>{{ secondaryActionButtonIcon }}</mat-icon>
                             <span class="viewButton"> {{ secondaryActionButtonLabel }}</span>
                         </button>
