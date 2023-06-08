@@ -14,7 +14,7 @@ export class TableRowActionsDirective {}
 @Component({
     selector: 'app-table',
     templateUrl: './table.component.html',
-    styleUrls: ['./table.component.scss'],
+    styleUrls: ['./table.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TableComponent implements AfterViewInit {

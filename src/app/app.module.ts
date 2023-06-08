@@ -36,7 +36,9 @@ import { DashboardEventComponent } from './pages/dashboard-event/dashboard-event
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
 import {MatTreeModule} from "@angular/material/tree";
-import {TableComponent, TableRowActionsDirective} from './layout/table/table.component';
+import {TableComponent, TableRowActionsDirective} from './layout/table';
+import {MatSortModule} from "@angular/material/sort";
+import {ExtractNestedPropertyPipe} from "./core/commons/pipes/extract-nested-property";
 
 @NgModule({
     declarations: [
@@ -59,7 +61,8 @@ import {TableComponent, TableRowActionsDirective} from './layout/table/table.com
         DashboardUserComponent,
         DashboardEventComponent,
         TableComponent,
-        TableRowActionsDirective
+        TableRowActionsDirective,
+        ExtractNestedPropertyPipe
     ],
     imports: [
         BrowserModule,
@@ -80,7 +83,8 @@ import {TableComponent, TableRowActionsDirective} from './layout/table/table.com
         FlexLayoutModule,
         MatPaginatorModule,
         MatTableModule,
-        MatTreeModule
+        MatTreeModule,
+        MatSortModule
     ],
     providers: [
         { provide: 'SocialAuthServiceConfig',
