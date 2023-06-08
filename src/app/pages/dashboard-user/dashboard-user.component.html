@@ -1,38 +1,48 @@
 <h2>Lista Utenti</h2>
 
-<input type="text" placeholder="Cerca utente.."/>
+<input type="text" placeholder="Cerca utente..."/>
 
-<table mat-table [dataSource]="userInter">
-  <ng-container matColumnDef="nome">
-    <th mat-header-cell *matHeaderCellDef> NOME </th>
-    <td mat-cell *matCellDef="let user"> {{user.firstName}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="cognome">
-    <th mat-header-cell *matHeaderCellDef> COGNOME </th>
-    <td mat-cell *matCellDef="let user"> {{user.lastName}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="tipoUtente">
-    <th mat-header-cell *matHeaderCellDef> TIPO UTENTE </th>
-    <td mat-cell *matCellDef="let user"> {{user.appRole}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="eventiCreati">
-    <th mat-header-cell *matHeaderCellDef> EVENTI CREATI </th>
-    <td mat-cell *matCellDef="let user"> {{user.organisedEvents}} </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
-<mat-paginator
-  [length]="userLenght"
+<app-table
+  [data]="userMock"
+  [columns]="displayedColumns"
   [pageSize]="userPageSize"
-  [pageSizeOptions]="[5]"
->
-</mat-paginator>
+  [totalRecords]="userLenght"
+  [lazyLoad]="true"
+  [enableFirstAction]="false"
+  (lazyLoadEvent) = "doLazyLoad( $event )">
+</app-table>
+
+<!--<table mat-table [dataSource]="userInter">-->
+<!--  <ng-container matColumnDef="nome">-->
+<!--    <th mat-header-cell *matHeaderCellDef> NOME </th>-->
+<!--    <td mat-cell *matCellDef="let user"> {{user.firstName}} </td>-->
+<!--  </ng-container>-->
+
+<!--  <ng-container matColumnDef="cognome">-->
+<!--    <th mat-header-cell *matHeaderCellDef> COGNOME </th>-->
+<!--    <td mat-cell *matCellDef="let user"> {{user.lastName}} </td>-->
+<!--  </ng-container>-->
+
+<!--  <ng-container matColumnDef="tipoUtente">-->
+<!--    <th mat-header-cell *matHeaderCellDef> TIPO UTENTE </th>-->
+<!--    <td mat-cell *matCellDef="let user"> {{user.appRole}} </td>-->
+<!--  </ng-container>-->
+
+<!--  <ng-container matColumnDef="eventiCreati">-->
+<!--    <th mat-header-cell *matHeaderCellDef> EVENTI CREATI </th>-->
+<!--    <td mat-cell *matCellDef="let user"> {{user.organisedEvents}} </td>-->
+<!--  </ng-container>-->
+
+<!--  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
+<!--  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>-->
+<!--</table>-->
+
+<!--<mat-paginator-->
+<!--  [length]="userLenght"-->
+<!--  [pageSize]="userPageSize"-->
+<!--  [pageSizeOptions]="[5]"-->
+<!--&gt;-->
+<!--</mat-paginator>-->
 
 
 
