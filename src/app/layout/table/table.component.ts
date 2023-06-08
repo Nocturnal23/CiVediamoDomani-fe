@@ -37,7 +37,6 @@ export class TableComponent implements AfterViewInit {
     @Input() firstActionButtonLabel = 'Visualizza';
     @Input() secondaryActionButtonLabel = 'Visualizza';
 
-
     @Input() firstActionButtonIcon = 'remove_red_eye';
     @Input() secondaryActionButtonIcon = 'remove_red_eye';
 
@@ -46,7 +45,6 @@ export class TableComponent implements AfterViewInit {
 
     @Input() firstActionColumnHeader = 'Info';
     @Input() secondaryActionColumnHeader = 'Info';
-
 
     @Input() columns: Array<Column>;
 
@@ -86,9 +84,9 @@ export class TableComponent implements AfterViewInit {
         this.paginator.page.subscribe(this.onPaginationChange.bind(this))
 
         this.paginator._intl.itemsPerPageLabel = 'Elementi per pagina:';
-        this.paginator._intl.getRangeLabel = (page: number, pageSize: number, length: number) => { // from matPaginator git
+        this.paginator._intl.getRangeLabel = (page: number, pageSize: number, length: number) => {
             if (length === 0 || pageSize === 0) {
-                return `0 da ${length}`; // change of => da
+                return `0 da ${length}`;
             }
 
             length = Math.max(length, 0);
@@ -99,7 +97,7 @@ export class TableComponent implements AfterViewInit {
                 Math.min(startIndex + pageSize, length) :
                 startIndex + pageSize;
 
-            return `${startIndex + 1} – ${endIndex} da ${length}`; // change of => da
+            return `${startIndex + 1} – ${endIndex} da ${length}`;
         };
 
         if (!this.lazyLoad) {
@@ -160,13 +158,10 @@ export class TableComponent implements AfterViewInit {
     }
 
     get pageSizeOptions(): number[] {
-        return [5, 10, 15, 25, 50, 100, 250, 500, 1000]
-            .filter(option => option <= this.totalElements);
+        return [5, 10, 15, 25, 50, 100, 250, 500, 1000].filter(option => option <= this.totalElements);
     }
 
     get totalElements(): number {
-        return this.lazyLoad ?
-            this.totalRecords :
-            this.dataSource?.data?.length;
+        return this.lazyLoad ? this.totalRecords : this.dataSource?.data?.length;
     }
 }
