@@ -51,17 +51,7 @@
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="visibleColumns"></mat-header-row>
-
-<!--            <mat-row *matRowDef="let row; columns: visibleColumns;"-->
-<!--                     [ngClass]="{-->
-<!--               'is-accepted': row.nominationStatus === nominationStatuses.ACCEPTED || row.nominationStatus === nominationStatuses.VIEWED,-->
-<!--               'is-rejected': row.nominationStatus === nominationStatuses.REJECTED,-->
-<!--               'is-modified': row.nominationStatus === nominationStatuses.MODIFIED,-->
-<!--               'is-canceled': row.nominationStatus === nominationStatuses.CANCELED,-->
-<!--               'is-revoked': row.nominationStatus === nominationStatuses.REVOKED,-->
-<!--               'is-pending': row.nominationStatus === nominationStatuses.PENDING,-->
-<!--               'is-redelegated': row.nominationStatus === nominationStatuses.REDELEGATED}">-->
-<!--            </mat-row>-->
+            <mat-row *matRowDef="let row; columns: visibleColumns;"></mat-row>
         </mat-table>
 
         <mat-paginator class="paginator"
