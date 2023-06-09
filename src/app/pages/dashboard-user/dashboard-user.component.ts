@@ -14,8 +14,6 @@ import {Column, LazyLoadEvent} from "../../layout/table";
 })
 export class DashboardUserComponent implements OnInit {
 
-    userMock: UserDto[] = [ { id:1, email:'ciccio', firstName:'ciccio', lastName:'ciccio', appRole:2, organisedEvents:5 } ]
-
     userLenght: number
     userPageSize: number = 5
     userInter: Observable<Array<UserDto>>

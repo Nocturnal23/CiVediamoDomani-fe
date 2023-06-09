@@ -3,7 +3,7 @@
 <input type="text" placeholder="Cerca utente..."/>
 
 <app-table
-  [data]="userMock"
+  [data]="userInter | async"
   [columns]="displayedColumns"
   [pageSize]="userPageSize"
   [totalRecords]="userLenght"
