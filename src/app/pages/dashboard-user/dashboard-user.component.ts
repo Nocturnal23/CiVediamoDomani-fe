@@ -1,11 +1,10 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {UserDto} from "../../core/dto/user-dto";
-import {UserService} from "../../core/services/user.service";
+import {Component, OnInit} from '@angular/core';
 import {map, Observable} from "rxjs";
-import {Page} from "../../core/commons/filter.response";
-import {MatPaginator} from "@angular/material/paginator";
+import {UserDto} from "../../core/dto/user-dto";
 import {Column, LazyLoadEvent} from "../../layout/table";
+import {ActivatedRoute} from "@angular/router";
+import {UserService} from "../../core/services/user.service";
+import {UserCriteria} from "../../core/criteria/user-criteria";
 
 @Component({
     selector: 'app-dashboard-user',
@@ -14,9 +13,9 @@ import {Column, LazyLoadEvent} from "../../layout/table";
 })
 export class DashboardUserComponent implements OnInit {
 
-    userLenght: number
-    userPageSize: number = 5
-    userInter: Observable<Array<UserDto>>
+    totalElement: number
+    userPageSize: number
+    userData: Observable<Array<UserDto>>
     displayedColumns: Column[] = [
       { name: 'Nome', id: 'firstName', sort: 'firstName', path: 'firstName',  visible: true, isModelProperty: true },
       { name: 'Cognome', id: 'lastName', sort: 'lastName' , path: 'lastName', visible: true, isModelProperty: true },
@@ -29,22 +28,22 @@ export class DashboardUserComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.userInter = this.activatedRoute.data.pipe(
-        //   map( res => {
-        //       this.userLenght = res['userList'].totalElements
-        //       // console.log(this.userLenght)
-        //       // this.userPageSize = res['userList'].pageSize
-        //     return res['userList'].content
-        //   })
-        // );
-        // this.userInter.subscribe(() => console.log(this.userInter) )
-        this.userInter = this.userService.filter({}).pipe(
-          map( res => { return res.content } )
-        )
+        this.userData = this.activatedRoute.data.pipe(
+          map( res => {
+              this.totalElement = res['userList'].totalElements
+              this.userPageSize = res['userList'].pageSize
+            return res['userList'].content
+          })
+        );
+
+        // this.userInter = this.userService.filter({}).pipe(
+        //   map( res => { return res.content } )
+        // )
     }
 
     doLazyLoad( event: LazyLoadEvent ) {
-      this.userInter = this.userService.filter({}).pipe(
+      const criteria: UserCriteria = {pageSize: event.pageSize, pageNumber: event.pageIndex}
+      this.userData = this.userService.filter(criteria).pipe(
         map( res => { return res.content } )
       )
     }
