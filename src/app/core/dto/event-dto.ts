@@ -3,7 +3,7 @@ import {UserDto} from "./user-dto";
 import {CategoryDto} from "./category-dto";
 
 export interface EventDto extends BaseDto {
-  oraginiser ?: UserDto;
+  organiser ?: UserDto;
 
   title ?: string;
 
