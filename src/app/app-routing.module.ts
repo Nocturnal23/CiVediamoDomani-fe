@@ -13,8 +13,8 @@ import {TreeListComponent} from "./layout/tree-list/tree-list.component";
 import {LeftMenuComponent} from "./layout/left-menu/left-menu.component";
 import {EventPageComponent} from "./pages/event-page/event-page.component";
 import {InfoEventComponent} from "./pages/info-event/info-event.component";
-import {searchResolver, usersResolver} from "./core/resolvers/Resolvers";
-import {canLogin, isLoggedUser} from "./core/guards/UserGuard"
+import {eventResolver, searchResolver, usersResolver} from "./core/resolvers/Resolvers";
+import {canLogin, isAdmin, isLoggedUser} from "./core/guards/UserGuard"
 import {EditEventComponent} from "./pages/edit-event/edit-event.component";
 import {DashboardUserComponent} from "./pages/dashboard-user/dashboard-user.component";
 import {DashboardEventComponent} from "./pages/dashboard-event/dashboard-event.component";

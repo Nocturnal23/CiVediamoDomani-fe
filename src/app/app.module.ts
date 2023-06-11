@@ -40,6 +40,7 @@ import {TableComponent, TableRowActionsDirective} from './layout/table';
 import {MatSortModule} from "@angular/material/sort";
 import {ExtractNestedPropertyPipe} from "./core/commons/pipes/extract-nested-property";
 import {MatButtonModule} from "@angular/material/button";
+import { LeftMenuDashboardComponent } from './layout/left-menu-dashboard/left-menu-dashboard.component';
 
 @NgModule({
     declarations: [

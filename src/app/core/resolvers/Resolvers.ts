@@ -15,3 +15,8 @@ export const usersResolver: ResolveFn<Page<UserDto>> =
   (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
     return inject(UserService).filter({pageSize: 5});
   };
+
+export const eventResolver: ResolveFn<Page<EventDto>> =
+  (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+    return inject(EventService).filter({pageSize: 5});
+  }
