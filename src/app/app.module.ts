@@ -63,7 +63,8 @@ import {MatButtonModule} from "@angular/material/button";
         DashboardEventComponent,
         TableComponent,
         TableRowActionsDirective,
-        ExtractNestedPropertyPipe
+        ExtractNestedPropertyPipe,
+        LeftMenuDashboardComponent
     ],
     imports: [
         BrowserModule,

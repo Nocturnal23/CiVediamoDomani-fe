@@ -18,6 +18,7 @@ import {canLogin, isLoggedUser} from "./core/guards/UserGuard"
 import {EditEventComponent} from "./pages/edit-event/edit-event.component";
 import {DashboardUserComponent} from "./pages/dashboard-user/dashboard-user.component";
 import {DashboardEventComponent} from "./pages/dashboard-event/dashboard-event.component";
+import {LeftMenuDashboardComponent} from "./layout/left-menu-dashboard/left-menu-dashboard.component";
 
 const routes: Routes = [
   { path: 'not_found', component: NotFoundComponent},
@@ -31,12 +32,18 @@ const routes: Routes = [
       { path: 'profile', component:ProfilePageComponent },
       { path: 'settings', component:SettingsPageComponent},
       { path: 'event', component:EventPageComponent },
-      { path: 'dashboarduser', component: DashboardUserComponent,
-        resolve: {userList: usersResolver}
-      },
-      { path: 'dashboardevent', component: DashboardEventComponent }
     ]
   },
+
+  { path: 'dashboard', component: LeftMenuDashboardComponent,
+    canActivate: [isAdmin], children: [
+      { path: 'users', component: DashboardUserComponent,
+        resolve: {userList: usersResolver}
+      },
+      { path: 'events', component: DashboardEventComponent,
+        resolve: {eventDashList: eventResolver}
+      }
+    ]},
 
   { path: '', component: HeaderContainerComponent, children: [
       { path: 'helloworld', component: HelloworldComponent },

@@ -1,0 +1,13 @@
+.mat-sidenav-container {
+  height: 100%;
+  /*width: 300px;*/
+}
+
+.mat-sidenav {
+  /*position: fixed;*/
+  width: 150px;
+}
+
+.goTo[ng-reflect-router-link] {
+  cursor: pointer;
+}
