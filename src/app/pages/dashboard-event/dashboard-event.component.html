@@ -1,42 +1,13 @@
 <h2>Lista Eventi</h2>
 
-<input type="text" placeholder="Cerca evento.."/>
+<input type="text" placeholder="Cerca Evento..."/>
 
-<table>
-  <tr>
-    <th>
-      Titolo
-    </th>
-    <th>
-      Organizzatore
-    </th>
-    <th>
-      Partecipanti
-    </th>
-    <th>
-      Dettagli
-    </th>
-    <th>
-      Gestisci
-    </th>
-  </tr>
-
-  <tr>
-    <th>
-      {{titolo}}
-    </th>
-    <th>
-      {{organizzatore}}
-    </th>
-    <th>
-      {{partecipanti}}
-    </th>
-    <th>
-      {{dettagli}}
-    </th>
-    <th>
-      {{gestisci}}
-    </th>
-  </tr>
-</table>
-
+<app-table
+  [data]="eventData | async"
+  [columns]="displayedColumns"
+  [pageSize]="eventPageSize"
+  [totalRecords]="totalElement"
+  [lazyLoad]="true"
+  [enableFirstAction]="false"
+  (lazyLoadEvent) = "doLazyLoad($event)">
+</app-table>
