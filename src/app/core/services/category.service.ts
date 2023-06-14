@@ -15,8 +15,8 @@ export class CategoryService implements AbstractService<CategoryDto, CategoryCri
         this.baseUrl = environment.BE_URL + '/categories'
     }
 
-  save(dto: CategoryDto): Observable<CategoryDto> {
-      return this._http.post<CategoryDto>(this.baseUrl, dto);
+    save(dto: CategoryDto): Observable<CategoryDto> {
+        return this._http.post<CategoryDto>(this.baseUrl, dto);
     }
 
     get(id: number | string): Observable<CategoryDto> {
@@ -27,5 +27,10 @@ export class CategoryService implements AbstractService<CategoryDto, CategoryCri
     filter(criteria: CategoryCriteria): Observable<Page<CategoryDto>> {
         const url = this.baseUrl + '/filter';
         return this._http.post<Page<CategoryDto>>(url, criteria);
+    }
+
+    getByUrl(uniqueUrl: string): Observable<CategoryDto> {
+        const url = this.baseUrl + '/' + uniqueUrl;
+        return this._http.get<CategoryDto>(url);
     }
 }

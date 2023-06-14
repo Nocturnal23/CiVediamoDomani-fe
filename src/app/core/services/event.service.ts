@@ -28,4 +28,9 @@ export class EventService implements AbstractService<EventDto, EventCriteria> {
     save(dto: EventDto): Observable<EventDto> {
         return this._http.post<EventDto>(this.baseUrl, dto);
     }
+
+    getByUrl(uniqueUrl: string): Observable<EventDto> {
+        const url = this.baseUrl + '/' + uniqueUrl;
+        return this._http.get<EventDto>(url);
+    }
 }
