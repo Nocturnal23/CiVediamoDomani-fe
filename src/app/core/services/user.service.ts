@@ -19,7 +19,7 @@ export class UserService implements AbstractService<UserDto, UserCriteria> {
     }
 
     getByUrl(uniqueUrl: string): Observable<UserDto> {
-        const url = this.baseUrl + '/' + uniqueUrl;
+        const url = this.baseUrl + '/getByUrl/' + uniqueUrl;
         return this._http.get<UserDto>(url);
     }
 

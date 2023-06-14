@@ -30,7 +30,7 @@ export class CategoryService implements AbstractService<CategoryDto, CategoryCri
     }
 
     getByUrl(uniqueUrl: string): Observable<CategoryDto> {
-        const url = this.baseUrl + '/' + uniqueUrl;
+        const url = this.baseUrl + '/getByUrl/' + uniqueUrl;
         return this._http.get<CategoryDto>(url);
     }
 }

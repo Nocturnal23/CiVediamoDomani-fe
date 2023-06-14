@@ -30,7 +30,7 @@ export class EventService implements AbstractService<EventDto, EventCriteria> {
     }
 
     getByUrl(uniqueUrl: string): Observable<EventDto> {
-        const url = this.baseUrl + '/' + uniqueUrl;
+        const url = this.baseUrl + '/getByUrl/' + uniqueUrl;
         return this._http.get<EventDto>(url);
     }
 }
