@@ -1,8 +1,22 @@
-export enum Enums {
+export enum RoleEnums {
     ADMIN_ROLE = 1,
     NORMAL_ROLE = 2,
+}
 
+export enum RoutingEnums{
+    LOGIN = 'login',
+    HOMEPAGE = 'homepage',
+
+    USER = 'user',
+
+    PROFILE = `profile`,
     USER_PROFILE = '/user/profile',
+
+    EVENTS = 'events',
     USER_EVENTS = '/user/events',
-    USER_SETTINGS = '/user/settings'
+
+    SETTINGS = 'settings',
+    USER_SETTINGS = '/user/settings',
+
+    DASHBOARD = 'dashboard'
 }

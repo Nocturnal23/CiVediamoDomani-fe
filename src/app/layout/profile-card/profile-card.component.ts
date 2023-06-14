@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {AuthenticationService} from "../../core/services/authentication.service";
 import {Router} from "@angular/router";
-import {Enums} from "../../core/utils/Enums";
+import {RoleEnums, RoutingEnums} from "../../core/utils/Enums";
 
 @Component({
     selector: 'app-profile-card',
@@ -19,7 +19,7 @@ export class ProfileCardComponent {
     }
 
     hasDashboard() {
-        return AuthenticationService.getAppUser.appRole === Enums.ADMIN_ROLE;
+        return AuthenticationService.getAppUser.appRole === RoleEnums.ADMIN_ROLE;
     }
 
     goToDashboard() {
