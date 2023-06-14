@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {AuthenticationService} from "../../core/services/authentication.service";
 import {UserDto} from "../../core/dto/user-dto";
 import {SocialAuthService} from "@abacritt/angularx-social-login";
+import {RoutingEnums} from "../../core/utils/Enums";
 
 @Component({
     selector: 'app-loginpage',
@@ -64,7 +65,7 @@ export class LoginPageComponent implements OnInit {
             ...this.signInForm.value
         }
         this._authService.signIn(user).subscribe( next => {
-            this._router.navigate(['/homepage'] )
+            this._router.navigate([`/${RoutingEnums.HOMEPAGE}`] )
         })
     }
 }

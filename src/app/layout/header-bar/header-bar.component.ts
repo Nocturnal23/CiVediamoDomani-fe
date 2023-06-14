@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {AuthenticationService} from "../../core/services/authentication.service";
+import {RoutingEnums} from "../../core/utils/Enums";
 
 @Component({
     selector: 'app-header-bar',
@@ -33,6 +34,6 @@ export class HeaderBarComponent {
     }
 
     goToLogin() {
-        this._router.navigate(['/login'])
+        this._router.navigate([`/${RoutingEnums.LOGIN}`])
     }
 }

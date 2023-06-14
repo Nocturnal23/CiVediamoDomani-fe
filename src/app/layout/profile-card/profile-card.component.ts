@@ -15,7 +15,7 @@ export class ProfileCardComponent {
     }
 
     goToProfile() {
-        this._router.navigate(['/user/profile', AuthenticationService.getAppUser.url] );
+        this._router.navigate([RoutingEnums.USER_PROFILE, AuthenticationService.getAppUser.url] );
     }
 
     hasDashboard() {
@@ -23,11 +23,11 @@ export class ProfileCardComponent {
     }
 
     goToDashboard() {
-        this._router.navigate(['/dashboard'] );
+        this._router.navigate([`/${RoutingEnums.DASHBOARD}`] );
     }
 
     goToSettings() {
-        this._router.navigate(['/user/settings'] );
+        this._router.navigate([RoutingEnums.USER_SETTINGS] );
     }
 
     doLogout() {

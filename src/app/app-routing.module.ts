@@ -17,22 +17,23 @@ import {EditEventComponent} from "./pages/edit-event/edit-event.component";
 import {DashboardUserComponent} from "./pages/dashboard-user/dashboard-user.component";
 import {DashboardEventComponent} from "./pages/dashboard-event/dashboard-event.component";
 import {LeftMenuDashboardComponent} from "./layout/left-menu-dashboard/left-menu-dashboard.component";
+import {RoutingEnums} from "./core/utils/Enums";
 
 const routes: Routes = [
     { path: 'not_found', component: NotFoundComponent},
-    { path: 'login', component:LoginPageComponent,
+    { path: RoutingEnums.LOGIN, component:LoginPageComponent,
         canActivate: [canLogin]},
 
-    { path: 'user', component: LeftMenuComponent,
+    { path: RoutingEnums.USER, component: LeftMenuComponent,
         canActivate: [isLoggedUser], children: [
-            { path: '', redirectTo: 'profile', pathMatch: 'full' },
-            { path: 'profile/:url', component:ProfilePageComponent },
-            { path: 'settings', component:SettingsPageComponent},
-            { path: 'event', component:EventPageComponent },
+            { path: '', redirectTo: 'profile', pathMatch: 'full' }, // TODO Da rivedere
+            { path: `${RoutingEnums.PROFILE}/:url`, component:ProfilePageComponent },
+            { path: RoutingEnums.SETTINGS, component:SettingsPageComponent},
+            { path: RoutingEnums.EVENTS, component:EventPageComponent },
         ]
     },
 
-    { path: 'dashboard', component: LeftMenuDashboardComponent,
+    { path: RoutingEnums.DASHBOARD, component: LeftMenuDashboardComponent,
         canActivate: [isAdmin], children: [
             { path: '', redirectTo: 'users', pathMatch: 'full' },
             { path: 'users', component: DashboardUserComponent,
@@ -46,13 +47,13 @@ const routes: Routes = [
 
     { path: '', component: HeaderContainerComponent, children: [
             { path: 'helloworld', component: HelloworldComponent },
-            { path: 'homepage', component: HomePageComponent },
+            { path: RoutingEnums.HOMEPAGE, component: HomePageComponent },
             { path: 'search/:query', component: SearchPageComponent,
                 resolve: { eventList: searchResolver }
             },
             { path: 'infoevent', component: InfoEventComponent },
             { path: 'editevent', component: EditEventComponent },
-            { path: '**', redirectTo: '/homepage', pathMatch: 'full' }
+            { path: '**', redirectTo: `/${RoutingEnums.HOMEPAGE}`, pathMatch: 'full' }
         ]
     },
 ];

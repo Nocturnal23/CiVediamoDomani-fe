@@ -5,6 +5,7 @@ import {HttpClient, HttpResponse} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {SocialAuthService, SocialUser} from "@abacritt/angularx-social-login";
 import {Router} from "@angular/router";
+import {RoutingEnums} from "../utils/Enums";
 
 @Injectable({providedIn: "root"})
 export class AuthenticationService {
@@ -19,7 +20,7 @@ export class AuthenticationService {
         this._socialauthService.authState.subscribe((user) => {
             if (user !== null) {
                 this.googleSignIn(user).subscribe( next => {
-                    this._router.navigate(['/homepage'] )
+                    this._router.navigate([`/${RoutingEnums.HOMEPAGE}`] )
                 })
             } else {
                 this.logOut();
@@ -65,7 +66,7 @@ export class AuthenticationService {
         localStorage.removeItem('user');
         AuthenticationService._token = "";
         AuthenticationService._appuser = null;
-        this._router.navigate(['/homepage'] )
+        this._router.navigate([`/${RoutingEnums.HOMEPAGE}`] )
     }
 
     googleSignIn(user : SocialUser) {
