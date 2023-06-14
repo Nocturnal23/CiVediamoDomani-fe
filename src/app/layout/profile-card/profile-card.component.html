@@ -2,14 +2,9 @@
     <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
     <label class="for-dropdown" for="dropdown">Dropdown Menu <i class="uil uil-arrow-down"></i></label>
     <div class="section-dropdown">
-        <a (click)="profile()"> Profilo <i class="uil uil-arrow-right"></i></a>
-        <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub"/>
-<!--        <label class="for-dropdown-sub" for="dropdown-sub"> ??????????? <i class="uil uil-plus"></i></label>-->
-<!--        <div class="section-dropdown-sub">-->
-<!--            <a href="#"> VUOTO <i class="uil uil-arrow-right"></i></a>-->
-<!--            <a href="#"> VUOTO <i class="uil uil-arrow-right"></i></a>-->
-<!--        </div>-->
-        <a (click)="settings()"> Impostazioni <i class="uil uil-arrow-right"></i></a>
-        <a (click)="logout()"> Disconnetti <i class="uil uil-arrow-right"></i></a>
+        <a (click)="goToProfile()"> Profilo <i class="uil uil-arrow-right"></i></a>
+        <a *ngIf="hasDashboard()" (click)="goToDashboard()"> Dashboard <i class="uil uil-arrow-right"></i></a>
+        <a (click)="goToSettings()"> Impostazioni <i class="uil uil-arrow-right"></i></a>
+        <a (click)="doLogout()"> Disconnetti <i class="uil uil-arrow-right"></i></a>
     </div>
 </div>

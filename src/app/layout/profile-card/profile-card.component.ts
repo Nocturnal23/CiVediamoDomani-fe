@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {AuthenticationService} from "../../core/services/authentication.service";
 import {Router} from "@angular/router";
+import {Enums} from "../../core/utils/Enums";
 
 @Component({
     selector: 'app-profile-card',
@@ -12,15 +13,24 @@ export class ProfileCardComponent {
     constructor(private _authService : AuthenticationService,
                 private _router : Router) {
     }
-    logout() {
-        this._authService.logOut();
+
+    goToProfile() {
+        this._router.navigate(['/user/profile', AuthenticationService.getAppUser.url] );
     }
 
-    profile() {
-        this._router.navigate(['/user/profile'] );
+    hasDashboard() {
+        return AuthenticationService.getAppUser.appRole === Enums.ADMIN_ROLE;
     }
 
-    settings() {
+    goToDashboard() {
+        this._router.navigate(['/dashboard'] );
+    }
+
+    goToSettings() {
         this._router.navigate(['/user/settings'] );
+    }
+
+    doLogout() {
+        this._authService.logOut();
     }
 }
