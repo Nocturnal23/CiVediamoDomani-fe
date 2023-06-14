@@ -1,13 +1,20 @@
 <h2>Lista Utenti</h2>
 
-<input type="text" placeholder="Cerca utente..."/>
+<form [formGroup]="search">
+    <input type="text" formControlName="firstNameSearch"  placeholder="Cerca nome..." />
+    <input type="text" formControlName="lastNameSearch"  placeholder="Cerca cognome..." />
+</form>
+
+
 
 <app-table
-  [data]="userData | async"
-  [columns]="displayedColumns"
-  [pageSize]="userPageSize"
-  [totalRecords]="totalElement"
-  [lazyLoad]="true"
-  [enableFirstAction]="false"
-  (lazyLoadEvent) = "doLazyLoad($event)">
+      [data]="userData | async"
+      [columns]="displayedColumns"
+      [pageSize]="userPageSize"
+      [totalRecords]="totalElement"
+      [lazyLoad]="true"
+      (lazyLoadEvent) = "doLazyLoad($event)"
+      [firstActionColumnHeader]="'Gestisci'"
+      (firstActionRowEventEmitter)="infoUser($event)"
+>
 </app-table>

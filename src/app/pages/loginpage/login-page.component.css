@@ -99,6 +99,13 @@ input {
     width: 768px;
     max-width: 100%;
     min-height: 480px;
+    margin-left: 21.75%;
+    margin-top: 6%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*height: 100vh;*/
 }
 
 .form-container {

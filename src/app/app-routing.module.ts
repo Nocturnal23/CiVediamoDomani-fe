@@ -37,8 +37,11 @@ const routes: Routes = [
 
   { path: 'dashboard', component: LeftMenuDashboardComponent,
     canActivate: [isAdmin], children: [
+      { path: '', redirectTo: 'users', pathMatch: 'full' },
       { path: 'users', component: DashboardUserComponent,
-        resolve: {userList: usersResolver}
+        resolve: {userList: usersResolver}, children: [
+              {path: 'userinfo/:url', component: ProfilePageComponent}
+          ]
       },
       { path: 'events', component: DashboardEventComponent,
         resolve: {eventDashList: eventResolver}
