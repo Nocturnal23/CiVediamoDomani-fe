@@ -7,9 +7,7 @@ import {HeaderContainerComponent} from "./layout/container/header-container.comp
 import {HomePageComponent} from "./pages/homepage/home-page.component";
 import {SearchPageComponent} from "./pages/search-page/search-page.component";
 import {ProfilePageComponent} from "./pages/profile-page/profile-page.component";
-import {ProfileCardComponent} from "./layout/profile-card/profile-card.component";
 import {SettingsPageComponent} from "./pages/settings-page/settings-page.component";
-import {TreeListComponent} from "./layout/tree-list/tree-list.component";
 import {LeftMenuComponent} from "./layout/left-menu/left-menu.component";
 import {EventPageComponent} from "./pages/event-page/event-page.component";
 import {InfoEventComponent} from "./pages/info-event/info-event.component";
@@ -24,7 +22,6 @@ const routes: Routes = [
     { path: 'not_found', component: NotFoundComponent},
     { path: 'login', component:LoginPageComponent,
         canActivate: [canLogin]},
-    { path: 'test', component: TreeListComponent},
 
     { path: 'user', component: LeftMenuComponent,
         canActivate: [isLoggedUser], children: [

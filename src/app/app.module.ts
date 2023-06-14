@@ -22,7 +22,6 @@ import {MatSliderModule} from '@angular/material/slider';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
-import { TreeListComponent } from './layout/tree-list/tree-list.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import { LeftMenuComponent } from './layout/left-menu/left-menu.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
@@ -55,7 +54,6 @@ import { LeftMenuDashboardComponent } from './layout/left-menu-dashboard/left-me
         SearchPageComponent,
         ProfilePageComponent,
         SettingsPageComponent,
-        TreeListComponent,
         LeftMenuComponent,
         EventPageComponent,
         InfoEventComponent,
