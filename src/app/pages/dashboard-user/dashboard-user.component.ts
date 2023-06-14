@@ -65,6 +65,6 @@ export class DashboardUserComponent implements OnInit {
     }
 
     infoUser($event: any) {
-        this.router.navigate(['/userinfo', $event.data.url], {state: { user: $event.data }})
+        this.router.navigate(['/dashboard/userinfo', $event.data.url], {state: { user: $event.data }})
     }
 }

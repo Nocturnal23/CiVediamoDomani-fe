@@ -26,7 +26,7 @@ const routes: Routes = [
     { path: 'user', component: LeftMenuComponent,
         canActivate: [isLoggedUser], children: [
             { path: '', redirectTo: 'profile', pathMatch: 'full' },
-            { path: 'profile', component:ProfilePageComponent },
+            { path: 'profile/:url', component:ProfilePageComponent },
             { path: 'settings', component:SettingsPageComponent},
             { path: 'event', component:EventPageComponent },
         ]
@@ -36,10 +36,9 @@ const routes: Routes = [
         canActivate: [isAdmin], children: [
             { path: '', redirectTo: 'users', pathMatch: 'full' },
             { path: 'users', component: DashboardUserComponent,
-                resolve: {userList: usersResolver}, children: [
-                    {path: 'userinfo/:url', component: ProfilePageComponent}
-                ]
+                resolve: {userList: usersResolver}
             },
+            {path: 'userinfo/:url', component: ProfilePageComponent},
             { path: 'events', component: DashboardEventComponent,
                 resolve: {eventDashList: eventResolver}
             }
