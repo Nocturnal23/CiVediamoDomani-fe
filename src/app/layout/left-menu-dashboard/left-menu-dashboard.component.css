@@ -1,13 +1,13 @@
 .mat-sidenav-container {
-  height: 100%;
-  /*width: 300px;*/
+    height: 100%;
+    /*width: 300px;*/
 }
 
 .mat-sidenav {
-  /*position: fixed;*/
-  width: 150px;
+    /*position: fixed;*/
+    width: 150px;
 }
 
 .goTo[ng-reflect-router-link] {
-  cursor: pointer;
+    cursor: pointer;
 }
