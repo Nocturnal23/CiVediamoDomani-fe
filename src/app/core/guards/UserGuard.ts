@@ -1,6 +1,11 @@
 import {ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot} from "@angular/router";
 import {inject} from "@angular/core";
 import {AuthenticationService} from "../services/authentication.service";
+import {RoleEnums, RoutingEnums} from "../utils/Enums";
+
+function navigateToRoot() {
+    inject(Router).navigate([`/${RoutingEnums.HOMEPAGE}`]).then();
+}
 
 export const isLoggedUser: CanActivateFn =
     (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
@@ -8,8 +13,7 @@ export const isLoggedUser: CanActivateFn =
         if(inject(AuthenticationService).isLogged())
             return true;
 
-        inject(Router).navigate(['/homepage']).then();
-
+        navigateToRoot();
         return false;
     };
 
@@ -18,7 +22,7 @@ export const canLogin: CanActivateFn =
         if(!inject(AuthenticationService).isLogged())
             return true;
 
-        inject(Router).navigate(['/homepage']).then();
+        navigateToRoot();
         return false;
     };
 
@@ -26,9 +30,9 @@ export const isAdmin: CanActivateFn =
     (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
         let role = AuthenticationService.getAppUser?.appRole; //1 = Admin 2 = Normale.
 
-        if( !!role && role == 1 )
+        if( !!role && role === RoleEnums.ADMIN_ROLE )
             return true;
 
-        inject(Router).navigate(['/homepage']).then();
+        navigateToRoot();
         return false;
     }
