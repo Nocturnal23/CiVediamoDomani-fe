@@ -2,7 +2,9 @@
 
 <mat-icon class="profile">person</mat-icon>
 
-<p> Nome: {{user.firstName}} </p>
-<p> Cognome: {{user.lastName}} </p>
-<p> Email: {{user.email}} </p>
-<p> Password: {{user.password}} </p>
+<div *ngIf="user">
+    <p> Nome: {{user?.firstName}} </p>
+    <p> Cognome: {{user?.lastName}} </p>
+    <p> Email: {{user?.email}} </p>
+    <p> Password: {{user?.password}} </p>
+</div>
