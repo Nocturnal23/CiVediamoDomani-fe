@@ -3,32 +3,32 @@ import {inject} from "@angular/core";
 import {AuthenticationService} from "../services/authentication.service";
 
 export const isLoggedUser: CanActivateFn =
-  (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+    (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
 
-    if(inject(AuthenticationService).isLogged())
-      return true;
+        if(inject(AuthenticationService).isLogged())
+            return true;
 
-    inject(Router).navigate(['/homepage']).then();
+        inject(Router).navigate(['/homepage']).then();
 
-    return false;
-  };
+        return false;
+    };
 
 export const canLogin: CanActivateFn =
-  (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-    if(!inject(AuthenticationService).isLogged())
-      return true;
+    (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+        if(!inject(AuthenticationService).isLogged())
+            return true;
 
-    inject(Router).navigate(['/homepage']).then();
-    return false;
-  };
+        inject(Router).navigate(['/homepage']).then();
+        return false;
+    };
 
 export const isAdmin: CanActivateFn =
-  (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-    let role = AuthenticationService.getAppUser?.appRole; //1 = Admin 2 = Normale.
+    (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+        let role = AuthenticationService.getAppUser?.appRole; //1 = Admin 2 = Normale.
 
-    if( !!role && role == 1 )
-      return true;
+        if( !!role && role == 1 )
+            return true;
 
-    inject(Router).navigate(['/homepage']).then();
-    return false;
-  }
+        inject(Router).navigate(['/homepage']).then();
+        return false;
+    }

@@ -30,26 +30,26 @@ export class DashboardUserComponent implements OnInit {
                 private userService: UserService,
                 private formBuilder: FormBuilder,
                 private router: Router) {
-      this.search = formBuilder.group({
-          firstNameSearch: [''],
-          lastNameSearch: ['']
-      })
+        this.search = formBuilder.group({
+            firstNameSearch: [''],
+            lastNameSearch: ['']
+        })
     }
 
     ngOnInit() {
         this.search.valueChanges.pipe(debounceTime(1000)).subscribe(() => {
             this.criteria = {
-            ...this.criteria, ...this.search.value
+                ...this.criteria, ...this.search.value
             }
             this.loadUsers()
         })
 
         this.userData = this.activatedRoute.data.pipe(
-          map( res => {
-              this.totalElement = res['userList'].totalElements
-              this.userPageSize = res['userList'].pageSize
-            return res['userList'].content
-          })
+            map( res => {
+                this.totalElement = res['userList'].totalElements
+                this.userPageSize = res['userList'].pageSize
+                return res['userList'].content
+            })
         );
     }
 

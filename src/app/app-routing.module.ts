@@ -21,49 +21,49 @@ import {DashboardEventComponent} from "./pages/dashboard-event/dashboard-event.c
 import {LeftMenuDashboardComponent} from "./layout/left-menu-dashboard/left-menu-dashboard.component";
 
 const routes: Routes = [
-  { path: 'not_found', component: NotFoundComponent},
-  { path: 'login', component:LoginPageComponent,
-    canActivate: [canLogin]},
-  { path: 'test', component: TreeListComponent},
+    { path: 'not_found', component: NotFoundComponent},
+    { path: 'login', component:LoginPageComponent,
+        canActivate: [canLogin]},
+    { path: 'test', component: TreeListComponent},
 
-  { path: 'user', component: LeftMenuComponent,
-    canActivate: [isLoggedUser], children: [
-      { path: '', redirectTo: 'profile', pathMatch: 'full' },
-      { path: 'profile', component:ProfilePageComponent },
-      { path: 'settings', component:SettingsPageComponent},
-      { path: 'event', component:EventPageComponent },
-    ]
-  },
+    { path: 'user', component: LeftMenuComponent,
+        canActivate: [isLoggedUser], children: [
+            { path: '', redirectTo: 'profile', pathMatch: 'full' },
+            { path: 'profile', component:ProfilePageComponent },
+            { path: 'settings', component:SettingsPageComponent},
+            { path: 'event', component:EventPageComponent },
+        ]
+    },
 
-  { path: 'dashboard', component: LeftMenuDashboardComponent,
-    canActivate: [isAdmin], children: [
-      { path: '', redirectTo: 'users', pathMatch: 'full' },
-      { path: 'users', component: DashboardUserComponent,
-        resolve: {userList: usersResolver}, children: [
-              {path: 'userinfo/:url', component: ProfilePageComponent}
-          ]
-      },
-      { path: 'events', component: DashboardEventComponent,
-        resolve: {eventDashList: eventResolver}
-      }
-    ]},
+    { path: 'dashboard', component: LeftMenuDashboardComponent,
+        canActivate: [isAdmin], children: [
+            { path: '', redirectTo: 'users', pathMatch: 'full' },
+            { path: 'users', component: DashboardUserComponent,
+                resolve: {userList: usersResolver}, children: [
+                    {path: 'userinfo/:url', component: ProfilePageComponent}
+                ]
+            },
+            { path: 'events', component: DashboardEventComponent,
+                resolve: {eventDashList: eventResolver}
+            }
+        ]},
 
-  { path: '', component: HeaderContainerComponent, children: [
-      { path: 'helloworld', component: HelloworldComponent },
-      { path: 'homepage', component: HomePageComponent },
-      { path: 'search/:query', component: SearchPageComponent,
-        resolve: { eventList: searchResolver }
-      },
-      { path: 'infoevent', component: InfoEventComponent },
-      { path: 'editevent', component: EditEventComponent },
-      { path: '**', redirectTo: '/homepage', pathMatch: 'full' }
-    ]
-  },
+    { path: '', component: HeaderContainerComponent, children: [
+            { path: 'helloworld', component: HelloworldComponent },
+            { path: 'homepage', component: HomePageComponent },
+            { path: 'search/:query', component: SearchPageComponent,
+                resolve: { eventList: searchResolver }
+            },
+            { path: 'infoevent', component: InfoEventComponent },
+            { path: 'editevent', component: EditEventComponent },
+            { path: '**', redirectTo: '/homepage', pathMatch: 'full' }
+        ]
+    },
 ];
 
 @NgModule({
-  declarations: [],
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    declarations: [],
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }
