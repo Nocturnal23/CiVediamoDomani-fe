@@ -8,6 +8,6 @@
     width: 150px;
 }
 
-.goTo[ng-reflect-router-link] {
+.goTo {
     cursor: pointer;
 }

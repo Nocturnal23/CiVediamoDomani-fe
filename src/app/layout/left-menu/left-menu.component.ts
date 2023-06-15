@@ -15,4 +15,12 @@ export class LeftMenuComponent {
     goToProfile() {
         this.router.navigate([RoutingEnums.USER_PROFILE, AuthenticationService.getAppUser.url] );
     }
+
+    goToEvent() {
+        this.router.navigate([RoutingEnums.USER_EVENTS] );
+    }
+
+    goToSetting() {
+        this.router.navigate([RoutingEnums.USER_SETTINGS] );
+    }
 }
