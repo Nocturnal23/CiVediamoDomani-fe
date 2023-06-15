@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {UserDto} from "../../core/dto/user-dto";
 import {UserService} from "../../core/services/user.service";
 import {AuthenticationService} from "../../core/services/authentication.service";
+import {RoleEnums} from "../../core/utils/Enums";
 
 @Component({
     selector: 'app-profile-page',
@@ -17,7 +18,6 @@ export class ProfilePageComponent {
         this.user = this.router.getCurrentNavigation()?.extras?.state?.['user']
 
         if (!this.user) {
-
             this.activatedRoute.params.subscribe(({url}) => {
                 if ( url === AuthenticationService.getAppUser?.url ) {
                     this.user = AuthenticationService.getAppUser
@@ -27,5 +27,13 @@ export class ProfilePageComponent {
                 }
             });
         }
+    }
+
+    canDeleteUser() {
+        return AuthenticationService.getAppUser.appRole === RoleEnums.ADMIN_ROLE && this.user.id != AuthenticationService.getAppUser.id
+    }
+
+    deleteUser() {
+        this.userService.delete(this.user.url).subscribe()
     }
 }
