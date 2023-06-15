@@ -157,6 +157,7 @@
 
 .event{
     transform: translate(0%, 15%);
+    cursor: pointer;
 }
 
 .profileCard {

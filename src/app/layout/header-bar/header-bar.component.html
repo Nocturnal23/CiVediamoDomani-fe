@@ -23,7 +23,7 @@
 
     <div class="toolbarRight" fxFlex="25%">
         <div *ngIf="isLogged()">
-            <div fxFlex="30%" class="event" routerLink="/user/event"><button>I miei eventi</button></div>
+            <div fxFlex="30%"><button class="event" (click)="goToEvent()">I miei eventi</button></div>
             <div class="profileCard"><app-profile-card></app-profile-card></div>
         </div>
 

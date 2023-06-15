@@ -36,4 +36,8 @@ export class HeaderBarComponent {
     goToLogin() {
         this._router.navigate([`/${RoutingEnums.LOGIN}`])
     }
+
+    goToEvent() {
+        this._router.navigate([RoutingEnums.USER_EVENTS] );
+    }
 }
