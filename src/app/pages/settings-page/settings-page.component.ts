@@ -25,7 +25,7 @@ export class SettingsPageComponent {
     }
 
     deleteProfile() {
-        this.userService.delete(AuthenticationService.getAppUser.id).subscribe( () => {
+        this.userService.delete(AuthenticationService.getAppUser.url).subscribe( () => {
             this.authenticationService.logOut()
         })
     }
