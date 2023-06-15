@@ -6,6 +6,7 @@ import {Page} from "../commons/filter.response";
 import {CategoryDto} from "../dto/category-dto";
 import {CategoryCriteria} from "../criteria/category-criteria";
 import {environment} from "../../../environments/environment";
+import {D} from "@angular/cdk/keycodes";
 
 @Injectable({ providedIn: 'root' })
 export class CategoryService implements AbstractService<CategoryDto, CategoryCriteria> {
@@ -13,6 +14,10 @@ export class CategoryService implements AbstractService<CategoryDto, CategoryCri
 
     constructor(private _http: HttpClient) {
         this.baseUrl = environment.BE_URL + '/categories'
+    }
+
+    delete(id: number): Observable<any> {
+        return this._http.delete<any>(`${this.baseUrl}/${id}`);
     }
 
     save(dto: CategoryDto): Observable<CategoryDto> {

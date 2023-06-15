@@ -6,6 +6,7 @@ import {Page} from "../commons/filter.response";
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {environment} from "../../../environments/environment";
+import {D} from "@angular/cdk/keycodes";
 
 @Injectable({
     providedIn: 'root'
@@ -16,6 +17,10 @@ export class UserService implements AbstractService<UserDto, UserCriteria> {
     constructor(
         private _http: HttpClient) {
         this.baseUrl = environment.BE_URL + '/users';
+    }
+
+    delete(id: number): Observable<any> {
+        return this._http.delete<any>(`${this.baseUrl}/${id}`);
     }
 
     getByUrl(uniqueUrl: string): Observable<UserDto> {
