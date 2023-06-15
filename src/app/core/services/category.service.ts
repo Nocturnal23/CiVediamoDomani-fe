@@ -16,8 +16,8 @@ export class CategoryService implements AbstractService<CategoryDto, CategoryCri
         this.baseUrl = environment.BE_URL + '/categories'
     }
 
-    delete(id: number): Observable<any> {
-        return this._http.delete<any>(`${this.baseUrl}/${id}`);
+    delete(url: string): Observable<any> {
+        return this._http.delete<any>(`${this.baseUrl}/${url}`);
     }
 
     save(dto: CategoryDto): Observable<CategoryDto> {

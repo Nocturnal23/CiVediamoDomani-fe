@@ -19,8 +19,8 @@ export class UserService implements AbstractService<UserDto, UserCriteria> {
         this.baseUrl = environment.BE_URL + '/users';
     }
 
-    delete(id: number): Observable<any> {
-        return this._http.delete<any>(`${this.baseUrl}/${id}`);
+    delete(url: string): Observable<any> {
+        return this._http.delete<any>(`${this.baseUrl}/${url}`);
     }
 
     getByUrl(uniqueUrl: string): Observable<UserDto> {

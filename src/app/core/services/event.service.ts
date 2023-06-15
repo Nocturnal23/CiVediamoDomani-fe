@@ -35,7 +35,7 @@ export class EventService implements AbstractService<EventDto, EventCriteria> {
         return this._http.get<EventDto>(url);
     }
 
-    delete(id: number): Observable<any> {
-        return this._http.delete<any>(`${this.baseUrl}/${id}`);
+    delete(url: string): Observable<any> {
+        return this._http.delete<any>(`${this.baseUrl}/${url}`);
     }
 }

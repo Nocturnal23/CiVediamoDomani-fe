@@ -12,5 +12,5 @@ export abstract class AbstractService<D extends BaseDto, C extends BaseCriteria>
     abstract save(dto: D): Observable<D>;
     abstract getByUrl(uniqueUrl: string): Observable<D>;
     // abstract update(dto: D): Observable<D>;
-    abstract delete(id: number): Observable<D>;
+    abstract delete(url: string): Observable<any>;
 }
