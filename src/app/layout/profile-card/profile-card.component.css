@@ -216,3 +216,7 @@ a .uil {
 .section-dropdown-sub a .uil {
     font-size: 20px;
 }
+
+.goTo {
+    cursor: pointer;
+}
