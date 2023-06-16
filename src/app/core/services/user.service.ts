@@ -23,6 +23,11 @@ export class UserService implements AbstractService<UserDto, UserCriteria> {
         return this._http.delete<any>(`${this.baseUrl}/${url}`);
     }
 
+    disableUser(uniqueUrl: string): Observable<UserDto> {
+        const url = this.baseUrl + '/disable/'
+        return this._http.put<UserDto>(url+uniqueUrl, {})
+    }
+
     getByUrl(uniqueUrl: string): Observable<UserDto> {
         const url = this.baseUrl + '/getByUrl/' + uniqueUrl;
         return this._http.get<UserDto>(url);
