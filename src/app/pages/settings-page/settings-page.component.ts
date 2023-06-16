@@ -26,7 +26,7 @@ export class SettingsPageComponent {
     }
 
     deleteProfile() {
-        this.userService.delete(AuthenticationService.getAppUser.url).subscribe( () => { //TODO DA modificare con disable
+        this.userService.disableUser(AuthenticationService.getAppUser.url).subscribe( () => { //TODO DA modificare con disable
             this.authenticationService.logOut()
         })
     }

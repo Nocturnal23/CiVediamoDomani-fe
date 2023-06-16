@@ -34,6 +34,6 @@ export class ProfilePageComponent {
     }
 
     deleteUser() {
-        this.userService.delete(this.user.url).subscribe() //TODO DA modificare con disable
+        this.userService.disableUser(this.user.url).subscribe() //TODO DA modificare con disable
     }
 }
