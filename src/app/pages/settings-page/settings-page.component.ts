@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {AuthenticationService} from "../../core/services/authentication.service";
 import {UserService} from "../../core/services/user.service";
+import {RoleEnums} from "../../core/utils/Enums";
 
 @Component({
     selector: 'app-settings-page',
@@ -28,5 +29,9 @@ export class SettingsPageComponent {
         this.userService.delete(AuthenticationService.getAppUser.url).subscribe( () => {
             this.authenticationService.logOut()
         })
+    }
+
+    canDeleteUser() {
+        return AuthenticationService.getAppUser?.appRole !== RoleEnums.ADMIN_ROLE;
     }
 }

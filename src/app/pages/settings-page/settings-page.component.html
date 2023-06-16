@@ -4,4 +4,4 @@
     <button (click)="restore()">Ripristina</button>
 </form>
 
-<button (click)="deleteProfile()">Elimina profilo</button>
+<button *ngIf="canDeleteUser()" (click)="deleteProfile()">Elimina profilo</button>
