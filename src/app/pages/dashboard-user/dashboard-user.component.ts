@@ -1,11 +1,11 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {debounceTime, map, Observable, pairwise, startWith} from "rxjs";
+import {Component, OnInit} from '@angular/core';
+import {debounceTime, map, Observable} from "rxjs";
 import {UserDto} from "../../core/dto/user-dto";
 import {Column, LazyLoadEvent} from "../../layout/table";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../core/services/user.service";
 import {UserCriteria} from "../../core/criteria/user-criteria";
-import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
     selector: 'app-dashboard-user',
