@@ -1,5 +1,5 @@
 export interface BaseDto {
   id : number;
-  deleted : number;
+  deleted ?: number;
   url : string;
 }
