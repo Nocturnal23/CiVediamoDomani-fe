@@ -20,7 +20,7 @@ export class DashboardUserComponent implements OnInit {
         { name: 'Nome', id: 'firstName', sort: 'firstName', path: 'firstName',  visible: true, isModelProperty: true },
         { name: 'Cognome', id: 'lastName', sort: 'lastName' , path: 'lastName', visible: true, isModelProperty: true },
         { name: 'Tipo Utente', id: 'appRole', sort: 'appRole' , path: 'appRole', visible: true, isModelProperty: true },
-        { name: 'Stato utente', id: 'deleted', sort: 'deleted' , path: 'deleted', visible: true, isModelProperty: true }
+        { name: 'Stato utente', id: 'state', sort: 'state' , path: 'state', visible: true, isModelProperty: true }
     ]
     search: FormGroup
 
