@@ -28,6 +28,11 @@ export class UserService implements AbstractService<UserDto, UserCriteria> {
         return this._http.put<UserDto>(url+uniqueUrl, {})
     }
 
+    enableUser(uniqueUrl: string): Observable<UserDto> {
+        const url = this.baseUrl + '/enable/'
+        return this._http.put<UserDto>(url+uniqueUrl, {})
+    }
+
     getByUrl(uniqueUrl: string): Observable<UserDto> {
         const url = this.baseUrl + '/getByUrl/' + uniqueUrl;
         return this._http.get<UserDto>(url);
