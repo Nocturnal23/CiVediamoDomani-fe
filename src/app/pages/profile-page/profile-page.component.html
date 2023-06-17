@@ -9,4 +9,4 @@
     <p> Password: {{user?.password}} </p>
 </div>
 
-<button *ngIf="canDeleteUser()" (click)="deleteUser()"> Disabilita Profilo </button>
+<button *ngIf="canChangeState()" (click)="changeState()"> {{buttonLabel}} </button>

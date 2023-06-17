@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {UserDto} from "../../core/dto/user-dto";
 import {UserService} from "../../core/services/user.service";
 import {AuthenticationService} from "../../core/services/authentication.service";
-import {RoleEnums} from "../../core/utils/Enums";
+import {RoleEnums, UserStateEnums} from "../../core/utils/Enums";
 
 @Component({
     selector: 'app-profile-page',
@@ -12,6 +12,7 @@ import {RoleEnums} from "../../core/utils/Enums";
 })
 export class ProfilePageComponent {
     user: UserDto = AuthenticationService.getAppUser
+    buttonLabel: string;
     constructor(private router: Router,
                 private activatedRoute: ActivatedRoute,
                 private userService: UserService) {
@@ -27,13 +28,23 @@ export class ProfilePageComponent {
                 }
             });
         }
+
+        this.buttonLabel = this.user?.state === UserStateEnums.ENABLE? "Disabilita utente" :  "Abilita utente"
     }
 
-    canDeleteUser() {
-        return AuthenticationService.getAppUser.appRole === RoleEnums.ADMIN_ROLE && this.user.id != AuthenticationService.getAppUser.id
+    canChangeState() {
+        return (AuthenticationService.getAppUser.appRole === RoleEnums.ADMIN_ROLE) && (this.user?.url != AuthenticationService.getAppUser.url)
     }
 
-    deleteUser() {
-        this.userService.disableUser(this.user.url).subscribe() //TODO DA modificare con disable
+    changeState() {
+        if ( this.user.state === UserStateEnums.ENABLE ) {
+            this.userService.disableUser(this.user.url).subscribe()
+            this.buttonLabel = "Abilita utente"
+        }
+        else {
+            this.userService.enableUser(this.user.url).subscribe()
+            this.buttonLabel = "Disabilita utente"
+        }
+        window.location.reload()
     }
 }
