@@ -3,6 +3,11 @@ export enum RoleEnums {
     NORMAL_ROLE = 2,
 }
 
+export enum UserStateEnums {
+    DISABLE = "DISABILITATO",
+    ENABLE = "ATTIVO"
+}
+
 export enum RoutingEnums{
     LOGIN = 'login',
     HOMEPAGE = 'homepage',
