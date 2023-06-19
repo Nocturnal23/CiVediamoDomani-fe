@@ -1,6 +1,8 @@
-<h3 class="eventTitle"> {{eventDto.title}} </h3>
+<h3 class="eventTitle"> {{eventDto?.title}} </h3>
 
-<p> {{eventDto.place}} - {{eventDto.dateTime}}</p>
+<p> {{eventDto?.place}}</p>
+<p> {{eventDto?.datetime}} </p>
+<p> {{eventDto?.organiser.firstName}} </p>
 
 <mat-icon class="icon">bookmark_border</mat-icon>
 <!--Questa possiamo usarla se l'evento viene salvato nei preferiti.-->
@@ -10,12 +12,12 @@
 <!--Questa possiamo usarla se l'utente partecipa.-->
 <!--<mat-icon>check_box</mat-icon>-->
 
-<p> {{eventDto.description}} </p>
+<p> {{eventDto?.description}} </p>
 
 <p *ngIf="!isFree()"> Acquista qua: www.comprabiglietti.it </p>
 <p *ngIf="isFree()"> Ingresso gratis. </p>
 
-<p> Categoria evento: <div *ngFor="let cat of eventDto.categories"> {{cat.name}} </div>
+<p> Categoria evento: <div *ngFor="let cat of eventDto?.categories"> {{cat.name}} </div>
 
 <p> Condividi su: </p>
 

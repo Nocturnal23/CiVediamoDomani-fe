@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EventDto} from "../../core/dto/event-dto";
+import {EventService} from "../../core/services/event.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
     selector: 'app-info-event',
@@ -7,23 +9,19 @@ import {EventDto} from "../../core/dto/event-dto";
     styleUrls: ['./info-event.component.css']
 })
 export class InfoEventComponent {
-
     eventDto: EventDto;
+    url: string
 
-    constructor() {
-        this.eventDto = {
-            url: "",
-            id: 0,
-            title : "Titolo evento",
-            place : "Luogo evento",
-            dateTime : new Date(2000,1,1),
-            description : "Descrizione evento",
-            price : 0,
-            categories : [{name: "sport", id: 0, url: ""}, {name: "calcio", id: 1, url: ""}]
-        }
+    constructor(private eventService: EventService,
+                private router: Router,
+                private activatdRoute: ActivatedRoute) {
+
+        this.activatdRoute.params.subscribe( ({url}) => this.url = url )
+        console.log( this.url )
+        this.eventService.getByUrl( this.url ). subscribe( event => this.eventDto = event )
     }
 
     isFree() {
-        return true;
+        return this.eventDto?.price == 0;
     }
 }
