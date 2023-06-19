@@ -42,7 +42,8 @@ const routes: Routes = [
             {path: 'userinfo/:url', component: ProfilePageComponent},
             { path: 'events', component: DashboardEventComponent,
                 resolve: {eventDashList: eventResolver}
-            }
+            },
+            {path: 'eventinfo/:url', component: InfoEventComponent}
         ]},
 
     { path: '', component: HeaderContainerComponent, children: [
