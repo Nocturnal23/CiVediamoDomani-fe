@@ -11,7 +11,7 @@ export interface EventDto extends BaseDto {
 
   coordinates ?: string;
 
-  dateTime ?: Date;
+  datetime ?: Date;
 
   description ?: string;
 
