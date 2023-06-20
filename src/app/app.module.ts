@@ -40,6 +40,8 @@ import {MatSortModule} from "@angular/material/sort";
 import {ExtractNestedPropertyPipe} from "./core/commons/pipes/extract-nested-property";
 import {MatButtonModule} from "@angular/material/button";
 import { LeftMenuDashboardComponent } from './layout/left-menu-dashboard/left-menu-dashboard.component';
+import { EventCardComponent } from './layout/event-card/event-card.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
     declarations: [
@@ -63,7 +65,8 @@ import { LeftMenuDashboardComponent } from './layout/left-menu-dashboard/left-me
         TableComponent,
         TableRowActionsDirective,
         ExtractNestedPropertyPipe,
-        LeftMenuDashboardComponent
+        LeftMenuDashboardComponent,
+        EventCardComponent
     ],
     imports: [
         BrowserModule,
@@ -86,7 +89,8 @@ import { LeftMenuDashboardComponent } from './layout/left-menu-dashboard/left-me
         MatTableModule,
         MatTreeModule,
         MatSortModule,
-        MatButtonModule
+        MatButtonModule,
+        NgOptimizedImage
     ],
     providers: [
         { provide: 'SocialAuthServiceConfig',
