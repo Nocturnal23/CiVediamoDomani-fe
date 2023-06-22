@@ -52,7 +52,7 @@ const routes: Routes = [
             { path: 'search/:query', component: SearchPageComponent,
                 resolve: { eventList: searchResolver }
             },
-            { path: 'infoevent', component: InfoEventComponent },
+            { path: 'infoevent/:url', component: InfoEventComponent },
             { path: 'editevent', component: EditEventComponent },
             { path: '**', redirectTo: `/${RoutingEnums.HOMEPAGE}`, pathMatch: 'full' }
         ]
