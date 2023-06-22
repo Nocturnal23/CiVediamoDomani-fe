@@ -1,13 +1,43 @@
 <h2> I TUOI EVENTI </h2>
 
-<mat-tab-group class = "bordi">
-    <mat-tab label="First">
-        <img src="../../assets/Homepage bozza CVD.png"/>
-        <hr>
-        <img src="../../assets/P1 - Profile bozza CVD.png"/>
-        <hr>
-        <img src="../../assets/P2 - Eventi bozza CVD.png"/>
+<mat-tab-group class = "bordi" (selectedTabChange)="changedTab($event)">
+    <mat-tab label="Partecipazioni">
+        <app-table
+                [data]="eventListPartecipati | async"
+                [columns]="displayedColumns"
+                [pageSize]="pageSize"
+                [pageIndex]="pageIndex"
+                [totalRecords]="totalElements"
+                [lazyLoad]="true"
+                (lazyLoadEvent) = "doLazyLoad($event)"
+                [firstActionColumnHeader]="'Gestisci'"
+                (firstActionRowEventEmitter)="infoEvent($event)"
+        ></app-table>
     </mat-tab>
-    <mat-tab label="Second"> Content 2 </mat-tab>
-    <mat-tab label="Third"> Content 3 </mat-tab>
+    <mat-tab label="Salvati">
+        <app-table
+                [data]="eventListSalvati | async"
+                [columns]="displayedColumns"
+                [pageSize]="pageSize"
+                [pageIndex]="pageIndex"
+                [totalRecords]="totalElements"
+                [lazyLoad]="true"
+                (lazyLoadEvent) = "doLazyLoad($event)"
+                [firstActionColumnHeader]="'Gestisci'"
+                (firstActionRowEventEmitter)="infoEvent($event)"
+        ></app-table>
+    </mat-tab>
+    <mat-tab label="Creati">
+        <app-table
+                [data]="eventListCreati | async"
+                [columns]="displayedColumns"
+                [pageSize]="pageSize"
+                [pageIndex]="pageIndex"
+                [totalRecords]="totalElements"
+                [lazyLoad]="true"
+                (lazyLoadEvent) = "doLazyLoad($event)"
+                [firstActionColumnHeader]="'Gestisci'"
+                (firstActionRowEventEmitter)="infoEvent($event)"
+        ></app-table>
+    </mat-tab>
 </mat-tab-group>
