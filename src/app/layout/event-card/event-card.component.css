@@ -1,13 +1,48 @@
 .box{
     margin: 20px;
-    background-color: #888888;
+    /*background-color: #888888;*/
+    max-width: 90%;
 }
 
 .title{
     align-items: start;
+    background-color: aquamarine;
+    margin: 4px;
+    font-weight: bold;
+    font-size: large;
 }
 
 .descr-box {
     margin: 5px;
     background-color: #a9cbbf;
+}
+
+.details {
+    border-radius: 10px;
+    margin: 5px;
+    background-color: cornflowerblue;
+    box-shadow: 5px 5px 5px #646363;
+    /*width: 100%;*/
+    /*text-overflow: ellipsis;*/
+    /*overflow: hidden;*/
+    /*display: inline-block;*/
+}
+
+.imageBox {
+    max-width: 128px;
+    max-height: 128px;
+    overflow: hidden;
+}
+
+.eventImg:hover{
+    transform: scale(2);
+    /*width: 100%;*/
+    /*height: 100%;*/
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.ticketing {
+    margin: 2px;
+    font-weight: bold;
 }

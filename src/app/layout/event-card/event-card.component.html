@@ -1,37 +1,39 @@
 <div fxLayout="row" fxLayoutAlign="start center"  class="box">
-    <div fxLayout="column" fxLayoutAlign="space-around center" >
-        <div class="title"><h2>{{eventDto.title}}</h2></div>
-        <div fxLayout="row" fxLayoutAlign="space-around center" >
-            <div class="descr-box">
-                <div>{{eventDto.description}}</div>
-                <div>{{ticketing}}</div>
+    <div fxLayout="row" class="details">
+        <div fxLayout="column">
+            <div fxLayoutAlign="start center" class="title">{{getTitle()}}</div>
+            <div fxLayout="row" fxLayoutAlign="start center" >
+                <div class="descr-box" fxFlex="80%">
+                    <div>{{getDescription()}}</div>
+                    <div class="ticketing">{{ticketing}}</div>
+                </div>
+                <div *ngIf="isOngoin()">{{eventDate}}</div>
+                <div *ngIf="!isOngoin()" class="ticketing">Evento Terminato</div>
             </div>
-            <div>{{eventDto.datetime.toDateString()}}</div>
         </div>
-    </div>
-    <div>
-        <img ngSrc="{{photo}}" width="128" height="128">
+        <div fxFlex="20" fxLayoutAlign="center center">
+            <img ngSrc="{{photo}}" class="eventImg" width="128" height="128">
+        </div>
     </div>
 
     <div>
-        <div fxLayout="column" fxLayoutAlign="space-around center" >
-            <div *ngIf="attending; else elseAttend" (click)="setAttending(false)">
+        <div *ngIf="isOngoin()" fxLayout="column" fxLayoutAlign="space-around center" >
+            <div *ngIf="attending; else elseAttend" (click)="setAttending()">
                 <mat-icon>check_circle</mat-icon>
             </div>
             <ng-template #elseAttend>
-                <div (click)="setAttending(true)"><mat-icon>check_circle_outline</mat-icon></div>
+                <div (click)="setAttending()"><mat-icon>check_circle_outline</mat-icon></div>
             </ng-template>
         </div>
 
         <div>
-            <div *ngIf="favorite; else elseFav" (click)="setFavorite(false)">
+            <div *ngIf="favorite; else elseFav" (click)="setFavorite()">
                 <mat-icon>favorite</mat-icon>
             </div>
             <ng-template #elseFav>
-                <div (click)="setFavorite(true)"><mat-icon>favorite_border</mat-icon></div>
+                <div (click)="setFavorite()"><mat-icon>favorite_border</mat-icon></div>
             </ng-template>
         </div>
     </div>
-
 </div>
 
