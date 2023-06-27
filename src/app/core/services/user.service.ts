@@ -6,7 +6,6 @@ import {Page} from "../commons/filter.response";
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {environment} from "../../../environments/environment";
-import {D} from "@angular/cdk/keycodes";
 
 @Injectable({
     providedIn: 'root'
@@ -50,5 +49,10 @@ export class UserService implements AbstractService<UserDto, UserCriteria> {
     filter(criteria: UserCriteria): Observable<Page<UserDto>> {
         const url = this.baseUrl + '/filter';
         return this._http.post<Page<UserDto>>(url, criteria);
+    }
+
+    update(dto: UserDto): Observable<UserDto> {
+        const url = this.baseUrl + '/' + dto.url
+        return this._http.put<UserDto>(url, dto);
     }
 }

@@ -6,7 +6,6 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Page} from "../commons/filter.response";
 import {environment} from "../../../environments/environment";
-import {D} from "@angular/cdk/keycodes";
 
 @Injectable({ providedIn: 'root' })
 export class EventService implements AbstractService<EventDto, EventCriteria> {
@@ -37,5 +36,10 @@ export class EventService implements AbstractService<EventDto, EventCriteria> {
 
     delete(url: string): Observable<any> {
         return this._http.delete<any>(`${this.baseUrl}/${url}`);
+    }
+
+    update(dto: EventDto): Observable<EventDto> {
+        const url = this.baseUrl + '/' + dto.url
+        return this._http.put<EventDto>(url, dto);
     }
 }

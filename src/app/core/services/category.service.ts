@@ -38,4 +38,9 @@ export class CategoryService implements AbstractService<CategoryDto, CategoryCri
         const url = this.baseUrl + '/getByUrl/' + uniqueUrl;
         return this._http.get<CategoryDto>(url);
     }
+
+    update(dto: CategoryDto): Observable<CategoryDto> {
+        const url = this.baseUrl + '/' + dto.url
+        return this._http.put<CategoryDto>(url, dto);
+    }
 }
