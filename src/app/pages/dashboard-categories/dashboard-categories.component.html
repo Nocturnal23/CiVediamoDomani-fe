@@ -1,0 +1,18 @@
+<h2>Lista Categorie</h2>
+
+<form [formGroup]="search">
+  <input type="text" formControlName="childCategorySearch"  placeholder="Cerca categoria..." />
+</form>
+
+
+<app-table
+  [data]="categoryData | async"
+  [columns]="displayedColumns"
+  [pageSize]="pageSize"
+  [totalRecords]="totalElement"
+  [lazyLoad]="true"
+  (lazyLoadEvent) = "doLazyLoad($event)"
+  [firstActionColumnHeader]="'Gestisci'"
+  (firstActionRowEventEmitter)="infoCategory($event)"
+>
+</app-table>
