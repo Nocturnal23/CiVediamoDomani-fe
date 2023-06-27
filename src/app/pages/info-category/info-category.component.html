@@ -1,0 +1,27 @@
+<h2>Info categoria</h2>
+
+<div>
+    <p> Categoria: {{category?.name}}</p>
+</div>
+
+<div *ngIf="!isFather()">
+    <p> Sottocategorie: </p>
+    <div *ngFor="let childF of child | async" >
+        {{childF.name}}
+    </div>
+</div>
+
+<div *ngIf="isFather()">
+    <p> Macrocategoria: {{category?.father.name}}</p>
+</div>
+
+<div>
+    <p> {{category?.deleted}} </p>
+</div>
+
+<div>
+    <button *ngIf="!isFather()" (click)="createCatDialog('Inserisci la nuova sottocategoria')">Aggiungi sottocategoria</button>
+    <button (click)="createCatDialog('Inserisci la nuova macrocategoria')">Aggiungi macrocategoria</button>
+    <button (click)="edit()"> Modifica </button>
+    <button (click)="changeState()"> {{buttonLabel}} </button>
+</div>

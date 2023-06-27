@@ -43,6 +43,7 @@ import { LeftMenuDashboardComponent } from './layout/left-menu-dashboard/left-me
 import { EventCardComponent } from './layout/event-card/event-card.component';
 import {NgOptimizedImage} from "@angular/common";
 import { DashboardCategoriesComponent } from './pages/dashboard-categories/dashboard-categories.component';
+import { InfoCategoryComponent } from './pages/info-category/info-category.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { DialogAddCategoryComponent } from './layout/dialog-add-category/dialog-add-category.component';
 
@@ -71,6 +72,7 @@ import { DialogAddCategoryComponent } from './layout/dialog-add-category/dialog-
         LeftMenuDashboardComponent,
         EventCardComponent,
         DashboardCategoriesComponent,
+        InfoCategoryComponent,
         DialogAddCategoryComponent
     ],
     imports: [

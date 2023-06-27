@@ -11,7 +11,7 @@ import {SettingsPageComponent} from "./pages/settings-page/settings-page.compone
 import {LeftMenuComponent} from "./layout/left-menu/left-menu.component";
 import {EventPageComponent} from "./pages/event-page/event-page.component";
 import {InfoEventComponent} from "./pages/info-event/info-event.component";
-import {eventResolver, searchResolver, usersResolver} from "./core/resolvers/Resolvers";
+import {categoryResolver, eventResolver, searchResolver, usersResolver} from "./core/resolvers/Resolvers";
 import {canLogin, isAdmin, isLoggedUser} from "./core/guards/UserGuard"
 import {EditEventComponent} from "./pages/edit-event/edit-event.component";
 import {DashboardUserComponent} from "./pages/dashboard-user/dashboard-user.component";
@@ -19,6 +19,7 @@ import {DashboardEventComponent} from "./pages/dashboard-event/dashboard-event.c
 import {LeftMenuDashboardComponent} from "./layout/left-menu-dashboard/left-menu-dashboard.component";
 import {RoutingEnums} from "./core/utils/Enums";
 import {DashboardCategoriesComponent} from "./pages/dashboard-categories/dashboard-categories.component";
+import {InfoCategoryComponent} from "./pages/info-category/info-category.component";
 
 const routes: Routes = [
     { path: 'not_found', component: NotFoundComponent},
@@ -41,6 +42,7 @@ const routes: Routes = [
                 resolve: {userList: usersResolver}
             },
             {path: 'userinfo/:url', component: ProfilePageComponent},
+
             { path: 'events', component: DashboardEventComponent,
                 resolve: {eventDashList: eventResolver}
             },
@@ -48,6 +50,7 @@ const routes: Routes = [
 
             {path: 'category', component: DashboardCategoriesComponent,
                 resolve:  {categoryDashList: categoryResolver}},
+            {path: 'categoryinfo/:url', component: InfoCategoryComponent}
         ]},
 
     { path: '', component: HeaderContainerComponent, children: [
