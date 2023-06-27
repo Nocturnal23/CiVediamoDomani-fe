@@ -1,17 +1,22 @@
-<div>
-    <h1> Risultati per: "{{searchValue}}"</h1>
-</div>
-<div>
-    <mat-icon>room</mat-icon> {{searchLocation}}
-</div>
-<div>
-    <mat-slider [min]="sliderMinRange" [max]="sliderMaxRange" [step]="sliderStep">
-        <input matSliderThumb [(value)]="searchRange">
-    </mat-slider>
-    Cerca entro: {{searchRange}} KM
-</div>
-<div>
-    <div *ngFor="let event of eventList">
-        {{event.title}}{{event.description}}
+<div><h1> Risultati per: "{{searchValue}}"</h1></div>
+<div fxLayout="row">
+    <div fxLayout="column">
+        <div><mat-icon>room</mat-icon> {{searchLocation}}</div>
+        <div>
+            <mat-slider [min]="sliderMinRange" [max]="sliderMaxRange" [step]="sliderStep">
+                <input matSliderThumb [(value)]="searchRange">
+            </mat-slider>
+            Cerca entro: {{searchRange}} KM
+        </div>
+
+    <!--    La lista categorie va qui-->
+    </div>
+    <div fxLayout="column">
+        <div> Filtra per: Sport x  Altro x </div>
+        <div fxFlex="70%">
+            <div *ngFor="let event of eventList">
+                <app-event-card [eventDto]="event"></app-event-card>
+            </div>
+        </div>
     </div>
 </div>
