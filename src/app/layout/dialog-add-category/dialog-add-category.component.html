@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>{{data.dialogTitle}}</h2>
+
+<div>
+    <form [formGroup]="newCategory">
+        <div>
+            <mat-dialog-content>
+                <input type="text" placeholder="Nome categoria" formControlName="name"/>
+            </mat-dialog-content>
+        </div>
+
+        <div>
+            <mat-dialog-actions>
+                <button mat-button mat-dialog-close="{{newName}}" (click)="createCat()">Crea</button>
+            </mat-dialog-actions>
+        </div>
+    </form>
+</div>

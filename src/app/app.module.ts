@@ -43,6 +43,8 @@ import { LeftMenuDashboardComponent } from './layout/left-menu-dashboard/left-me
 import { EventCardComponent } from './layout/event-card/event-card.component';
 import {NgOptimizedImage} from "@angular/common";
 import { DashboardCategoriesComponent } from './pages/dashboard-categories/dashboard-categories.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { DialogAddCategoryComponent } from './layout/dialog-add-category/dialog-add-category.component';
 
 @NgModule({
     declarations: [
@@ -68,7 +70,8 @@ import { DashboardCategoriesComponent } from './pages/dashboard-categories/dashb
         ExtractNestedPropertyPipe,
         LeftMenuDashboardComponent,
         EventCardComponent,
-        DashboardCategoriesComponent
+        DashboardCategoriesComponent,
+        DialogAddCategoryComponent
     ],
     imports: [
         BrowserModule,
@@ -92,7 +95,8 @@ import { DashboardCategoriesComponent } from './pages/dashboard-categories/dashb
         MatTreeModule,
         MatSortModule,
         MatButtonModule,
-        NgOptimizedImage
+        NgOptimizedImage,
+        MatDialogModule
     ],
     providers: [
         { provide: 'SocialAuthServiceConfig',
