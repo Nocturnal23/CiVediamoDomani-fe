@@ -38,13 +38,12 @@ export class ProfilePageComponent {
 
     changeState() {
         if ( this.user.state === UserStateEnums.ENABLE ) {
-            this.userService.disableUser(this.user.url).subscribe()
+            this.userService.disableUser(this.user.url).subscribe( user => this.user = user )
             this.buttonLabel = "Abilita utente"
         }
         else {
-            this.userService.enableUser(this.user.url).subscribe()
+            this.userService.enableUser(this.user.url).subscribe( user => this.user = user )
             this.buttonLabel = "Disabilita utente"
         }
-        window.location.reload()
     }
 }
