@@ -6,6 +6,7 @@ import {Page} from "../commons/filter.response";
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {environment} from "../../../environments/environment";
+import {AuthenticationService} from "./authentication.service";
 
 @Injectable({
     providedIn: 'root'
@@ -30,6 +31,16 @@ export class UserService implements AbstractService<UserDto, UserCriteria> {
     enableUser(uniqueUrl: string): Observable<UserDto> {
         const url = this.baseUrl + '/enable/'
         return this._http.put<UserDto>(url+uniqueUrl, {})
+    }
+
+    setFavoriteEvent(eventUrl: string): Observable<boolean> {
+        const url = this.baseUrl + '/' + AuthenticationService.getAppUser.url + '/setFavorite/'
+        return this._http.put<boolean>(url+eventUrl, {})
+    }
+
+    setAttendEvent(eventUrl: string): Observable<boolean> {
+        const url = this.baseUrl + '/' + AuthenticationService.getAppUser.url + '/setAttend/'
+        return this._http.put<boolean>(url+eventUrl, {})
     }
 
     getByUrl(uniqueUrl: string): Observable<UserDto> {
