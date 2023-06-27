@@ -6,7 +6,6 @@ import {Page} from "../commons/filter.response";
 import {CategoryDto} from "../dto/category-dto";
 import {CategoryCriteria} from "../criteria/category-criteria";
 import {environment} from "../../../environments/environment";
-import {D} from "@angular/cdk/keycodes";
 
 @Injectable({ providedIn: 'root' })
 export class CategoryService implements AbstractService<CategoryDto, CategoryCriteria> {
@@ -18,6 +17,11 @@ export class CategoryService implements AbstractService<CategoryDto, CategoryCri
 
     delete(url: string): Observable<any> {
         return this._http.delete<any>(`${this.baseUrl}/${url}`);
+    }
+
+    enable(uniqueUrl: string): Observable<CategoryDto> {
+        const url = this.baseUrl + '/record/'
+        return this._http.put<CategoryDto>(url+uniqueUrl, {})
     }
 
     save(dto: CategoryDto): Observable<CategoryDto> {
