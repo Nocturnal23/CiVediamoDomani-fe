@@ -6,6 +6,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {CategoryService} from "../../core/services/category.service";
 import {CategoryCriteria} from "../../core/criteria/category-criteria";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogAddCategoryComponent} from "../../layout/dialog-add-category/dialog-add-category.component";
 
 @Component({
   selector: 'app-dashboard-categories',
@@ -28,7 +30,8 @@ export class DashboardCategoriesComponent implements OnInit {
     constructor(private formBuilder: FormBuilder,
                 private router: Router,
                 private activatedRoute: ActivatedRoute,
-                private categoryService: CategoryService) {
+                private categoryService: CategoryService,
+                private dialog: MatDialog) {
 
         this.search = formBuilder.group({
             childCategorySearch: ['']
@@ -48,6 +51,31 @@ export class DashboardCategoriesComponent implements OnInit {
                 return res['categoryDashList'].content
             })
         );
+    }
+
+    createCatDialog(title: string) {
+        let dialogContent = this.dialog.open(DialogAddCategoryComponent,
+            { data: { dialogTitle: title }
+            })
+        dialogContent.afterClosed().subscribe(res => {
+            if( dialogContent.componentInstance.newName != null && dialogContent.componentInstance.newName != "" ) {
+                if (title === 'Inserisci la nuova macrocategoria') {
+                    this.addCategory(dialogContent.componentInstance.newName);
+                }
+            }
+        })
+    }
+
+    private addCategory(name: string) {
+        let newCategory: CategoryDto = {
+            id: 0,
+            url: "",
+            name: name.charAt(0).toUpperCase() + name.slice(1),
+            father: null
+        }
+        this.categoryService.save(newCategory).subscribe( () =>
+            this.router.navigateByUrl("/dashboard/category")
+        )
     }
 
     doLazyLoad( event: LazyLoadEvent ) {

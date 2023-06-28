@@ -57,22 +57,26 @@ export class InfoCategoryComponent {
         );
     }
 
-    private addCategory(name: string, father: CategoryDto) {
+    private addCategory(name: string) {
         let newCategory: CategoryDto = {
             id: 0,
             url: "",
             name: name.charAt(0).toUpperCase() + name.slice(1),
-            father: father
+            father: this.category
         }
-        this.categoryService.save(newCategory).subscribe( () => {
-            if( father == null )
-                this.router.navigateByUrl("/dashboard/category")
-            else {
-                const currentUrl = this.router.url;
-                this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-                    this.router.navigateByUrl(currentUrl);
-                });
-            }
+        this.categoryService.save(newCategory).subscribe( () =>
+            this.reloadPage()
+        )
+    }
+
+    private editCategory(name: string) {
+        let editCat : CategoryDto = {
+            id: 0,
+            url:  this.category.url,
+            name: name.charAt(0).toUpperCase() + name.slice(1),
+        }
+        this.categoryService.update(editCat).subscribe( () => {
+            this.reloadPage()
         })
     }
 
@@ -81,24 +85,15 @@ export class InfoCategoryComponent {
             { data: { dialogTitle: title }
             })
         dialogContent.afterClosed().subscribe(res => {
-            let father = this.category
             if( dialogContent.componentInstance.newName != null && dialogContent.componentInstance.newName != "" ) {
+                if (title === 'Modifica il nome della categoria') {
+                    this.editCategory(dialogContent.componentInstance.newName)
+                }
                 if (title === 'Inserisci la nuova sottocategoria') {
-                    this.addCategory(dialogContent.componentInstance.newName, father);
-                } else {
-                    this.addCategory(dialogContent.componentInstance.newName, null);
+                    this.addCategory(dialogContent.componentInstance.newName);
                 }
             }
         })
-    }
-
-    edit() {
-        let editCategory : CategoryDto = {
-            url: "catsport",
-            name: "sport",
-            id: 1
-        }
-        this.categoryService.update(editCategory).subscribe()
     }
 
     changeState() {
@@ -113,5 +108,12 @@ export class InfoCategoryComponent {
                 this.buttonLabel = this.getButtonLabel();
             });
         }
+    }
+
+    private reloadPage() {
+        const currentUrl = this.router.url;
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigateByUrl(currentUrl);
+        });
     }
 }

@@ -1,18 +1,23 @@
-<h2>Lista Categorie</h2>
+<div class="main">
+    <h2>Lista Categoria</h2>
 
-<form [formGroup]="search">
-  <input type="text" formControlName="childCategorySearch"  placeholder="Cerca categoria..." />
-</form>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center">
+        <form [formGroup]="search" fxFlex="auto">
+            <input type="text" formControlName="childCategorySearch" placeholder="Cerca categoria..."/>
+        </form>
+        <!--    <div fxFlex="nogrow"></div>-->
+        <button class="btn" (click)="createCatDialog('Inserisci la nuova macrocategoria')">Aggiungi macrocategoria</button>
+    </div>
 
-
-<app-table
-  [data]="categoryData | async"
-  [columns]="displayedColumns"
-  [pageSize]="pageSize"
-  [totalRecords]="totalElement"
-  [lazyLoad]="true"
-  (lazyLoadEvent) = "doLazyLoad($event)"
-  [firstActionColumnHeader]="'Gestisci'"
-  (firstActionRowEventEmitter)="infoCategory($event)"
->
-</app-table>
+    <app-table
+            [data]="categoryData | async"
+            [columns]="displayedColumns"
+            [pageSize]="pageSize"
+            [totalRecords]="totalElement"
+            [lazyLoad]="true"
+            (lazyLoadEvent) = "doLazyLoad($event)"
+            [firstActionColumnHeader]="'Gestisci'"
+            (firstActionRowEventEmitter)="infoCategory($event)"
+    >
+    </app-table>
+</div>

@@ -21,7 +21,6 @@
 
 <div>
     <button *ngIf="!isFather()" (click)="createCatDialog('Inserisci la nuova sottocategoria')">Aggiungi sottocategoria</button>
-    <button (click)="createCatDialog('Inserisci la nuova macrocategoria')">Aggiungi macrocategoria</button>
-    <button (click)="edit()"> Modifica </button>
+    <button (click)="createCatDialog('Modifica il nome della categoria')">Modifica categoria</button>
     <button (click)="changeState()"> {{buttonLabel}} </button>
 </div>
