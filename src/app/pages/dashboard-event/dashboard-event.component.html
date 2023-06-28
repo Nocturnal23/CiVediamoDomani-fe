@@ -1,19 +1,22 @@
-<h2>Lista Eventi</h2>
+<div class="main">
+    <h2>Lista Eventi</h2>
 
-<form [formGroup]="search">
-    <input type="text" formControlName="searchValue"  placeholder="Cerca evento..." />
-</form>
+    <form [formGroup]="search">
+        <input type="text" formControlName="searchValue"  placeholder="Cerca evento..." />
+    </form>
 
-<app-table
-        [data]="eventData | async"
-        [columns]="displayedColumns"
-        [pageSize]="eventPageSize"
-        [totalRecords]="totalElement"
-        [lazyLoad]="true"
-        (lazyLoadEvent) = "doLazyLoad($event)"
-        [firstActionColumnHeader]="'Gestisci'"
-        (firstActionRowEventEmitter)="infoEvent($event)">
-</app-table>
+    <app-table
+            [data]="eventData | async"
+            [columns]="displayedColumns"
+            [pageSize]="eventPageSize"
+            [totalRecords]="totalElement"
+            [lazyLoad]="true"
+            (lazyLoadEvent) = "doLazyLoad($event)"
+            [firstActionColumnHeader]="'Gestisci'"
+            (firstActionRowEventEmitter)="infoEvent($event)">
+    </app-table>
+</div>
+
 
 
 

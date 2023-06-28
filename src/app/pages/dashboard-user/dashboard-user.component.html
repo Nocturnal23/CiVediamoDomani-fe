@@ -1,20 +1,23 @@
-<h2>Lista Utenti</h2>
+<div class="main">
+    <h2>Lista Utenti</h2>
 
-<form [formGroup]="search">
-    <input type="text" formControlName="firstNameSearch"  placeholder="Cerca nome..." />
-    <input type="text" formControlName="lastNameSearch"  placeholder="Cerca cognome..." />
-</form>
+    <form [formGroup]="search">
+        <input type="text" formControlName="firstNameSearch"  placeholder="Cerca nome..." />
+        <input type="text" formControlName="lastNameSearch"  placeholder="Cerca cognome..." />
+    </form>
 
 
 
-<app-table
-      [data]="userData | async"
-      [columns]="displayedColumns"
-      [pageSize]="userPageSize"
-      [totalRecords]="totalElement"
-      [lazyLoad]="true"
-      (lazyLoadEvent) = "doLazyLoad($event)"
-      [firstActionColumnHeader]="'Gestisci'"
-      (firstActionRowEventEmitter)="infoUser($event)"
->
-</app-table>
+    <app-table
+            [data]="userData | async"
+            [columns]="displayedColumns"
+            [pageSize]="userPageSize"
+            [totalRecords]="totalElement"
+            [lazyLoad]="true"
+            (lazyLoadEvent) = "doLazyLoad($event)"
+            [firstActionColumnHeader]="'Gestisci'"
+            (firstActionRowEventEmitter)="infoUser($event)"
+    >
+    </app-table>
+</div>
+

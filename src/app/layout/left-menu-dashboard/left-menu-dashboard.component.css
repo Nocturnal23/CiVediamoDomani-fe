@@ -5,7 +5,7 @@
 
 .mat-sidenav {
     /*position: fixed;*/
-    width: 150px;
+    width: 155px;
 }
 
 .goTo[ng-reflect-router-link] {

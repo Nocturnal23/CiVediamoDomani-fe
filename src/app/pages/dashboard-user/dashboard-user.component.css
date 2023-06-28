@@ -5,3 +5,7 @@ table, tr, td, th{
 td, th{
     text-align: center;
 }
+
+.main{
+    margin-left: 5px
+}
