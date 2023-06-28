@@ -1,7 +1,10 @@
-<p>Cambia password</p>
-<form [formGroup]="restorePassword">
-    <input type="password" placeholder="Password" formControlName="password"/>
-    <button (click)="restore()">Ripristina</button>
-</form>
+<div class="main">
+    <p>Cambia password</p>
+    <form [formGroup]="restorePassword">
+        <input type="password" placeholder="Password" formControlName="password"/>
+        <button (click)="restore()">Ripristina</button>
+    </form>
 
-<button *ngIf="canDeleteUser()" (click)="deleteProfile()">Elimina profilo</button>
+    <button *ngIf="canDeleteUser()" (click)="deleteProfile()">Elimina profilo</button>
+</div>
+

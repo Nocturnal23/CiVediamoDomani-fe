@@ -1,12 +1,14 @@
-<h2>Profilo Utente</h2>
+<div class="main">
+    <h2>Profilo Utente</h2>
 
-<mat-icon class="profile">person</mat-icon>
+    <mat-icon class="profile">person</mat-icon>
 
-<div *ngIf="user">
-    <p> Nome: {{user?.firstName}} </p>
-    <p> Cognome: {{user?.lastName}} </p>
-    <p> Email: {{user?.email}} </p>
-    <p> Password: {{user?.password}} </p>
+    <div *ngIf="user">
+        <p> Nome: {{user?.firstName}} </p>
+        <p> Cognome: {{user?.lastName}} </p>
+        <p> Email: {{user?.email}} </p>
+        <p> Password: {{user?.password}} </p>
+    </div>
+
+    <button *ngIf="canChangeState()" (click)="changeState()"> {{buttonLabel}} </button>
 </div>
-
-<button *ngIf="canChangeState()" (click)="changeState()"> {{buttonLabel}} </button>

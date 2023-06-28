@@ -1,43 +1,45 @@
-<h2> I TUOI EVENTI </h2>
+<div class="main">
+    <h2> I TUOI EVENTI </h2>
 
-<mat-tab-group class = "bordi" (selectedTabChange)="changedTab($event)">
-    <mat-tab label="Partecipazioni">
-        <app-table
-                [data]="eventListPartecipati | async"
-                [columns]="displayedColumns"
-                [pageSize]="pageSize"
-                [pageIndex]="pageIndex"
-                [totalRecords]="totalElements"
-                [lazyLoad]="true"
-                (lazyLoadEvent) = "doLazyLoad($event)"
-                [firstActionColumnHeader]="'Gestisci'"
-                (firstActionRowEventEmitter)="infoEvent($event)"
-        ></app-table>
-    </mat-tab>
-    <mat-tab label="Salvati">
-        <app-table
-                [data]="eventListSalvati | async"
-                [columns]="displayedColumns"
-                [pageSize]="pageSize"
-                [pageIndex]="pageIndex"
-                [totalRecords]="totalElements"
-                [lazyLoad]="true"
-                (lazyLoadEvent) = "doLazyLoad($event)"
-                [firstActionColumnHeader]="'Gestisci'"
-                (firstActionRowEventEmitter)="infoEvent($event)"
-        ></app-table>
-    </mat-tab>
-    <mat-tab label="Creati">
-        <app-table
-                [data]="eventListCreati | async"
-                [columns]="displayedColumns"
-                [pageSize]="pageSize"
-                [pageIndex]="pageIndex"
-                [totalRecords]="totalElements"
-                [lazyLoad]="true"
-                (lazyLoadEvent) = "doLazyLoad($event)"
-                [firstActionColumnHeader]="'Gestisci'"
-                (firstActionRowEventEmitter)="infoEvent($event)"
-        ></app-table>
-    </mat-tab>
-</mat-tab-group>
+    <mat-tab-group class = "bordi" (selectedTabChange)="changedTab($event)">
+        <mat-tab label="Partecipazioni">
+            <app-table
+                    [data]="eventListPartecipati | async"
+                    [columns]="displayedColumns"
+                    [pageSize]="pageSize"
+                    [pageIndex]="pageIndex"
+                    [totalRecords]="totalElements"
+                    [lazyLoad]="true"
+                    (lazyLoadEvent) = "doLazyLoad($event)"
+                    [firstActionColumnHeader]="'Gestisci'"
+                    (firstActionRowEventEmitter)="infoEvent($event)"
+            ></app-table>
+        </mat-tab>
+        <mat-tab label="Salvati">
+            <app-table
+                    [data]="eventListSalvati | async"
+                    [columns]="displayedColumns"
+                    [pageSize]="pageSize"
+                    [pageIndex]="pageIndex"
+                    [totalRecords]="totalElements"
+                    [lazyLoad]="true"
+                    (lazyLoadEvent) = "doLazyLoad($event)"
+                    [firstActionColumnHeader]="'Gestisci'"
+                    (firstActionRowEventEmitter)="infoEvent($event)"
+            ></app-table>
+        </mat-tab>
+        <mat-tab label="Creati">
+            <app-table
+                    [data]="eventListCreati | async"
+                    [columns]="displayedColumns"
+                    [pageSize]="pageSize"
+                    [pageIndex]="pageIndex"
+                    [totalRecords]="totalElements"
+                    [lazyLoad]="true"
+                    (lazyLoadEvent) = "doLazyLoad($event)"
+                    [firstActionColumnHeader]="'Gestisci'"
+                    (firstActionRowEventEmitter)="infoEvent($event)"
+            ></app-table>
+        </mat-tab>
+    </mat-tab-group>
+</div>
