@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {EventDto} from "../../core/dto/event-dto";
 import {UserService} from "../../core/services/user.service";
 import {AuthenticationService} from "../../core/services/authentication.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-event-card',
@@ -19,16 +20,8 @@ export class EventCardComponent {
     titleMaxLen = 80;
     descrMaxLen = 150;
 
-    constructor(private _userService: UserService) {
-        // this.eventDto = {
-        //     id: 10,
-        //     title: 'Le banane di Fazio - Assaggi e Massaggi LOREMLOREMLOREMLOREM LOREMLOREMLOREMLOREMLOREM LOREMLOREM LOREMLOREM LOREMLOREM LOREMLOREM',
-        //     description: 'Francesco Fazio propone un giro di assaggi della sua banana. Gradita la presenza habitué aula studio. Da ritenersi invitati anche tutti gli associati P2 e FiloRosso.',
-        //     datetime: new Date(),
-        //     url: 'testing',
-        //     price: 0
-        // }
-        console.log(this.eventDto)
+    constructor(private _userService: UserService,
+                private _router: Router) {
         this.eventDate = this.eventDto?.datetime?.toDateString()
         this.attending = false; //TODO GET
         this.favorite = false;
@@ -60,4 +53,7 @@ export class EventCardComponent {
         return true; //TODO: Da modificare
     }
 
+    goToInfo() {
+        this._router.navigate(['infoevent/'+this.eventDto.url])
+    }
 }
