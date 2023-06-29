@@ -99,6 +99,8 @@ export class InfoCategoryComponent {
     changeState() {
         if (this.category.deleted == 0) {
             this.categoryService.delete(this.category.url).subscribe((category) => {
+                if( category.father == null )
+                    this.changeChildState();
                 this.category = category;
                 this.buttonLabel = this.getButtonLabel();
             });
@@ -116,4 +118,13 @@ export class InfoCategoryComponent {
             this.router.navigateByUrl(currentUrl);
         });
     }
+
+    private changeChildState() {
+        this.child.subscribe((categories: CategoryDto[]) => {
+            categories.forEach((category: CategoryDto) => {
+                this.categoryService.delete(category.url).subscribe()
+            });
+        });
+    }
+
 }
