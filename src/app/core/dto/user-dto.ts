@@ -14,11 +14,11 @@ export interface UserDto extends BaseDto{
 
   appRole ?: number;
 
-  organisedEvents ?: number;
+  organisedEvents ?: Array<string>;
 
-  favorites ?: number;
+  favorites ?: Array<string>;
 
-  attending ?: number;
+  attending ?: Array<string>;
 
   categories ?: Array<CategoryDto>;
 }
