@@ -53,7 +53,7 @@ export class EventCardComponent implements OnInit {
     }
 
     isOngoin() {
-        return true; //TODO: Da modificare
+        return this.eventDto?.datetime > new Date;
     }
 
     goToInfo() {
