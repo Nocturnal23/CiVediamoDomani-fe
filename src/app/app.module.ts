@@ -46,6 +46,7 @@ import { DashboardCategoriesComponent } from './pages/dashboard-categories/dashb
 import { InfoCategoryComponent } from './pages/info-category/info-category.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { DialogAddCategoryComponent } from './layout/dialog-add-category/dialog-add-category.component';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
     declarations: [
@@ -98,7 +99,8 @@ import { DialogAddCategoryComponent } from './layout/dialog-add-category/dialog-
         MatSortModule,
         MatButtonModule,
         NgOptimizedImage,
-        MatDialogModule
+        MatDialogModule,
+        MatSelectModule
     ],
     providers: [
         { provide: 'SocialAuthServiceConfig',
