@@ -22,7 +22,7 @@ export class DashboardEventComponent implements OnInit {
         { name: 'Titolo', id: 'title', sort: 'title', path: 'title',  visible: true, isModelProperty: true },
         { name: 'Descrizione', id: 'description', sort: 'description', path: 'description',  visible: true, isModelProperty: true },
         { name: 'Organizzatore', id: 'organiser.firstName', sort: 'organiser.firstName' , path: 'organiser.firstName', visible: true, isModelProperty: true },
-        { name: 'Partecipanti', id: 'attendes', sort: 'attendes' , path: 'attendes', visible: true, isModelProperty: true },
+        { name: 'Partecipanti', id: 'attendees.length', sort: 'attendees.length' , path: 'attendees.length', visible: true, isModelProperty: true },
     ]
     search: FormGroup;
 
