@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {EventDto} from "../../core/dto/event-dto";
 import {EventService} from "../../core/services/event.service";
 import {AuthenticationService} from "../../core/services/authentication.service";
@@ -22,10 +22,10 @@ export class EditEventComponent {
 
         this.editEvent = _formBuilder.group({
             title: [''],
-            dateTime: [''],
+            dateTime: [],
             place: [''],
-            price: [''],
-            categories: [''],
+            price: [0],
+            categories: [],
             description: ['']
         })
     }
@@ -34,9 +34,8 @@ export class EditEventComponent {
         const event : EventDto = {
             ...this.editEvent.value,
             coordinates: "10.00000 10.000000",
-            organiser: AuthenticationService.getAppUser.id
+            organiser: AuthenticationService.getAppUser
         }
-
         this._eventService.save(event).subscribe()
     }
 }
