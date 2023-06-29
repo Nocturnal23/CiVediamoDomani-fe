@@ -19,7 +19,7 @@ export interface EventDto extends BaseDto {
 
   categories ?: Array<CategoryDto>;
 
-  attendes ?: number;
+  attendees ?: Array<string>;
 
-  followers ?: number;
+  followers ?: Array<string>;
 }
