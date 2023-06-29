@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {EventDto} from "../../core/dto/event-dto";
 import {UserService} from "../../core/services/user.service";
 import {AuthenticationService} from "../../core/services/authentication.service";
@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
     templateUrl: './event-card.component.html',
     styleUrls: ['./event-card.component.css']
 })
-export class EventCardComponent {
+export class EventCardComponent implements OnInit {
 
     @Input() eventDto : EventDto;
     attending: boolean;
@@ -22,9 +22,12 @@ export class EventCardComponent {
 
     constructor(private _userService: UserService,
                 private _router: Router) {
+    }
+
+    ngOnInit() {
         this.eventDate = this.eventDto?.datetime?.toDateString()
-        this.attending = false; //TODO GET
-        this.favorite = false;
+        this.attending = this.eventDto.attendees.includes(AuthenticationService.getAppUser.url)
+        this.favorite = this.eventDto.followers.includes(AuthenticationService.getAppUser.url)
         this.ticketing = !this.eventDto?.price ? 'Evento aperto a tutti' : `Costo biglietto: ${this.eventDto.price} €`;
         this.photo = 'https://cinematroisi.it/wp-content/uploads/2021/09/%C2%A9Flavia-Rossi_Cinema-Troisi_013-Copia-1024x831.jpg';
     }
