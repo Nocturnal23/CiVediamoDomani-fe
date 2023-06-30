@@ -16,9 +16,22 @@ export class InfoEventComponent {
                 private router: Router,
                 private activatdRoute: ActivatedRoute) {
 
-        this.activatdRoute.params.subscribe( ({url}) => this.url = url )
-        console.log( this.url )
-        this.eventService.getByUrl( this.url ). subscribe( event => this.eventDto = event )
+        this.eventDto = this.router.getCurrentNavigation()?.extras?.state?.['event']
+        if (this.eventDto) {
+            this.isFree()
+        } else {
+            this.activatdRoute.params.subscribe(({url}) => {
+                this.url = url;
+                this.eventService.getByUrl(this.url).subscribe((event) => {
+                    this.eventDto = event;
+                    this.isFree()
+                });
+            });
+        }
+
+        // this.activatdRoute.params.subscribe( ({url}) => this.url = url )
+        // console.log( this.url )
+        // this.eventService.getByUrl( this.url ). subscribe( event => this.eventDto = event )
     }
 
     isFree() {
