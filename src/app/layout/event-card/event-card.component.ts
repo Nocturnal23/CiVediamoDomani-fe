@@ -25,7 +25,7 @@ export class EventCardComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.eventDate = this.eventDto?.datetime?.toDateString()
+        this.eventDate = new Date(this.eventDto?.datetime).toLocaleString()
         this.attending = this.eventDto.attendees.includes(AuthenticationService.getAppUser.url)
         this.favorite = this.eventDto.followers.includes(AuthenticationService.getAppUser.url)
         this.ticketing = !this.eventDto?.price ? 'Evento aperto a tutti' : `Costo biglietto: ${this.eventDto.price} €`;
@@ -53,7 +53,7 @@ export class EventCardComponent implements OnInit {
     }
 
     isOngoin() {
-        return this.eventDto?.datetime > new Date;
+        return new Date(this.eventDto?.datetime) > new Date();
     }
 
     goToInfo() {
