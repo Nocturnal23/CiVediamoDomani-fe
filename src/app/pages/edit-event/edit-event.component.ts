@@ -22,7 +22,7 @@ export class EditEventComponent {
 
         this.editEvent = _formBuilder.group({
             title: [''],
-            dateTime: [],
+            datetime: [],
             place: [''],
             price: [0],
             categories: [],
