@@ -30,8 +30,24 @@ export class EditEventComponent {
         })
     }
 
-    createEvent(){
-        const event : EventDto = {
+    private addFather() {
+        const childCategories: CategoryDto[] = this.editEvent.value.categories;
+
+        for (let c = 0; c < childCategories.length; c++) {
+            const category = childCategories[c];
+            if (category.father) {
+                const macroCategoryIndex = childCategories.findIndex(c => c.id === category.father.id);
+                if (macroCategoryIndex === -1) {
+                    childCategories.push(category.father);
+                }
+            }
+        }
+        this.editEvent.patchValue({categories: childCategories});
+    }
+
+    createEvent() {
+        this.addFather()
+        const event: EventDto = {
             ...this.editEvent.value,
             coordinates: "10.00000 10.000000",
             organiser: AuthenticationService.getAppUser
