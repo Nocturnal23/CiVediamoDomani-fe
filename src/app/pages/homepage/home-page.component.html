@@ -3,28 +3,14 @@
         <h3> Scegli una categoria per iniziare </h3>
     </div>
 
-<!--    <div class="carousel">-->
-<!--        <div class="left-carousel"><mat-icon>keyboard_arrow_left</mat-icon></div>-->
-<!--        <div class="center-carousel">Categoria</div>-->
-<!--        <hr>-->
-<!--        <div class="center-carousel">Categoria</div>-->
-<!--        <hr>-->
-<!--        <div class="center-carousel">Categoria</div>-->
-<!--        <div class="right-carousel"><mat-icon>keyboard_arrow_right</mat-icon></div>-->
-<!--    </div>-->
-
-    <div class="carousel">
-        <div>
-            <mat-icon class="left-carousel" >keyboard_arrow_left</mat-icon>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center">
+        <mat-icon class="arrow" (click)="changeCategory(-1)">keyboard_arrow_left</mat-icon>
+        <div *ngFor="let c of categorieCarosello.slice(0, 3)">
+            <div class="carousel-card" fxFlex="25%" fxLayoutAlign="center center" (click)="loadEvents(c.id)">
+                {{c.name}}
+            </div>
         </div>
-        <div class="center-carousel"> Categoria </div>
-        <hr>
-        <div class="center-carousel"> Categoria </div>
-        <hr>
-        <div class="center-carousel"> Categoria </div>
-        <div>
-            <mat-icon class="right-carousel">keyboard_arrow_right</mat-icon>
-        </div>
+        <mat-icon class="arrow" (click)="changeCategory(1)">keyboard_arrow_right</mat-icon>
     </div>
 
     <div *ngIf="showCreateButton()">
