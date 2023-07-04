@@ -1,28 +1,70 @@
-<h3 class="eventTitle"> {{eventDto?.title}} </h3>
+<h2 class="eventTitle"> {{eventDto?.title}} </h2>
 
-<p> {{eventDto?.place}}</p>
-<p> {{eventDto?.datetime}} </p>
-<p> {{eventDto?.organiser.firstName}} </p>
+<div fxLayout="row" fxLayoutAlign="center center">
+    <p class="field">Località: </p>
+    <p>{{eventDto?.place}}</p>
+</div>
 
-<mat-icon class="icon">bookmark_border</mat-icon>
-<!--Questa possiamo usarla se l'evento viene salvato nei preferiti.-->
-<!--<mat-icon>bookmark</mat-icon>-->
+<div fxLayout="row" fxLayoutAlign="center center">
+    <p class="field">Data e ora: </p>
+    <p>{{eventDate}}</p>
+</div>
 
-<mat-icon class="icon">check_box_outline_blank</mat-icon>
-<!--Questa possiamo usarla se l'utente partecipa.-->
-<!--<mat-icon>check_box</mat-icon>-->
+<div fxLayout="row" fxLayoutAlign="center center">
+    <p class="field">Organizzatore: </p>
+    <p>{{eventDto?.organiser.firstName}}</p>
+</div>
 
-<p> {{eventDto?.description}} </p>
+<div *ngIf="attending; else elseAttend" fxLayout="row" fxLayoutAlign="center center">
+    <mat-icon>check_circle</mat-icon>
+    <p *ngIf="onGoin()"> Parteciperai all'evento </p>
+    <p *ngIf="!onGoin()"> Hai partecipato ell'evento </p>
+</div>
+<ng-template #elseAttend>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-icon>check_circle_outline</mat-icon>
+        <p> Non parteciperai all'evento </p>
+    </div>
+</ng-template>
 
-<p *ngIf="!isFree()"> Acquista qua: www.comprabiglietti.it </p>
-<p *ngIf="isFree()"> Ingresso gratis. </p>
+<div *ngIf="favorite; else elseFav" fxLayout="row" fxLayoutAlign="center center">
+    <mat-icon>favorite</mat-icon>
+    <p> Quest'evento è tra i tuoi preferiti </p>
+</div>
+<ng-template #elseFav>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-icon>favorite_border</mat-icon>
+        <p> Quest'evento non è tra i tuoi preferiti </p>
+    </div>
+</ng-template>
 
-<p> Categoria evento: <div *ngFor="let cat of eventDto?.categories"> {{cat.name}} </div>
+<div fxLayout="row" fxLayoutAlign="center center">
+    <p class="field">Descrizione: </p>
+    <p>{{eventDto?.description}}</p>
+</div>
 
-<p> Condividi su: </p>
+<div fxLayout="row" fxLayoutAlign="center center">
+    <p *ngIf="!isFree()"> Acquista qua: www.comprabiglietti.it </p>
+    <p *ngIf="isFree()"> Ingresso gratis. </p>
+</div>
 
-<table border="100" align="right">
-    <tr>
-        <td>Mappa</td>
-    </tr>
-</table>
+<div fxLayout="row" fxLayoutAlign="center center">
+    <p class="field"> Categoria evento: </p>
+    <div class="print-item" *ngFor="let cat of eventDto?.categories; last as isLast">
+        <p *ngIf="!isLast"> {{cat.name}}, </p>
+        <p *ngIf="isLast"> {{cat.name}}. </p>
+    </div>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center center">
+    <p class="field"> Condividi su: </p>
+</div>
+
+<div>
+    <table border="100" align="right">
+        <tr>
+            <td>Mappa</td>
+        </tr>
+    </table>
+</div>
+

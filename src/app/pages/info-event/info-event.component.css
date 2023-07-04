@@ -5,3 +5,12 @@
 .icon{
     cursor: pointer;
 }
+
+.field {
+    font-weight: bold;
+    margin: 5px;
+}
+
+.print-item{
+    margin: 5px;
+}
