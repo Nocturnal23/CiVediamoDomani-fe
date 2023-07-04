@@ -1,24 +1,29 @@
-<h2>Crea Evento</h2>
+<h2 class="title">Crea Evento</h2>
 
-<div class="color1">
-    <form [formGroup]="editEvent" fxLayout="column" fxLayoutGap="10px">
-        <div>
-            <input type="text" placeholder="Titolo" formControlName="title"/>
-        </div>
-
-        <div>
-            <input type="datetime-local" formControlName="datetime"/>
-        </div>
-
-        <div>
-            <input type="text" placeholder="Luogo" formControlName="place"/>
-        </div>
-
-        <div>
-            <input type="number" placeholder="Prezzo" formControlName="price"/>
-        </div>
+<div class="container" fxLayout="column" fxLayoutAlign="center center">
+    <form [formGroup]="editEvent" class="formGroup" fxLayout="column" fxLayoutGap="5px">
+        <mat-form-field>
+            <mat-label>Titolo</mat-label>
+            <input matInput type="text" placeholder="Titolo" formControlName="title">
+        </mat-form-field>
 
         <mat-form-field>
+            <mat-label>Data</mat-label>
+            <input matInput type="datetime-local" formControlName="datetime"/>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Luogo</mat-label>
+            <input matInput type="text" placeholder="Luogo" formControlName="place">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Prezzo</mat-label>
+            <input matInput type="number" placeholder="Prezzo" formControlName="price">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Categoria</mat-label>
             <mat-select formControlName="categories" multiple="true">
                 <mat-option *ngFor="let cat of categories" [value]="cat">
                     {{cat.name}}
@@ -26,14 +31,11 @@
             </mat-select>
         </mat-form-field>
 
+        <mat-form-field id="description">
+            <mat-label>Descrizione</mat-label>
+            <textarea matInput type="text" placeholder="Descrizione" formControlName="description"> </textarea>
+        </mat-form-field>
 
-        <div>
-            <input type="text" placeholder="Descrizione" formControlName="description"/>
-        </div>
-
-        <div>
-            <button (click)="createEvent()">Pubblica</button>
-        </div>
+        <button (click)="createEvent()">Pubblica</button>
     </form>
 </div>
-
