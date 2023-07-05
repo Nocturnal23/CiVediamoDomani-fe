@@ -26,7 +26,7 @@ export class SearchPageComponent implements OnInit{
     }
     ngOnInit() {
         this._activatedRoute.data.subscribe(({eventList}) => { this.eventList = eventList.content });
-        this._activatedRoute.params.subscribe(({query}) => { this.searchValue = query });
+        // this._activatedRoute.params.subscribe(({query}) => { this.searchValue = query });
         this.searchLocation = 'Milano';
     }
 }

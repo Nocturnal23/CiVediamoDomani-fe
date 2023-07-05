@@ -54,7 +54,7 @@ export class HomePageComponent {
         }
     }
 
-    loadEvents(id: number) {
-        console.log(id)
+    loadEvents(category: CategoryDto) {
+        this._router.navigate( ["/search"], {queryParams: {category: category.name}} )
     }
 }

@@ -26,7 +26,7 @@ export class HeaderBarComponent {
     }
     search() {
       console.log("Da header-bar: " + this.searchForm.value.searchBar)
-      this._router.navigate(['/search', this.searchForm.value.searchBar] )
+      this._router.navigate(['/search'], {queryParams: { searchValue: this.searchForm.value.searchBar } } )
     }
 
     isLogged() {

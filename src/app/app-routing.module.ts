@@ -56,7 +56,8 @@ const routes: Routes = [
     { path: '', component: HeaderContainerComponent, children: [
             { path: 'helloworld', component: HelloworldComponent },
             { path: RoutingEnums.HOMEPAGE, component: HomePageComponent },
-            { path: 'search/:query', component: SearchPageComponent,
+            { path: 'search', component: SearchPageComponent,
+                runGuardsAndResolvers: "always",
                 resolve: { eventList: searchResolver }
             },
             { path: 'infoevent/:url', component: InfoEventComponent },

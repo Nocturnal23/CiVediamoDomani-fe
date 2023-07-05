@@ -10,7 +10,9 @@ import {CategoryService} from "../services/category.service";
 
 export const searchResolver: ResolveFn<Page<EventDto>> =
     (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-        return inject(EventService).filter({searchValue: route.paramMap.get('query')!});
+        let entries = route.queryParamMap.keys.map( key => { return [key, route.queryParamMap.get(key)] })
+        let criteria = Object.fromEntries(entries)
+        return inject(EventService).filter( criteria );
     };
 
 export const usersResolver: ResolveFn<Page<UserDto>> =
