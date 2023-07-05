@@ -44,7 +44,7 @@
 </div>
 
 <div fxLayout="row" fxLayoutAlign="center center">
-    <p *ngIf="!isFree()"> Acquista qua: www.comprabiglietti.it </p>
+    <p *ngIf="!isFree()"> Costo: {{eventDto?.price}} </p>
     <p *ngIf="isFree()"> Ingresso gratis. </p>
 </div>
 
