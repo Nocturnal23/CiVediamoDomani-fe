@@ -5,4 +5,5 @@ export interface EventCriteria extends BaseCriteria {
     organiserId?: number
     followerId?: number
     attendeeId?: number
+    category?: string
 }
