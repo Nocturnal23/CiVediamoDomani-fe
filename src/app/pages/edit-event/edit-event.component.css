@@ -12,9 +12,9 @@
     width: 100%;
 }
 
-/*#description{*/
-/*    height: 150px;*/
-/*}*/
+.description{
+    min-height: 150px;
+}
 
 .formGroup{
     width: 25%;
