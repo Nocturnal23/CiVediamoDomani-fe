@@ -43,8 +43,8 @@
     justify-content: center;
     -ms-flex-pack: center;
     text-align: center;
-    /*border: none;*/
-    /*background-color: #ffeba7;*/
+    border: none;
+    background-color: #ffeba7;
     border: 1px solid;
     cursor: pointer;
     color: #102770;
@@ -77,11 +77,11 @@
     transition: transform 200ms linear;
 }
 .section-dropdown {
+    left: 85%;
     position: absolute;
     padding: 5px;
     background-color: #111;
     top: 70px;
-    left: 80%;
     /*width: 80%;*/
     border-radius: 4px;
     display: block;
