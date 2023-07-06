@@ -15,7 +15,7 @@ export class SearchPageComponent implements OnInit{
     sliderMaxRange: number = 100;
     sliderStep: number = 10;
 
-    searchValue: any = '';
+    searchValue: string = '';
     searchLocation: string = '';
     eventList: EventDto[] = [];
 
@@ -26,7 +26,7 @@ export class SearchPageComponent implements OnInit{
     }
     ngOnInit() {
         this._activatedRoute.data.subscribe(({eventList}) => { this.eventList = eventList.content });
-        // this._activatedRoute.params.subscribe(({query}) => { this.searchValue = query });
+        this._activatedRoute.queryParamMap.subscribe(params => {this.searchValue = params.get("searchValue")});
         this.searchLocation = 'Milano';
     }
 }
