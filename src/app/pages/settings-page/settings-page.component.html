@@ -1,9 +1,9 @@
 <div class="main">
     <p>Cambia password</p>
     <form [formGroup]="restorePassword">
-        <input type="password" placeholder="Password" formControlName="password"/>
-        <button (click)="restore()">Ripristina</button>
+<!--        <input type="password" placeholder="Password" formControlName="password"/>-->
     </form>
+    <button (click)="restore()">Ripristina</button>
 
     <button *ngIf="canDeleteUser()" (click)="deleteProfile()">Elimina profilo</button>
 </div>

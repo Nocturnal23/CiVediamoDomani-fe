@@ -5,6 +5,8 @@ import {AuthenticationService} from "../../core/services/authentication.service"
 import {UserDto} from "../../core/dto/user-dto";
 import {SocialAuthService} from "@abacritt/angularx-social-login";
 import {RoutingEnums} from "../../core/utils/Enums";
+import {DialogAddCategoryComponent} from "../../layout/dialog-add-category/dialog-add-category.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
     selector: 'app-loginpage',
@@ -22,7 +24,8 @@ export class LoginPageComponent implements OnInit {
     constructor(private _formBuilder: FormBuilder,
                 private _authService: AuthenticationService,
                 private _socialauthService: SocialAuthService,
-                private _router: Router) {
+                private _router: Router,
+                private dialog: MatDialog) {
         this.signUpForm = _formBuilder.group({
             firstName: [''],
             lastName: [''],
@@ -66,6 +69,18 @@ export class LoginPageComponent implements OnInit {
         }
         this._authService.signIn(user).subscribe( next => {
             this._router.navigate([`/${RoutingEnums.HOMEPAGE}`] )
+        })
+    }
+
+    restore(title:string) {
+        let dialogContent = this.dialog.open(DialogAddCategoryComponent,
+            { data: { dialogTitle: title }
+            })
+        dialogContent.afterClosed().subscribe(res => {
+            if( dialogContent.componentInstance.newName != null && dialogContent.componentInstance.newName != "" ) {
+                console.log(dialogContent.componentInstance.newName)
+                this._authService.resetPassword(dialogContent.componentInstance.newName).subscribe()
+            }
         })
     }
 }

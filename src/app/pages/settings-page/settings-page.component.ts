@@ -22,11 +22,13 @@ export class SettingsPageComponent {
     }
 
     restore() {
-
+        let email = AuthenticationService.getAppUser.email
+        console.log(email)
+        this.authenticationService.resetPassword(email).subscribe()
     }
 
     deleteProfile() {
-        this.userService.disableUser(AuthenticationService.getAppUser.url).subscribe( () => { //TODO DA modificare con disable
+        this.userService.disableUser(AuthenticationService.getAppUser.url).subscribe( () => {
             this.authenticationService.logOut()
         })
     }
