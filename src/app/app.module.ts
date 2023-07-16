@@ -48,6 +48,23 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { DialogAddCategoryComponent } from './layout/dialog-add-category/dialog-add-category.component';
 import {MatSelectModule} from "@angular/material/select";
 
+export const MATERIAL_MODULES = [
+    MatToolbarModule,
+    MatIconModule,
+    MatInputModule,
+    MatSliderModule,
+    MatExpansionModule,
+    MatSidenavModule,
+    MatTabsModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatTreeModule,
+    MatSortModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatSelectModule,
+]
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -77,30 +94,17 @@ import {MatSelectModule} from "@angular/material/select";
         DialogAddCategoryComponent
     ],
     imports: [
+        ...MATERIAL_MODULES,
         BrowserModule,
         RouterModule,
         AppRoutingModule,
         HttpClientModule,
         GoogleSigninButtonModule,
         BrowserAnimationsModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatInputModule,
-        MatSliderModule,
         FormsModule,
         ReactiveFormsModule,
-        MatExpansionModule,
-        MatSidenavModule,
-        MatTabsModule,
         FlexLayoutModule,
-        MatPaginatorModule,
-        MatTableModule,
-        MatTreeModule,
-        MatSortModule,
-        MatButtonModule,
-        NgOptimizedImage,
-        MatDialogModule,
-        MatSelectModule
+        NgOptimizedImage
     ],
     providers: [
         { provide: 'SocialAuthServiceConfig',
