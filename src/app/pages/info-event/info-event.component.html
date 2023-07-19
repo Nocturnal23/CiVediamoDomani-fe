@@ -17,8 +17,8 @@
 
 <div *ngIf="attending; else elseAttend" fxLayout="row" fxLayoutAlign="center center">
     <mat-icon>check_circle</mat-icon>
-    <p *ngIf="onGoin()"> Parteciperai all'evento </p>
-    <p *ngIf="!onGoin()"> Hai partecipato ell'evento </p>
+    <p *ngIf="onGoing()"> Parteciperai all'evento </p>
+    <p *ngIf="!onGoing()"> Hai partecipato ell'evento </p>
 </div>
 <ng-template #elseAttend>
     <div fxLayout="row" fxLayoutAlign="center center">
@@ -58,13 +58,33 @@
 
 <div fxLayout="row" fxLayoutAlign="center center">
     <p class="field"> Condividi su: </p>
+    <button mat-fab shareButton="facebook"
+            #fbBtn="shareButton"
+            [style.backgroundColor]="fbBtn?.color"
+            [url]="'https://www.civediamodomani.it/infoevent/' + eventDto?.url">
+        <fa-icon *ngIf="fbBtn" [icon]="fbIcon" size="lg"></fa-icon>
+    </button>
+
+    <button mat-fab shareButton="twitter"
+            #twBtn="shareButton"
+            [style.backgroundColor]="twBtn?.color"
+            [url]="'https://www.civediamodomani.it/infoevent/' + eventDto?.url">
+        <fa-icon *ngIf="twBtn" [icon]="twIcon" size="lg"></fa-icon>
+    </button>
+
+    <button mat-fab shareButton="copy"
+            #copyBtn="shareButton"
+            [style.backgroundColor]="copyBtn?.color"
+            [url]="'https://www.civediamodomani.it/infoevent/' + eventDto?.url">
+        <fa-icon *ngIf="copyBtn" [icon]="copyIcon" size="lg"></fa-icon>
+    </button>
 </div>
 
-<div>
-    <table border="100" align="right">
-        <tr>
-            <td>Mappa</td>
-        </tr>
-    </table>
-</div>
+<!--<div>-->
+<!--    <table border="100" align="right">-->
+<!--        <tr>-->
+<!--            <td>Mappa</td>-->
+<!--        </tr>-->
+<!--    </table>-->
+<!--</div>-->
 

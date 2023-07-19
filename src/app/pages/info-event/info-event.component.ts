@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {EventDto} from "../../core/dto/event-dto";
 import {EventService} from "../../core/services/event.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../core/services/authentication.service";
+import {faFacebook, faStaylinked, faTwitter} from "@fortawesome/free-brands-svg-icons";
 
 @Component({
     selector: 'app-info-event',
@@ -15,6 +16,9 @@ export class InfoEventComponent {
     eventDate: string;
     attending: boolean;
     favorite: boolean;
+    fbIcon = faFacebook
+    twIcon = faTwitter
+    copyIcon = faStaylinked
 
     constructor(private eventService: EventService,
                 private router: Router,
@@ -38,17 +42,13 @@ export class InfoEventComponent {
                 });
             });
         }
-
-        // this.activatdRoute.params.subscribe( ({url}) => this.url = url )
-        // console.log( this.url )
-        // this.eventService.getByUrl( this.url ). subscribe( event => this.eventDto = event )
     }
 
     isFree() {
         return this.eventDto?.price == 0;
     }
 
-    onGoin() {
+    onGoing() {
         return new Date(this.eventDto?.datetime) > new Date();
     }
 }
