@@ -90,4 +90,9 @@ export class AuthenticationService {
     isLogged() {
         return AuthenticationService.getAuthToken != null && AuthenticationService.getAppUser != null;
     }
+
+    resetPassword(email: string) {
+        const url = this.baseUrl + "/resetPassword"
+        return this._http.post<UserDto>(url, email);
+    }
 }
