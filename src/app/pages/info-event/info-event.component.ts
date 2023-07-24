@@ -1,9 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {EventDto} from "../../core/dto/event-dto";
 import {EventService} from "../../core/services/event.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../core/services/authentication.service";
 import {faFacebook, faStaylinked, faTwitter} from "@fortawesome/free-brands-svg-icons";
+import mapboxgl from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
 
 @Component({
     selector: 'app-info-event',
@@ -19,6 +20,8 @@ export class InfoEventComponent {
     fbIcon = faFacebook
     twIcon = faTwitter
     copyIcon = faStaylinked
+
+    map = document.getElementById("map")
 
     constructor(private eventService: EventService,
                 private router: Router,
@@ -42,6 +45,24 @@ export class InfoEventComponent {
                 });
             });
         }
+
+        // mapboxgl.accessToken = 'pk.eyJ1Ijoid2ViY3ZkIiwiYSI6ImNsa2ZwYm56MDA4ZzIzc3NleTMwdnhsMWIifQ.sU_r9FMc4zD1FAlNTvzppw';
+        // const map = new mapboxgl.Map({
+        //     container: 'map', // container ID
+        //     style: 'mapbox://styles/webcvd/clkfq9gb7005901qp8lz0c361', // style URL
+        //     center: [38.9, 16.3], // starting position [lng, lat]
+        //     zoom: 9, // starting zoom
+        // });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            mapboxgl.accessToken = 'pk.eyJ1Ijoid2ViY3ZkIiwiYSI6ImNsa2ZwYm56MDA4ZzIzc3NleTMwdnhsMWIifQ.sU_r9FMc4zD1FAlNTvzppw';
+            const map = new mapboxgl.Map({
+                container: 'map', // container ID
+                style: 'mapbox://styles/webcvd/clkfq9gb7005901qp8lz0c361', // style URL
+                center: [38.9, 16.3], // starting position [lng, lat]
+                zoom: 9, // starting zoom
+            });
+        });
     }
 
     isFree() {
