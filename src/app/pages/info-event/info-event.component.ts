@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {EventDto} from "../../core/dto/event-dto";
 import {EventService} from "../../core/services/event.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -11,7 +11,7 @@ import mapboxgl from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
     templateUrl: './info-event.component.html',
     styleUrls: ['./info-event.component.css']
 })
-export class InfoEventComponent {
+export class InfoEventComponent implements AfterViewInit {
     eventDto: EventDto;
     url: string
     eventDate: string;
@@ -25,7 +25,8 @@ export class InfoEventComponent {
 
     constructor(private eventService: EventService,
                 private router: Router,
-                private activatdRoute: ActivatedRoute) {
+                private activatdRoute: ActivatedRoute,
+                private changeDetectorRef: ChangeDetectorRef) {
 
         this.eventDto = this.router.getCurrentNavigation()?.extras?.state?.['event']
         if (this.eventDto) {
@@ -45,21 +46,23 @@ export class InfoEventComponent {
                 });
             });
         }
+    }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            mapboxgl.accessToken = 'pk.eyJ1Ijoid2ViY3ZkIiwiYSI6ImNsa2ZwYm56MDA4ZzIzc3NleTMwdnhsMWIifQ.sU_r9FMc4zD1FAlNTvzppw';
-            const map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/webcvd/clkfq9gb7005901qp8lz0c361',
-                center: [16.302584588767076,38.962913531997714],
-                zoom: 8,
-                scrollZoom: {
-                    speed: 1,
-                    around: 'center'
-                }
-            });
-            map.addControl(new mapboxgl.NavigationControl());
+    ngAfterViewInit(): void {
+        mapboxgl.accessToken = 'pk.eyJ1Ijoid2ViY3ZkIiwiYSI6ImNsa2ZwYm56MDA4ZzIzc3NleTMwdnhsMWIifQ.sU_r9FMc4zD1FAlNTvzppw';
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/webcvd/clkfq9gb7005901qp8lz0c361',
+            center: [16.302584588767076, 38.962913531997714],
+            zoom: 8,
+            scrollZoom: {
+                speed: 1,
+                around: 'center'
+            }
         });
+        map.addControl(new mapboxgl.NavigationControl());
+
+        this.changeDetectorRef.detectChanges();
     }
 
     isFree() {
