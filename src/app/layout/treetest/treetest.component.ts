@@ -87,19 +87,6 @@ export class ChecklistDatabase {
             return accumulator.concat(node);
         }, []);
     }
-
-    /** Add an item to to-do list */
-    insertItem(parent: TodoItemNode, name: string) {
-        if (parent.children) {
-            parent.children.push({item: name} as TodoItemNode);
-            this.dataChange.next(this.data);
-        }
-    }
-
-    updateItem(node: TodoItemNode, name: string) {
-        node.item = name;
-        this.dataChange.next(this.data);
-    }
 }
 
 /**
@@ -126,12 +113,6 @@ export class TreetestComponent {
 
     /** Map from nested node to flattened node. This helps us to keep the same object for selection */
     nestedNodeMap = new Map<TodoItemNode, TodoItemFlatNode>();
-
-    /** A selected parent node to be inserted */
-    selectedParent: TodoItemFlatNode | null = null;
-
-    /** The new item's name */
-    newItemName = '';
 
     treeControl: FlatTreeControl<TodoItemFlatNode>;
 
@@ -164,8 +145,6 @@ export class TreetestComponent {
     getChildren = (node: TodoItemNode): TodoItemNode[] => node.children;
 
     hasChild = (_: number, _nodeData: TodoItemFlatNode) => _nodeData.expandable;
-
-    hasNoContent = (_: number, _nodeData: TodoItemFlatNode) => _nodeData.item === '';
 
     /**
      * Transformer to convert nested node to flat node. Record the nodes in maps for later use.
@@ -263,17 +242,4 @@ export class TreetestComponent {
         }
         return null;
     }
-
-    // /** Select the category so we can insert the new item. */
-    // addNewItem(node: TodoItemFlatNode) {
-    //     const parentNode = this.flatNodeMap.get(node);
-    //     this._database.insertItem(parentNode!, '');
-    //     this.treeControl.expand(node);
-    // }
-    //
-    // /** Save the node to database */
-    // saveNode(node: TodoItemFlatNode, itemValue: string) {
-    //     const nestedNode = this.flatNodeMap.get(node);
-    //     this._database.updateItem(nestedNode!, itemValue);
-    // }
 }
