@@ -46,22 +46,19 @@ export class InfoEventComponent {
             });
         }
 
-        // mapboxgl.accessToken = 'pk.eyJ1Ijoid2ViY3ZkIiwiYSI6ImNsa2ZwYm56MDA4ZzIzc3NleTMwdnhsMWIifQ.sU_r9FMc4zD1FAlNTvzppw';
-        // const map = new mapboxgl.Map({
-        //     container: 'map', // container ID
-        //     style: 'mapbox://styles/webcvd/clkfq9gb7005901qp8lz0c361', // style URL
-        //     center: [38.9, 16.3], // starting position [lng, lat]
-        //     zoom: 9, // starting zoom
-        // });
-
         document.addEventListener('DOMContentLoaded', () => {
             mapboxgl.accessToken = 'pk.eyJ1Ijoid2ViY3ZkIiwiYSI6ImNsa2ZwYm56MDA4ZzIzc3NleTMwdnhsMWIifQ.sU_r9FMc4zD1FAlNTvzppw';
             const map = new mapboxgl.Map({
-                container: 'map', // container ID
-                style: 'mapbox://styles/webcvd/clkfq9gb7005901qp8lz0c361', // style URL
-                center: [38.9, 16.3], // starting position [lng, lat]
-                zoom: 9, // starting zoom
+                container: 'map',
+                style: 'mapbox://styles/webcvd/clkfq9gb7005901qp8lz0c361',
+                center: [16.302584588767076,38.962913531997714],
+                zoom: 8,
+                scrollZoom: {
+                    speed: 1,
+                    around: 'center'
+                }
             });
+            map.addControl(new mapboxgl.NavigationControl());
         });
     }
 
