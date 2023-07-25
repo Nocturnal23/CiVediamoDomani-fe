@@ -20,8 +20,10 @@ import {LeftMenuDashboardComponent} from "./layout/left-menu-dashboard/left-menu
 import {RoutingEnums} from "./core/utils/Enums";
 import {DashboardCategoriesComponent} from "./pages/dashboard-categories/dashboard-categories.component";
 import {InfoCategoryComponent} from "./pages/info-category/info-category.component";
+import {TreetestComponent} from './layout/treetest/treetest.component'
 
 const routes: Routes = [
+    { path: 'testing', component: TreetestComponent},
     { path: 'not_found', component: NotFoundComponent},
     { path: RoutingEnums.LOGIN, component:LoginPageComponent,
         canActivate: [canLogin]},
