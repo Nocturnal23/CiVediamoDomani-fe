@@ -14,3 +14,10 @@
 .print-item{
     margin: 5px;
 }
+
+#map {
+    width: 50%; /* o specifica una larghezza in pixel */
+    height: 300px; /* o specifica un'altezza in pixel */
+    margin-left: 25%;
+    margin-top: 10px;
+}

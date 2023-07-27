@@ -47,6 +47,8 @@ import { InfoCategoryComponent } from './pages/info-category/info-category.compo
 import {MatDialogModule} from "@angular/material/dialog";
 import { DialogAddCategoryComponent } from './layout/dialog-add-category/dialog-add-category.component';
 import {MatSelectModule} from "@angular/material/select";
+import {ShareButtonsModule} from "ngx-sharebuttons/buttons";
+import {ShareIconsModule} from "ngx-sharebuttons/icons";
 
 export const MATERIAL_MODULES = [
     MatToolbarModule,
@@ -104,7 +106,9 @@ export const MATERIAL_MODULES = [
         FormsModule,
         ReactiveFormsModule,
         FlexLayoutModule,
-        NgOptimizedImage
+        NgOptimizedImage,
+        ShareButtonsModule,
+        ShareIconsModule
     ],
     providers: [
         { provide: 'SocialAuthServiceConfig',
@@ -125,4 +129,5 @@ export const MATERIAL_MODULES = [
         }],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {}
