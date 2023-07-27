@@ -9,24 +9,17 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import {BehaviorSubject} from 'rxjs';
 
-/**
- * Node for to-do item
- */
 export class TodoItemNode {
     children: TodoItemNode[];
     item: string;
 }
 
-/** Flat to-do item node with expandable and level information */
 export class TodoItemFlatNode {
     item: string;
     level: number;
     expandable: boolean;
 }
 
-/**
- * The Json object for to-do list data.
- */
 const TREE_DATA = {
     Groceries: {
         'Almond Meal flour': null,
@@ -49,30 +42,21 @@ const TREE_DATA = {
 export class ChecklistDatabase {
     dataChange = new BehaviorSubject<TodoItemNode[]>([]);
 
-    get data(): TodoItemNode[] {
-        return this.dataChange.value;
-    }
+    get data(): TodoItemNode[] { return this.dataChange.value;}
 
     constructor() {
         this.initialize();
     }
 
     initialize() {
-        // Build the tree nodes from Json object. The result is a list of `TodoItemNode` with nested
-        //     file node as children.
         const data = this.buildFileTree(TREE_DATA, 0);
-
-        // Notify the change.
-        this.dataChange.next(data);
+        this.dataChange.next(data); // Notify the change.
     }
 
-    /**
-     * Build the file structure tree. The `value` is the Json object, or a sub-tree of a Json object.
-     * The return value is the list of `TodoItemNode`.
-     */
     buildFileTree(obj: {[key: string]: any}, level: number): TodoItemNode[] {
         return Object.keys(obj).reduce<TodoItemNode[]>((accumulator, key) => {
             const value = obj[key];
+            console.log(value)
             const node = new TodoItemNode();
             node.item = key;
 
@@ -89,9 +73,6 @@ export class ChecklistDatabase {
     }
 }
 
-/**
- * @title Tree with checkboxes
- */
 @Component({
     selector: 'app-treetest',
     templateUrl: './treetest.component.html',
@@ -146,13 +127,9 @@ export class TreetestComponent {
 
     hasChild = (_: number, _nodeData: TodoItemFlatNode) => _nodeData.expandable;
 
-    /**
-     * Transformer to convert nested node to flat node. Record the nodes in maps for later use.
-     */
     transformer = (node: TodoItemNode, level: number) => {
         const existingNode = this.nestedNodeMap.get(node);
-        const flatNode =
-            existingNode && existingNode.item === node.item ? existingNode : new TodoItemFlatNode();
+        const flatNode = existingNode && existingNode.item === node.item ? existingNode : new TodoItemFlatNode();
         flatNode.item = node.item;
         flatNode.level = level;
         flatNode.expandable = !!node.children?.length;
@@ -161,7 +138,6 @@ export class TreetestComponent {
         return flatNode;
     };
 
-    /** Whether all the descendants of the node are selected. */
     descendantsAllSelected(node: TodoItemFlatNode): boolean {
         const descendants = this.treeControl.getDescendants(node);
         const descAllSelected =
@@ -172,33 +148,24 @@ export class TreetestComponent {
         return descAllSelected;
     }
 
-    /** Whether part of the descendants are selected */
     descendantsPartiallySelected(node: TodoItemFlatNode): boolean {
         const descendants = this.treeControl.getDescendants(node);
         const result = descendants.some(child => this.checklistSelection.isSelected(child));
         return result && !this.descendantsAllSelected(node);
     }
 
-    /** Toggle the to-do item selection. Select/deselect all the descendants node */
-    todoItemSelectionToggle(node: TodoItemFlatNode): void {
+    toogleSelection (node: TodoItemFlatNode): void {
         this.checklistSelection.toggle(node);
+        this.checkAllParentsSelection(node);
         const descendants = this.treeControl.getDescendants(node);
-        this.checklistSelection.isSelected(node)
-            ? this.checklistSelection.select(...descendants)
-            : this.checklistSelection.deselect(...descendants);
-
-        // Force update for the parent
-        descendants.forEach(child => this.checklistSelection.isSelected(child));
-        this.checkAllParentsSelection(node);
+        if (!!descendants) {
+            this.checklistSelection.isSelected(node)
+                ? this.checklistSelection.select(...descendants)
+                : this.checklistSelection.deselect(...descendants)
+            descendants.forEach(child => this.checklistSelection.isSelected(child))
+        }
     }
 
-    /** Toggle a leaf to-do item selection. Check all the parents to see if they changed */
-    todoLeafItemSelectionToggle(node: TodoItemFlatNode): void {
-        this.checklistSelection.toggle(node);
-        this.checkAllParentsSelection(node);
-    }
-
-    /* Checks all the parents when a leaf node is selected/unselected */
     checkAllParentsSelection(node: TodoItemFlatNode): void {
         let parent: TodoItemFlatNode | null = this.getParentNode(node);
         while (parent) {
@@ -207,7 +174,6 @@ export class TreetestComponent {
         }
     }
 
-    /** Check root node checked state and change it accordingly */
     checkRootNodeSelection(node: TodoItemFlatNode): void {
         const nodeSelected = this.checklistSelection.isSelected(node);
         const descendants = this.treeControl.getDescendants(node);
@@ -223,21 +189,18 @@ export class TreetestComponent {
         }
     }
 
-    /* Get the parent node of a node */
     getParentNode(node: TodoItemFlatNode): TodoItemFlatNode | null {
         const currentLevel = this.getLevel(node);
 
-        if (currentLevel < 1) {
-            return null;
-        }
+        if (currentLevel > 0) {
+            const startIndex = this.treeControl.dataNodes.indexOf(node) - 1;
 
-        const startIndex = this.treeControl.dataNodes.indexOf(node) - 1;
+            for (let i = startIndex; i >= 0; i--) {
+                const currentNode = this.treeControl.dataNodes[i];
 
-        for (let i = startIndex; i >= 0; i--) {
-            const currentNode = this.treeControl.dataNodes[i];
-
-            if (this.getLevel(currentNode) < currentLevel) {
-                return currentNode;
+                if (this.getLevel(currentNode) < currentLevel) {
+                    return currentNode;
+                }
             }
         }
         return null;
