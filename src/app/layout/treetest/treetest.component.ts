@@ -1,13 +1,13 @@
-import {SelectionModel} from '@angular/cdk/collections';
-import {FlatTreeControl} from '@angular/cdk/tree';
-import {Component, Injectable} from '@angular/core';
-import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/material/tree';
-import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatButtonModule} from '@angular/material/button';
-import {BehaviorSubject} from 'rxjs';
+import {SelectionModel} from '@angular/cdk/collections'
+import {FlatTreeControl} from '@angular/cdk/tree'
+import {Component, Injectable} from '@angular/core'
+import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/material/tree'
+import {MatIconModule} from '@angular/material/icon'
+import {MatInputModule} from '@angular/material/input'
+import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatCheckboxModule} from '@angular/material/checkbox'
+import {MatButtonModule} from '@angular/material/button'
+import {BehaviorSubject} from 'rxjs'
 
 export class TodoItemNode {
     children: TodoItemNode[];
@@ -89,10 +89,8 @@ export class ChecklistDatabase {
     ],
 })
 export class TreetestComponent {
-    /** Map from flat node to nested node. This helps us finding the nested node to be modified */
     flatNodeMap = new Map<TodoItemFlatNode, TodoItemNode>();
 
-    /** Map from nested node to flattened node. This helps us to keep the same object for selection */
     nestedNodeMap = new Map<TodoItemNode, TodoItemFlatNode>();
 
     treeControl: FlatTreeControl<TodoItemFlatNode>;
@@ -101,7 +99,6 @@ export class TreetestComponent {
 
     dataSource: MatTreeFlatDataSource<TodoItemNode, TodoItemFlatNode>;
 
-    /** The selection for checklist */
     checklistSelection = new SelectionModel<TodoItemFlatNode>(true /* multiple */);
 
     constructor(private _database: ChecklistDatabase) {
@@ -140,12 +137,9 @@ export class TreetestComponent {
 
     descendantsAllSelected(node: TodoItemFlatNode): boolean {
         const descendants = this.treeControl.getDescendants(node);
-        const descAllSelected =
-            descendants.length > 0 &&
-            descendants.every(child => {
-                return this.checklistSelection.isSelected(child);
-            });
-        return descAllSelected;
+        return descendants.length > 0 && descendants.every(child => {
+            return this.checklistSelection.isSelected(child);
+        });
     }
 
     descendantsPartiallySelected(node: TodoItemFlatNode): boolean {
@@ -159,9 +153,8 @@ export class TreetestComponent {
         this.checkAllParentsSelection(node);
         const descendants = this.treeControl.getDescendants(node);
         if (!!descendants) {
-            this.checklistSelection.isSelected(node)
-                ? this.checklistSelection.select(...descendants)
-                : this.checklistSelection.deselect(...descendants)
+            this.checklistSelection.isSelected(node) ?
+                this.checklistSelection.select(...descendants) : this.checklistSelection.deselect(...descendants)
             descendants.forEach(child => this.checklistSelection.isSelected(child))
         }
     }
@@ -176,12 +169,7 @@ export class TreetestComponent {
 
     checkRootNodeSelection(node: TodoItemFlatNode): void {
         const nodeSelected = this.checklistSelection.isSelected(node);
-        const descendants = this.treeControl.getDescendants(node);
-        const descAllSelected =
-            descendants.length > 0 &&
-            descendants.every(child => {
-                return this.checklistSelection.isSelected(child);
-            });
+        const descAllSelected = this.descendantsAllSelected(node)
         if (nodeSelected && !descAllSelected) {
             this.checklistSelection.deselect(node);
         } else if (!nodeSelected && descAllSelected) {
@@ -191,7 +179,6 @@ export class TreetestComponent {
 
     getParentNode(node: TodoItemFlatNode): TodoItemFlatNode | null {
         const currentLevel = this.getLevel(node);
-
         if (currentLevel > 0) {
             const startIndex = this.treeControl.dataNodes.indexOf(node) - 1;
 
