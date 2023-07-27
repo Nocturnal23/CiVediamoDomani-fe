@@ -22,11 +22,13 @@ export class HeaderBarComponent {
             searchBar: ['']
         })
 
-        this.searchLocation = "Milano"
+        this.searchLocation = 'Milano'
+        // this.searchLocation = _authService.isLogged()? AuthenticationService.getAppUser.location : "Milano" //Imposti location di default se utente anonimo o non ne ha una
     }
     search() {
       console.log("Da header-bar: " + this.searchForm.value.searchBar)
-      this._router.navigate(['/search'], {queryParams: { searchValue: this.searchForm.value.searchBar } } )
+      this._router.navigate(['/search'], {queryParams: { searchValue: this.searchForm.value.searchBar} } ) //
+        // location: this.searchLocation
     }
 
     isLogged() {
@@ -39,5 +41,15 @@ export class HeaderBarComponent {
 
     goToEvent() {
         this._router.navigate([RoutingEnums.USER_EVENTS] );
+    }
+
+    changeLocation() {
+        //apri popup per la ricerca tramite mapbox (come quella sulla creazione evento
+        //chiuso popup salvi la nuova location
+        this.searchLocation = 'Nuova location'
+        if (this._authService.isLogged()) {
+            //salva la location nel db per l'utente loggato
+        }
+
     }
 }
