@@ -4,7 +4,7 @@
         <div><mat-icon>room</mat-icon> {{searchLocation}}</div>
         <div>
             <mat-slider [min]="sliderMinRange" [max]="sliderMaxRange" [step]="sliderStep">
-                <input matSliderThumb [(value)]="searchRange">
+                <input matSliderThumb [(value)]="searchRange" (valueChange)="onSliderChange()">
             </mat-slider>
             Cerca entro: {{searchRange}} KM
         </div>

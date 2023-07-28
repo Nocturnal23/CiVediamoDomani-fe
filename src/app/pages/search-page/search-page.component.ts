@@ -29,4 +29,13 @@ export class SearchPageComponent implements OnInit{
         this._activatedRoute.queryParamMap.subscribe(params => {this.searchValue = params.get("searchValue")});
         this.searchLocation = 'Milano';
     }
+
+    onSliderChange() {
+        // this.service.filter({
+        //     ...this.criteria,
+        //     searchrange: this.searchRange
+        // }).subscribe( data => this.eventList = data.content )
+
+        console.log(this.searchRange)
+    }
 }
