@@ -3,6 +3,31 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {EventService} from "../../core/services/event.service";
 import {EventDto} from "../../core/dto/event-dto";
 import {CategoryService} from "../../core/services/category.service";
+import {firstValueFrom} from "rxjs";
+
+function toRadians(degrees: number): number {
+    return degrees * (Math.PI / 180);
+}
+
+function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
+    const earthRadiusKm = 6371; // Raggio medio della Terra in chilometri
+
+    const lat1Rad = toRadians(lat1);
+    const lon1Rad = toRadians(lon1);
+    const lat2Rad = toRadians(lat2);
+    const lon2Rad = toRadians(lon2);
+
+    const dLat = lat2Rad - lat1Rad;
+    const dLon = lon2Rad - lon1Rad;
+
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(lat1Rad) * Math.cos(lat2Rad) *
+        Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    const distance = earthRadiusKm * c;
+
+    return distance;
+}
 
 @Component({
     selector: 'app-search-page',
@@ -10,13 +35,15 @@ import {CategoryService} from "../../core/services/category.service";
     styleUrls: ['./search-page.component.css']
 })
 export class SearchPageComponent implements OnInit{
-    searchRange: number = 0;
+    searchRange: number = 10;
     sliderMinRange: number = 10;
     sliderMaxRange: number = 100;
     sliderStep: number = 10;
 
     searchValue: string = '';
     searchLocation: string = '';
+    searchLongitude: string;
+    searchLatitude: string;
     eventList: EventDto[] = [];
 
     constructor(private _router: Router,
@@ -25,9 +52,30 @@ export class SearchPageComponent implements OnInit{
                 private _categoryService: CategoryService) {
     }
     ngOnInit() {
-        this._activatedRoute.data.subscribe(({eventList}) => { this.eventList = eventList.content });
-        this._activatedRoute.queryParamMap.subscribe(params => {this.searchValue = params.get("searchValue")});
-        this.searchLocation = 'Milano';
+        this.loadData()
+    }
+
+    async loadData() {
+        const paramsPromise = firstValueFrom(this._activatedRoute.queryParamMap)
+        const dataPromise = firstValueFrom(this._activatedRoute.data)
+        const [params, data] = await Promise.all([paramsPromise,dataPromise])
+
+        this.searchValue = params.get("searchValue")
+        this.searchLocation = params.get("location")
+        this.searchLongitude = params.get("longitude")
+        this.searchLatitude = params.get("latitude")
+
+        console.log(params)
+
+        const list: EventDto[] = data['eventList'].content
+        list.filter(event => {
+            const longitude = Number(event.coordinates.split(',')[0])
+            const latitude = Number(event.coordinates.split(',')[1])
+            const dist = calculateDistance(Number(this.searchLatitude), Number(this.searchLongitude), latitude, longitude)
+
+            return dist < this.searchRange
+        })
+        this.eventList = list
     }
 
     onSliderChange() {
