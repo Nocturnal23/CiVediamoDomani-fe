@@ -88,7 +88,7 @@ export class AuthenticationService {
     }
 
     isLogged() {
-        return AuthenticationService.getAuthToken != null && AuthenticationService.getAppUser != null;
+        return !!AuthenticationService.getAuthToken && !!AuthenticationService.getAppUser;
     }
 
     resetPassword(email: string) {
