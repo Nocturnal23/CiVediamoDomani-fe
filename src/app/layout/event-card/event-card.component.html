@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <div>
+    <div *ngIf="isLogged()">
         <div *ngIf="isOngoin()" fxLayout="column" fxLayoutAlign="space-around center" >
             <div *ngIf="attending; else elseAttend" (click)="setAttending()">
                 <mat-icon>check_circle</mat-icon>
