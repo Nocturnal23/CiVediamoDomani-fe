@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {AuthenticationService} from "../../core/services/authentication.service";
 import {RoutingEnums} from "../../core/utils/Enums";
+import {SearchService} from "../../core/services/search.service";
 
 @Component({
     selector: 'app-header-bar',
@@ -17,18 +18,21 @@ export class HeaderBarComponent {
 
     constructor(private _router: Router,
                 private _formBuilder: FormBuilder,
-                private _authService : AuthenticationService) {
+                private _authService : AuthenticationService,
+                private _searchService: SearchService) {
         this.searchForm = _formBuilder.group({
             searchBar: ['']
         })
 
-        this.searchLocation = 'Milano'
-        // this.searchLocation = _authService.isLogged()? AuthenticationService.getAppUser.location : "Milano" //Imposti location di default se utente anonimo o non ne ha una
+        this.searchLocation = _searchService.searchLocation
     }
     search() {
-      console.log("Da header-bar: " + this.searchForm.value.searchBar)
-      this._router.navigate(['/search'], {queryParams: { searchValue: this.searchForm.value.searchBar} } ) //
-        // location: this.searchLocation
+        this._router.navigate(['/search'], {queryParams: {
+                searchValue: this.searchForm.value.searchBar,
+                location: this.searchLocation,
+                longitude: this._searchService.searchLongitude,
+                latitude: this._searchService.searchLatitude
+        }})
     }
 
     isLogged() {
