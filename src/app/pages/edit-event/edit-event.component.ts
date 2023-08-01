@@ -38,7 +38,7 @@ export class EditEventComponent implements AfterViewInit {
         mapboxgl.accessToken = 'pk.eyJ1Ijoid2ViY3ZkIiwiYSI6ImNsa2ZwYm56MDA4ZzIzc3NleTMwdnhsMWIifQ.sU_r9FMc4zD1FAlNTvzppw';
         const geocoder = new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,
-            types: 'country,region,place,postcode,locality,neighborhood,address,poi'
+            types: 'country,region,postcode,district,place,locality,neighborhood,address,poi'
         });
 
         geocoder.addTo('#geocoder');
@@ -50,6 +50,8 @@ export class EditEventComponent implements AfterViewInit {
             this.longitude = coordinates[0];
             this.latitude = coordinates[1];
             this.place_name = e.result.text.split(',')[0].trim();
+
+            const city = e.result.place_name.split(',')[e.result.place_name.split(',').length - 3].trim();
         });
 
         geocoder.on('clear', () => {
