@@ -22,6 +22,8 @@ export interface UserDto extends BaseDto{
 
   categories ?: Array<CategoryDto>;
 
+  searchLocation ?: string;
+
   searchLatitude ?: string;
 
   searchLongitude ?: string;
