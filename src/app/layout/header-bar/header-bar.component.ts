@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {AuthenticationService} from "../../core/services/authentication.service";
 import {RoutingEnums} from "../../core/utils/Enums";
 import {SearchService} from "../../core/services/search.service";
+import {SearchParamsDto} from '../../core/dto/searchParams-dto'
 
 @Component({
     selector: 'app-header-bar',
@@ -27,12 +28,13 @@ export class HeaderBarComponent {
         this.searchLocation = _searchService.searchLocation
     }
     search() {
-        this._router.navigate(['/search'], {queryParams: {
-                searchValue: this.searchForm.value.searchBar,
-                location: this.searchLocation,
-                longitude: this._searchService.searchLongitude,
-                latitude: this._searchService.searchLatitude
-        }})
+        let params: SearchParamsDto = {
+            searchValue: this.searchForm.value.searchBar,
+            place: this.searchLocation,
+            lon: this._searchService.searchLongitude,
+            lat: this._searchService.searchLatitude
+        }
+        this._router.navigate(['/search'], {queryParams: params})
     }
 
     isLogged() {

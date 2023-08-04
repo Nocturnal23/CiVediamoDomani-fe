@@ -6,6 +6,7 @@ import {map, Observable, Subscription} from "rxjs";
 import {CategoryDto} from "../../core/dto/category-dto";
 import {EventService} from "../../core/services/event.service";
 import {SearchService} from "../../core/services/search.service";
+import {SearchParamsDto} from '../../core/dto/searchParams-dto'
 
 @Component({
     selector: 'app-homepage',
@@ -55,11 +56,12 @@ export class HomePageComponent {
     }
 
     loadEvents(category: CategoryDto) {
-        this._router.navigate( ["/search"], {queryParams: {
+        let params: SearchParamsDto = {
             category: category.name,
-                searchLocation: this._searchService.searchLocation,
-                searchLatitude: this._searchService.searchLatitude,
-                searchLongitude: this._searchService.searchLongitude
-        }})
+            place: this._searchService.searchLocation,
+            lat: this._searchService.searchLatitude,
+            lon: this._searchService.searchLongitude
+        }
+        this._router.navigate( ["/search"], {queryParams: params})
     }
 }

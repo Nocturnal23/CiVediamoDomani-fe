@@ -4,6 +4,7 @@ import {EventService} from "../../core/services/event.service";
 import {EventDto} from "../../core/dto/event-dto";
 import {CategoryService} from "../../core/services/category.service";
 import {firstValueFrom} from "rxjs";
+import {SearchParamsDto} from '../../core/dto/searchParams-dto'
 
 function toRadians(degrees: number): number {
     return degrees * (Math.PI / 180);
@@ -61,9 +62,9 @@ export class SearchPageComponent implements OnInit{
         const [params, data] = await Promise.all([paramsPromise,dataPromise])
 
         this.searchValue = params.get("searchValue")
-        this.searchLocation = params.get("location")
-        this.searchLongitude = params.get("longitude")
-        this.searchLatitude = params.get("latitude")
+        this.searchLocation = params.get("place")
+        this.searchLongitude = params.get("lon")
+        this.searchLatitude = params.get("lat")
 
         console.log(params)
 
