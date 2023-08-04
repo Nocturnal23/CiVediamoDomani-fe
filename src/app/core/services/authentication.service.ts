@@ -87,7 +87,7 @@ export class AuthenticationService {
         }
     }
 
-    isLogged() {
+    static isLogged() {
         return !!AuthenticationService.getAuthToken && !!AuthenticationService.getAppUser;
     }
 

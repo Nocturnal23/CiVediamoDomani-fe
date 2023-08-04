@@ -39,7 +39,7 @@ export class HomePageComponent {
     }
 
     showCreateButton() : boolean {
-        return this._authService.isLogged();
+        return AuthenticationService.isLogged();
     }
 
     changeCategory(move: number) {

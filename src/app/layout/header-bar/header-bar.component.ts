@@ -38,7 +38,7 @@ export class HeaderBarComponent {
     }
 
     isLogged() {
-        return this._authService.isLogged();
+        return AuthenticationService.isLogged();
     }
 
     goToLogin() {
@@ -53,7 +53,7 @@ export class HeaderBarComponent {
         //apri popup per la ricerca tramite mapbox (come quella sulla creazione evento
         //chiuso popup salvi la nuova location
         this.searchLocation = 'Nuova location'
-        if (this._authService.isLogged()) {
+        if (AuthenticationService.isLogged()) {
             //salva la location nel db per l'utente loggato
         }
 

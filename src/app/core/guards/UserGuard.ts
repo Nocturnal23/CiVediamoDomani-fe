@@ -10,7 +10,7 @@ function navigateToRoot() {
 export const isLoggedUser: CanActivateFn =
     (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
 
-        if(inject(AuthenticationService).isLogged())
+        if(AuthenticationService.isLogged())
             return true;
 
         navigateToRoot();
@@ -19,7 +19,7 @@ export const isLoggedUser: CanActivateFn =
 
 export const canLogin: CanActivateFn =
     (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-        if(!inject(AuthenticationService).isLogged())
+        if(!AuthenticationService.isLogged())
             return true;
 
         navigateToRoot();
