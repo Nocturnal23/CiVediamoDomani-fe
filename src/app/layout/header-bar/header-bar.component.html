@@ -4,18 +4,15 @@
     </div>
 
     <div class="toolbarCenter" fxFlex="45%">
-        <div fxFlex="25%" class="position">
-            <mat-icon (click)="changeLocation()">room</mat-icon>
+        <div fxFlex="25%" class="position" (click)="changeLocation('Cambia la tua città', 'Inserisci nome città')">
+            <mat-icon>room</mat-icon>
             <span> {{searchLocation}} </span>
         </div>
         <div class="searchForm" fxFlex="60%">
             <form [formGroup]="searchForm">
                 <div>
-<!--                <mat-form-field class="search" fxFlex="100%">-->
                     <input matInput type="text" class="search" formControlName="searchBar" (keydown.enter)="search()" placeholder="Cosa stai cercando?">
-<!--                </mat-form-field>-->
                     <mat-icon (click)="search()" class="searchButton">search</mat-icon>
-<!--                    <button type="submit" (click)="search()" class="searchButton"><mat-icon>search</mat-icon></button>-->
                 </div>
             </form>
         </div>

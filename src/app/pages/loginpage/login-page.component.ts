@@ -72,9 +72,12 @@ export class LoginPageComponent implements OnInit {
         })
     }
 
-    restore(title:string) {
+    restore(title:string, placeholder:string) {
         let dialogContent = this.dialog.open(DialogAddCategoryComponent,
-            { data: { dialogTitle: title }
+            { data: {
+                dialogTitle: title,
+                placeholderText: placeholder,
+                inputType: 'text'}
             })
         dialogContent.afterClosed().subscribe(res => {
             if( dialogContent.componentInstance.newName != null && dialogContent.componentInstance.newName != "" ) {

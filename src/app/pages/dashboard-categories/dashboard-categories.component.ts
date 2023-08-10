@@ -53,9 +53,12 @@ export class DashboardCategoriesComponent implements OnInit {
         );
     }
 
-    createCatDialog(title: string) {
+    createCatDialog(title: string, placeholder:string) {
         let dialogContent = this.dialog.open(DialogAddCategoryComponent,
-            { data: { dialogTitle: title }
+            { data: {
+                dialogTitle: title,
+                placeholderText: placeholder,
+                inputType: 'text'}
             })
         dialogContent.afterClosed().subscribe(res => {
             if( dialogContent.componentInstance.newName != null && dialogContent.componentInstance.newName != "" ) {

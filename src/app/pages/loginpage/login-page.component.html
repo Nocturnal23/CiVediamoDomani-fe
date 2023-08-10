@@ -26,7 +26,7 @@
             <h5>o accedi con la tua email</h5>
             <input type="email" placeholder="Email" formControlName="email"/>
             <input type="password" placeholder="Password" formControlName="password"/>
-            <h2 (click)="restore('Inserisci la tua email')">Password dimenticata? </h2>
+            <h2 class="password" (click)="restore('Recupero Password', 'Inserisci la tua email')">Password dimenticata? </h2>
             <button (click)="signIn()">Accedi</button>
         </form>
     </div>
