@@ -8,30 +8,39 @@ export class SearchService {
     private _defaultLatitude: string = "12.492650148954052";
     private _defaultLongitude: string = "41.890353287010065";
 
+
+    constructor(private _userService: UserService,
+                private _authenticationService: AuthenticationService) {
+    }
+
     setNewLocation(place: string, latitude: string, longitude: string) {
         this._defaultLocation = place
         this._defaultLatitude = latitude
         this._defaultLongitude = longitude
 
-        this._saveLocation()
+        if( AuthenticationService.isLogged() ) {
+            this._saveLocation()
+        }
     }
 
-    private _saveLocation () {
-        inject(UserService).save({
+  private _saveLocation() {
+        this._userService.save({
             ...AuthenticationService.getAppUser,
-            searchLocation: this.searchLocation,
-            searchLongitude: this.searchLongitude,
-            searchLatitude: this.searchLatitude
-        })
-    }
+            searchLocation: this._defaultLocation,
+            searchLongitude: this._defaultLongitude,
+            searchLatitude: this._defaultLatitude,
+        }).subscribe( () => this._authenticationService.refreshLoggedUser() );
+  }
 
     get searchLocation(): string {
+        console.log("Sono in get searchLocation")
         if (AuthenticationService.isLogged()) {
+            console.log(AuthenticationService.getAppUser.searchLocation)
             if (!!AuthenticationService.getAppUser.searchLocation)
                 return AuthenticationService.getAppUser.searchLocation
             this._saveLocation()
         }
-
+        console.log(this._defaultLocation)
         return this._defaultLocation;
     }
 
