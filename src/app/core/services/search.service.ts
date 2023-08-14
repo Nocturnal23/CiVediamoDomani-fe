@@ -23,24 +23,21 @@ export class SearchService {
         }
     }
 
-  private _saveLocation() {
+    private _saveLocation() {
         this._userService.save({
             ...AuthenticationService.getAppUser,
             searchLocation: this._defaultLocation,
             searchLongitude: this._defaultLongitude,
             searchLatitude: this._defaultLatitude,
         }).subscribe( () => this._authenticationService.refreshLoggedUser() );
-  }
+    }
 
     get searchLocation(): string {
-        console.log("Sono in get searchLocation")
         if (AuthenticationService.isLogged()) {
-            console.log(AuthenticationService.getAppUser.searchLocation)
             if (!!AuthenticationService.getAppUser.searchLocation)
                 return AuthenticationService.getAppUser.searchLocation
             this._saveLocation()
         }
-        console.log(this._defaultLocation)
         return this._defaultLocation;
     }
 
