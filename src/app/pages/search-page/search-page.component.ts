@@ -38,13 +38,14 @@ function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: numbe
 export class SearchPageComponent implements OnInit{
     searchRange: number = 10;
     sliderMinRange: number = 10;
-    sliderMaxRange: number = 100;
+    sliderMaxRange: number = 150;
     sliderStep: number = 10;
 
     searchValue: string = '';
     searchLocation: string = '';
     searchLongitude: string;
     searchLatitude: string;
+    loadedEvents: EventDto[] = [];
     eventList: EventDto[] = [];
 
     constructor(private _router: Router,
@@ -66,25 +67,21 @@ export class SearchPageComponent implements OnInit{
         this.searchLongitude = params.get("lon")
         this.searchLatitude = params.get("lat")
 
-        console.log(params)
+        this.loadedEvents = data['eventList'].content
+        this._loadEventList()
+    }
 
-        const list: EventDto[] = data['eventList'].content
-        list.filter(event => {
+    onSliderChange() {
+        this._loadEventList()
+    }
+
+    private _loadEventList() {
+        this.eventList = this.loadedEvents.filter(event => {
             const longitude = Number(event.coordinates.split(',')[0])
             const latitude = Number(event.coordinates.split(',')[1])
             const dist = calculateDistance(Number(this.searchLatitude), Number(this.searchLongitude), latitude, longitude)
 
             return dist < this.searchRange
         })
-        this.eventList = list
-    }
-
-    onSliderChange() {
-        // this.service.filter({
-        //     ...this.criteria,
-        //     searchrange: this.searchRange
-        // }).subscribe( data => this.eventList = data.content )
-
-        console.log(this.searchRange)
     }
 }
