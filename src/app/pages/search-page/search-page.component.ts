@@ -47,6 +47,7 @@ export class SearchPageComponent implements OnInit{
     searchLatitude: string;
     loadedEvents: EventDto[] = [];
     eventList: EventDto[] = [];
+    selectedCategories: string[] = []
 
     constructor(private _router: Router,
                 private _activatedRoute: ActivatedRoute,
@@ -66,6 +67,10 @@ export class SearchPageComponent implements OnInit{
         this.searchLocation = params.get("place")
         this.searchLongitude = params.get("lon")
         this.searchLatitude = params.get("lat")
+        let category = params.get("category")
+        if (!!category) {
+            this.selectedCategories.push(category)
+        }
 
         this.loadedEvents = data['eventList'].content
         this._loadEventList()

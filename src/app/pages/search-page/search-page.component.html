@@ -12,7 +12,7 @@
     <!--    La lista categorie va qui-->
     </div>
     <div fxLayout="column">
-        <div> Filtra per: Sport x  Altro x </div>
+        <div *ngIf="selectedCategories.length > 0" fxLayout="row"> Filtra per: <div *ngFor="let cat of selectedCategories">{{cat}}</div></div>
         <div fxFlex="70%">
             <div *ngFor="let event of eventList">
                 <app-event-card [eventDto]="event"></app-event-card>
