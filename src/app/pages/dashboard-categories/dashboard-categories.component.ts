@@ -5,7 +5,6 @@ import {Column, LazyLoadEvent} from "../../layout/table";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {CategoryService} from "../../core/services/category.service";
-import {CategoryCriteria} from "../../core/criteria/category-criteria";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogAddCategoryComponent} from "../../layout/dialog-add-category/dialog-add-category.component";
 
@@ -23,9 +22,11 @@ export class DashboardCategoriesComponent implements OnInit {
         { name: 'Macrocategoria', id: 'father.name', sort: 'father.name' , path: 'father.name', visible: true, isModelProperty: true },
         // { name: 'Numero sottocategorie', id: '', sort: '' , path: '', visible: true, isModelProperty: true },
         ]
-    pageSize: number
-    totalElement: number
-    criteria: CategoryCriteria = {}
+    orderBy = 'name' //l'orderby fa riferimento alla colonna dell'entità, che corrisponde all'id di Column
+    sortDirection = 'ASC' //keyword di oracle ASC e DESC
+    pageIndex: number = 0
+    pageSize: number = 5
+    totalElements: number = 0 //init per evitare errori in render
 
     constructor(private formBuilder: FormBuilder,
                 private router: Router,
@@ -39,18 +40,16 @@ export class DashboardCategoriesComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.search.valueChanges.pipe(debounceTime(1000)).subscribe(() => {
-            this.criteria = {...this.criteria, ...this.search.value}
-            this.loadCategory()
-        })
-
         this.categoryData = this.activatedRoute.data.pipe(
             map( res => {
-                this.totalElement = res['categoryDashList'].totalElements
+                this.totalElements = res['categoryDashList'].totalElements
                 this.pageSize = res['categoryDashList'].pageSize
                 return res['categoryDashList'].content
             })
         );
+        this.search.valueChanges.pipe(debounceTime(1000)).subscribe(() => {
+            this.reloadData()
+        })
     }
 
     createCatDialog(title: string, placeholder:string) {
@@ -82,12 +81,28 @@ export class DashboardCategoriesComponent implements OnInit {
     }
 
     doLazyLoad( event: LazyLoadEvent ) {
-        this.criteria = {...this.criteria, pageSize: event.pageSize, pageNumber: event.pageIndex}
-        this.loadCategory()
+        if (event.pageSize) {
+            this.pageSize = event.pageSize;
+        }
+        this.pageIndex = event.pageIndex;
+        if (event.direction) {
+            this.sortDirection = event.direction;
+        }
+        if (event.active) {
+            this.orderBy = event.active;
+        }
+
+        this.reloadData()
     }
 
-    private loadCategory() {
-        this.categoryData = this.categoryService.filter(this.criteria).pipe(
+    private reloadData() {
+        this.categoryData = this.categoryService.filter({
+            ...this.search.value,
+            orderBy: this.orderBy,
+            sortDirection: this.sortDirection,
+            pageNumber: this.pageIndex,
+            pageSize: this.pageSize
+        }).pipe(
             map(res => res.content)
         )
     }
