@@ -42,8 +42,9 @@ export class DashboardCategoriesComponent implements OnInit {
     ngOnInit() {
         this.categoryData = this.activatedRoute.data.pipe(
             map( res => {
-                this.totalElements = res['categoryDashList'].totalElements
-                this.pageSize = res['categoryDashList'].pageSize
+                this.totalElements = res['categoryDashList'].totalElements ? res['categoryDashList'].totalElements : 0
+                this.pageSize = res['categoryDashList'].size ? res['categoryDashList'].size : 5
+
                 return res['categoryDashList'].content
             })
         );
