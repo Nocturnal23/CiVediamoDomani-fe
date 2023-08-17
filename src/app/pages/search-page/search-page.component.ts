@@ -94,4 +94,12 @@ export class SearchPageComponent implements OnInit{
             return dist < this.searchRange
         })
     }
+
+    getSearchLabel() {
+        if (!!this.searchValue)
+            return `Risultati per "${this.searchValue}" su: ${this.searchLocation}`
+        if (!!this.selectedCategories[0])
+            return `Risultati per ${this.selectedCategories[0]} su: ${this.searchLocation}`
+        return `Tutti gli eventi su: ${this.searchLocation}`
+    }
 }
