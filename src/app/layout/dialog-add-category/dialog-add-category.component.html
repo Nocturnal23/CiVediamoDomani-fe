@@ -2,15 +2,21 @@
 
 <div>
     <form [formGroup]="newCategory">
-        <div>
+        <div *ngIf="data.inputType === InputType.Text">
             <mat-dialog-content>
-                <input type="text" placeholder="Nome categoria" formControlName="name"/>
+                <input type="text" placeholder={{data.placeholderText}} formControlName="name"/>
             </mat-dialog-content>
-        </div>
 
-        <div>
             <mat-dialog-actions>
                 <button mat-button mat-dialog-close="{{newName}}" (click)="createCat()">Crea</button>
+            </mat-dialog-actions>
+        </div>
+
+        <div *ngIf="data.inputType === InputType.Map">
+            <div id="geocoder" ></div>
+
+            <mat-dialog-actions>
+                <button mat-button mat-dialog-close="{{selectedPosition}}">Cambia</button>
             </mat-dialog-actions>
         </div>
     </form>

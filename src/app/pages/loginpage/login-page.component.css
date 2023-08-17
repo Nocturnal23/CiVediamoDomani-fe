@@ -221,3 +221,7 @@ input {
 .social-container {
     margin: 20px 0;
 }
+
+.password{
+    cursor: pointer;
+}

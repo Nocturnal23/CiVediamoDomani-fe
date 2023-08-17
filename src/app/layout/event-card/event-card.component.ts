@@ -26,10 +26,16 @@ export class EventCardComponent implements OnInit {
 
     ngOnInit() {
         this.eventDate = new Date(this.eventDto?.datetime).toLocaleString()
-        this.attending = this.eventDto.attendees.includes(AuthenticationService.getAppUser.url)
-        this.favorite = this.eventDto.followers.includes(AuthenticationService.getAppUser.url)
+        if (this.isLogged()) {
+            this.attending = this.eventDto.attendees.includes(AuthenticationService.getAppUser.url)
+            this.favorite = this.eventDto.followers.includes(AuthenticationService.getAppUser.url)
+        }
         this.ticketing = !this.eventDto?.price ? 'Evento aperto a tutti' : `Costo biglietto: ${this.eventDto.price} €`;
         this.photo = 'https://cinematroisi.it/wp-content/uploads/2021/09/%C2%A9Flavia-Rossi_Cinema-Troisi_013-Copia-1024x831.jpg';
+    }
+
+    isLogged() {
+        return !!AuthenticationService.getAppUser
     }
 
     setAttending() {

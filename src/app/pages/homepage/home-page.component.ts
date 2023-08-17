@@ -5,6 +5,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {map, Observable, Subscription} from "rxjs";
 import {CategoryDto} from "../../core/dto/category-dto";
 import {EventService} from "../../core/services/event.service";
+import {SearchService} from "../../core/services/search.service";
+import {SearchParamsDto} from '../../core/dto/searchParams-dto'
 
 @Component({
     selector: 'app-homepage',
@@ -14,15 +16,14 @@ import {EventService} from "../../core/services/event.service";
 export class HomePageComponent {
     categories: Observable<Array<CategoryDto>>
     categorieCarosello: CategoryDto[] = [];
-    indx = 0
-    currentIndx = 0
 
 
     constructor(private _authService : AuthenticationService,
                 private _categoryService: CategoryService,
                 private _eventService: EventService,
                 private _router: Router,
-                private _activatedRoute: ActivatedRoute) {
+                private _activatedRoute: ActivatedRoute,
+                private _searchService: SearchService) {
 
         this.categories = this._categoryService.filter({}).pipe(
             map((macroCategories) => macroCategories.content)
@@ -38,7 +39,7 @@ export class HomePageComponent {
     }
 
     showCreateButton() : boolean {
-        return this._authService.isLogged();
+        return AuthenticationService.isLogged();
     }
 
     changeCategory(move: number) {
@@ -55,6 +56,12 @@ export class HomePageComponent {
     }
 
     loadEvents(category: CategoryDto) {
-        this._router.navigate( ["/search"], {queryParams: {category: category.name}} )
+        let params: SearchParamsDto = {
+            category: category.name,
+            place: this._searchService.searchLocation,
+            lat: this._searchService.searchLatitude,
+            lon: this._searchService.searchLongitude
+        }
+        this._router.navigate( ["/search"], {queryParams: params})
     }
 }

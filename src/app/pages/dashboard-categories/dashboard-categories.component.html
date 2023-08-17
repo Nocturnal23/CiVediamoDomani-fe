@@ -6,14 +6,15 @@
             <input type="text" formControlName="childCategorySearch" placeholder="Cerca categoria..."/>
         </form>
         <!--    <div fxFlex="nogrow"></div>-->
-        <button class="btn" (click)="createCatDialog('Inserisci la nuova macrocategoria')">Aggiungi macrocategoria</button>
+        <button class="btn" (click)="createCatDialog('Inserisci la nuova macrocategoria', 'Inserisci nome categoria')">Aggiungi macrocategoria</button>
     </div>
 
     <app-table
             [data]="categoryData | async"
             [columns]="displayedColumns"
             [pageSize]="pageSize"
-            [totalRecords]="totalElement"
+            [pageIndex]="pageIndex"
+            [totalRecords]="totalElements"
             [lazyLoad]="true"
             (lazyLoadEvent) = "doLazyLoad($event)"
             [firstActionColumnHeader]="'Gestisci'"

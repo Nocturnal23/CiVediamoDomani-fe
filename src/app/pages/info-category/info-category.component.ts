@@ -71,8 +71,7 @@ export class InfoCategoryComponent {
 
     private editCategory(name: string) {
         let editCat : CategoryDto = {
-            id: 0,
-            url:  this.category.url,
+            ...this.category,
             name: name.charAt(0).toUpperCase() + name.slice(1),
         }
         this.categoryService.update(editCat).subscribe( () => {
@@ -80,9 +79,12 @@ export class InfoCategoryComponent {
         })
     }
 
-    createCatDialog(title: string) {
+    createCatDialog(title: string, placeholder:string) {
         let dialogContent = this.dialog.open(DialogAddCategoryComponent,
-            { data: { dialogTitle: title }
+            { data: {
+                dialogTitle: title,
+                placeholderText: placeholder,
+                inputType: 'text'}
             })
         dialogContent.afterClosed().subscribe(res => {
             if( dialogContent.componentInstance.newName != null && dialogContent.componentInstance.newName != "" ) {

@@ -21,3 +21,11 @@
     margin-left: 25%;
     margin-top: 10px;
 }
+
+.dataColumn{
+    background-color: #1976d2;
+}
+
+.mapColumn{
+    background-color: aquamarine;
+}

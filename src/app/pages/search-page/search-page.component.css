@@ -1,9 +1,22 @@
 a {
-  position: relative;
-  top: 10%
+    position: relative;
+    top: 10%
 }
 
 p {
-  position: relative;
-  top: 20%;
+    position: relative;
+    top: 20%;
+}
+
+.searchContainer{
+    padding: 10px;
+}
+
+.selectedCat{
+    margin-left: 5px;
+    padding: 1px;
+    border-radius: 5px;
+    border: 1px solid #333333;
+    background-color: #e6ebf1;
+    box-shadow: 5px 5px 5px #646363;
 }

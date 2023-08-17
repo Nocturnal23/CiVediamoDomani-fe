@@ -6,6 +6,7 @@ import {environment} from "../../../environments/environment";
 import {SocialAuthService, SocialUser} from "@abacritt/angularx-social-login";
 import {Router} from "@angular/router";
 import {RoutingEnums} from "../utils/Enums";
+import {UserService} from './user.service'
 
 @Injectable({providedIn: "root"})
 export class AuthenticationService {
@@ -15,6 +16,7 @@ export class AuthenticationService {
 
     constructor( private _http: HttpClient,
                  private _socialauthService: SocialAuthService,
+                 private _userService: UserService,
                  private _router: Router) {
         this.baseUrl = environment.BE_URL + "/v1"
         this._socialauthService.authState.subscribe((user) => {
@@ -87,8 +89,17 @@ export class AuthenticationService {
         }
     }
 
-    isLogged() {
-        return AuthenticationService.getAuthToken != null && AuthenticationService.getAppUser != null;
+    static isLogged() {
+        return !!AuthenticationService.getAuthToken && !!AuthenticationService.getAppUser;
+    }
+
+    refreshLoggedUser() {
+        if (AuthenticationService.isLogged()) {
+            this._userService.getByUrl(AuthenticationService._appuser.url).subscribe( res => {
+                localStorage.setItem('user', JSON.stringify(res));
+                AuthenticationService._appuser = res;
+            })
+        }
     }
 
     resetPassword(email: string) {

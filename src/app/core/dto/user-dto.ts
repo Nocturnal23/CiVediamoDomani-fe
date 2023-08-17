@@ -21,4 +21,10 @@ export interface UserDto extends BaseDto{
   attending ?: Array<string>;
 
   categories ?: Array<CategoryDto>;
+
+  searchLocation ?: string;
+
+  searchLatitude ?: string;
+
+  searchLongitude ?: string;
 }
