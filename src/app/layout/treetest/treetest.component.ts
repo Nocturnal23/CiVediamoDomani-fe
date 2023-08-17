@@ -1,12 +1,7 @@
 import {SelectionModel} from '@angular/cdk/collections'
 import {FlatTreeControl} from '@angular/cdk/tree'
 import {Component, Injectable} from '@angular/core'
-import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/material/tree'
-import {MatIconModule} from '@angular/material/icon'
-import {MatInputModule} from '@angular/material/input'
-import {MatFormFieldModule} from '@angular/material/form-field'
-import {MatCheckboxModule} from '@angular/material/checkbox'
-import {MatButtonModule} from '@angular/material/button'
+import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree'
 import {BehaviorSubject} from 'rxjs'
 
 export class TodoItemNode {
@@ -77,16 +72,7 @@ export class ChecklistDatabase {
     selector: 'app-treetest',
     templateUrl: './treetest.component.html',
     styleUrls: ['./treetest.component.css'],
-    providers: [ChecklistDatabase],
-    standalone: true,
-    imports: [
-        MatTreeModule,
-        MatButtonModule,
-        MatCheckboxModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
-    ],
+    providers: [ChecklistDatabase]
 })
 export class TreetestComponent {
     flatNodeMap = new Map<TodoItemFlatNode, TodoItemNode>();

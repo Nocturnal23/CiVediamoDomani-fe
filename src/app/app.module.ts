@@ -49,6 +49,9 @@ import { DialogAddCategoryComponent } from './layout/dialog-add-category/dialog-
 import {MatSelectModule} from "@angular/material/select";
 import {ShareButtonsModule} from "ngx-sharebuttons/buttons";
 import {ShareIconsModule} from "ngx-sharebuttons/icons";
+import {MatCheckboxModule} from '@angular/material/checkbox'
+import {MatFormFieldModule} from '@angular/material/form-field'
+import {TreetestComponent} from './layout/treetest/treetest.component'
 
 export const MATERIAL_MODULES = [
     MatToolbarModule,
@@ -65,6 +68,8 @@ export const MATERIAL_MODULES = [
     MatButtonModule,
     MatDialogModule,
     MatSelectModule,
+    MatCheckboxModule,
+    MatFormFieldModule
 ]
 
 @NgModule({
@@ -93,7 +98,8 @@ export const MATERIAL_MODULES = [
         EventCardComponent,
         DashboardCategoriesComponent,
         InfoCategoryComponent,
-        DialogAddCategoryComponent
+        DialogAddCategoryComponent,
+        TreetestComponent
     ],
     imports: [
         ...MATERIAL_MODULES,
