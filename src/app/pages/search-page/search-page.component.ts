@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router'
 import {EventService} from "../../core/services/event.service";
 import {EventDto} from "../../core/dto/event-dto";
 import {CategoryService} from "../../core/services/category.service";
@@ -53,6 +53,11 @@ export class SearchPageComponent implements OnInit{
                 private _activatedRoute: ActivatedRoute,
                 private _eventService: EventService,
                 private _categoryService: CategoryService) {
+        this._router.events.subscribe((e: any) => {
+            if (e instanceof NavigationEnd) {
+                this.ngOnInit();
+            }
+        });
     }
     ngOnInit() {
         this.loadData()
@@ -69,7 +74,7 @@ export class SearchPageComponent implements OnInit{
         this.searchLatitude = params.get("lat")
         let category = params.get("category")
         if (!!category) {
-            this.selectedCategories.push(category)
+            this.selectedCategories = [category]
         }
 
         this.loadedEvents = data['eventList'].content
