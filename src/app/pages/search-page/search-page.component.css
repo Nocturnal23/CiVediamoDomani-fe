@@ -20,3 +20,16 @@ p {
     background-color: #e6ebf1;
     box-shadow: 5px 5px 5px #646363;
 }
+
+.treeContainer {
+    box-shadow: 5px 5px 5px #888888;
+}
+
+.upperNode {/* Remove default list bullets */
+    list-style-type: none;
+}
+
+li {
+    cursor: pointer;
+    user-select: none; /* Prevent text selection */
+}
