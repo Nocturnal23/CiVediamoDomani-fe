@@ -1,10 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core'
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router'
-import {EventService} from "../../core/services/event.service";
-import {EventDto} from "../../core/dto/event-dto";
-import {CategoryService} from "../../core/services/category.service";
-import {firstValueFrom} from "rxjs";
-import {SearchParamsDto} from '../../core/dto/searchParams-dto'
+import {EventService} from '../../core/services/event.service'
+import {EventDto} from '../../core/dto/event-dto'
+import {CategoryService} from '../../core/services/category.service'
+import {firstValueFrom} from 'rxjs'
 import {CategoryDto} from '../../core/dto/category-dto'
 
 export interface CategoryElement {
@@ -32,9 +31,7 @@ function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: numbe
         Math.cos(lat1Rad) * Math.cos(lat2Rad) *
         Math.sin(dLon/2) * Math.sin(dLon/2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    const distance = earthRadiusKm * c;
-
-    return distance;
+    return earthRadiusKm * c;
 }
 
 @Component({
