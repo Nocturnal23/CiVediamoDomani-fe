@@ -6,6 +6,11 @@ import {CategoryService} from "../../core/services/category.service";
 import {firstValueFrom} from "rxjs";
 import {SearchParamsDto} from '../../core/dto/searchParams-dto'
 
+export interface CategoryElement {
+    name: string,
+    children?: CategoryElement[]
+}
+
 function toRadians(degrees: number): number {
     return degrees * (Math.PI / 180);
 }
@@ -48,6 +53,12 @@ export class SearchPageComponent implements OnInit{
     loadedEvents: EventDto[] = [];
     eventList: EventDto[] = [];
     selectedCategories: string[] = []
+    catList: CategoryElement[] = [
+        {name: 'Sport', children: [ {name: 'Calcio'}, {name: 'Basket'} ]},
+        {name: 'Musica', children: [ {name: 'Concerti'}, {name: 'Rave'} ]},
+        {name: 'Comizio'},
+        {name: 'Giochi', children: [{name: 'Bambini'}]}
+    ]
 
     constructor(private _router: Router,
                 private _activatedRoute: ActivatedRoute,
@@ -101,5 +112,9 @@ export class SearchPageComponent implements OnInit{
         if (!!this.selectedCategories[0])
             return `Risultati per ${this.selectedCategories[0]} su: ${this.searchLocation}`
         return `Tutti gli eventi su: ${this.searchLocation}`
+    }
+
+    toogleElement(elem: CategoryElement) {
+        console.log(elem.name)
     }
 }
