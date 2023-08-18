@@ -14,9 +14,6 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 
 export class DashboardEventComponent implements OnInit {
-
-    totalElement: number
-    eventPageSize: number
     eventData: Observable<Array<EventDto>>
     displayedColumns: Column[] = [
         { name: 'Titolo', id: 'title', sort: 'title', path: 'title',  visible: true, isModelProperty: true },
@@ -25,8 +22,11 @@ export class DashboardEventComponent implements OnInit {
         { name: 'Partecipanti', id: 'attendees.length', sort: 'attendees.length' , path: 'attendees.length', visible: true, isModelProperty: true },
     ]
     search: FormGroup;
-
-    criteria: EventCriteria = {};
+    orderBy = 'name'
+    sortDirection = 'ASC'
+    pageIndex = 0
+    eventPageSize: number = 5
+    totalElement: number = 0
 
     constructor(private activatedRoute: ActivatedRoute,
                 private router: Router,
@@ -39,29 +39,42 @@ export class DashboardEventComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.search.valueChanges.pipe(debounceTime(1000)).subscribe(() => {
-            this.criteria = {
-                ...this.criteria, ...this.search.value
-            }
-            this.loadEvent()
-        })
-
         this.eventData = this.activatedRoute.data.pipe(
             map( res => {
-                this.totalElement = res['eventDashList'].totalElements
-                this.eventPageSize = res['eventDashList'].pageSize
+                this.totalElement = res['eventDashList'].totalElements ? res['eventDashList'].totalElements : 0
+                this.eventPageSize = res['eventDashList'].size ? res['eventDashList'].size : 5
+
                 return res['eventDashList'].content
             })
         );
+        this.search.valueChanges.pipe(debounceTime(1000)).subscribe(() => {
+            this.reloadData()
+        })
     }
 
     doLazyLoad( event: LazyLoadEvent ) {
-        this.criteria = {...this.criteria, pageSize: event.pageSize, pageNumber: event.pageIndex}
-        this.loadEvent()
+        if (event.pageSize) {
+            this.eventPageSize = event.pageSize;
+        }
+        this.pageIndex = event.pageIndex;
+        if (event.direction) {
+            this.sortDirection = event.direction;
+        }
+        if (event.active) {
+            this.orderBy = event.active;
+        }
+
+        this.reloadData()
     }
 
-    loadEvent() {
-        this.eventData = this.eventService.filter(this.criteria).pipe(
+    reloadData() {
+        this.eventData = this.eventService.filter({
+            ...this.search.value,
+            orderBy: this.orderBy,
+            sortDirection: this.sortDirection,
+            pageNumber: this.pageIndex,
+            pageSize: this.eventPageSize
+        }).pipe(
             map(res => res.content)
         )
     }

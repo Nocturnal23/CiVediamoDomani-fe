@@ -12,6 +12,7 @@
             [data]="userData | async"
             [columns]="displayedColumns"
             [pageSize]="userPageSize"
+            [pageIndex]="pageIndex"
             [totalRecords]="totalElement"
             [lazyLoad]="true"
             (lazyLoadEvent) = "doLazyLoad($event)"
