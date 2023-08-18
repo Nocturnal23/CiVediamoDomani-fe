@@ -21,9 +21,11 @@ import {RoutingEnums} from "./core/utils/Enums";
 import {DashboardCategoriesComponent} from "./pages/dashboard-categories/dashboard-categories.component";
 import {InfoCategoryComponent} from "./pages/info-category/info-category.component";
 import {TreetestComponent} from './layout/treetest/treetest.component'
+import {CatTreeComponent} from './layout/cat-tree/cat-tree.component'
 
 const routes: Routes = [
     { path: 'testing', component: TreetestComponent},
+    { path: 'cattest', component: CatTreeComponent},
     { path: 'not_found', component: NotFoundComponent},
     { path: RoutingEnums.LOGIN, component:LoginPageComponent,
         canActivate: [canLogin]},

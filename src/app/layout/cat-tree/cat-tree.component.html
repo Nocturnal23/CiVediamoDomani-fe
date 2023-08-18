@@ -1,0 +1,10 @@
+<div class="treeContainer">
+    <ul *ngFor="let elem of lista">
+        <li (click)="toogleElement(elem)" class="upperNode">{{elem.name}}</li>
+        <div *ngIf="elem.children">
+            <ul *ngFor="let child of elem.children">
+                <li (click)="toogleElement(child)">{{child.name}}</li>
+            </ul>
+        </div>
+    </ul>
+</div>

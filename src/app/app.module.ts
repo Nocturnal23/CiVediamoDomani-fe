@@ -51,7 +51,8 @@ import {ShareButtonsModule} from "ngx-sharebuttons/buttons";
 import {ShareIconsModule} from "ngx-sharebuttons/icons";
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import {MatFormFieldModule} from '@angular/material/form-field'
-import {TreetestComponent} from './layout/treetest/treetest.component'
+import {TreetestComponent} from './layout/treetest/treetest.component';
+import { CatTreeComponent } from './layout/cat-tree/cat-tree.component'
 
 export const MATERIAL_MODULES = [
     MatToolbarModule,
@@ -99,7 +100,8 @@ export const MATERIAL_MODULES = [
         DashboardCategoriesComponent,
         InfoCategoryComponent,
         DialogAddCategoryComponent,
-        TreetestComponent
+        TreetestComponent,
+        CatTreeComponent
     ],
     imports: [
         ...MATERIAL_MODULES,

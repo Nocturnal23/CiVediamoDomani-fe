@@ -1,0 +1,17 @@
+.treeContainer {
+    box-shadow: 5px 5px 5px #888888;
+}
+
+.upperNode {/* Remove default list bullets */
+    list-style-type: none;
+}
+
+li {
+    cursor: pointer;
+    user-select: none; /* Prevent text selection */
+}
+
+/*li :hover {*/
+/*    color: #1976d2;*/
+/*    font-weight: bold;*/
+/*}*/
