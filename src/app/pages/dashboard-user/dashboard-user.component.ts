@@ -13,8 +13,6 @@ import {FormBuilder, FormGroup} from "@angular/forms";
     styleUrls: ['./dashboard-user.component.css']
 })
 export class DashboardUserComponent implements OnInit {
-    totalElement: number
-    userPageSize: number
     userData: Observable<Array<UserDto>>
     displayedColumns: Column[] = [
         { name: 'Nome', id: 'firstName', sort: 'firstName', path: 'firstName',  visible: true, isModelProperty: true },
@@ -24,8 +22,11 @@ export class DashboardUserComponent implements OnInit {
         { name: 'Stato utente', id: 'state', sort: 'state' , path: 'state', visible: true, isModelProperty: true }
     ]
     search: FormGroup
-
-    criteria: UserCriteria = {};
+    orderBy = 'name'
+    sortDirection = 'ASC'
+    pageIndex = 0
+    userPageSize = 5
+    totalElement = 0
 
     constructor(private activatedRoute: ActivatedRoute,
                 private userService: UserService,
@@ -38,31 +39,44 @@ export class DashboardUserComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.search.valueChanges.pipe(debounceTime(1000)).subscribe(() => {
-            this.criteria = {
-                ...this.criteria, ...this.search.value
-            }
-            this.loadUsers()
-        })
-
         this.userData = this.activatedRoute.data.pipe(
             map( res => {
-                this.totalElement = res['userList'].totalElements
-                this.userPageSize = res['userList'].pageSize
+                this.totalElement = res['userList'].totalElements ? res['userList'].totalElements : 0
+                this.userPageSize = res['userList'].size ? res['userList'].size : 5
+
                 return res['userList'].content
             })
         );
+        this.search.valueChanges.pipe(debounceTime(1000)).subscribe(() => {
+            this.reloadData()
+        })
     }
 
     doLazyLoad( event: LazyLoadEvent ) {
-        this.criteria = {...this.criteria, pageSize: event.pageSize, pageNumber: event.pageIndex}
-        this.loadUsers()
+        if (event.pageSize) {
+            this.userPageSize = event.pageSize;
+        }
+        this.pageIndex = event.pageIndex;
+        if (event.direction) {
+            this.sortDirection = event.direction;
+        }
+        if (event.active) {
+            this.orderBy = event.active;
+        }
+
+        this.reloadData()
     }
 
-    loadUsers() {
-        this.userData = this.userService.filter(this.criteria).pipe(
+    reloadData() {
+        this.userData = this.userService.filter({
+            ...this.search.value,
+            orderBy: this.orderBy,
+            sortDirection: this.sortDirection,
+            pageNumber: this.pageIndex,
+            pageSize: this.userPageSize
+        }).pipe(
             map(res => res.content)
-        );
+        )
     }
 
     infoUser($event: any) {

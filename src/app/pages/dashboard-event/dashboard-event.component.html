@@ -9,6 +9,7 @@
             [data]="eventData | async"
             [columns]="displayedColumns"
             [pageSize]="eventPageSize"
+            [pageIndex]="pageIndex"
             [totalRecords]="totalElement"
             [lazyLoad]="true"
             (lazyLoadEvent) = "doLazyLoad($event)"
