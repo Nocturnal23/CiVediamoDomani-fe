@@ -5,9 +5,11 @@ import {EventDto} from "../../core/dto/event-dto";
 import {CategoryService} from "../../core/services/category.service";
 import {firstValueFrom} from "rxjs";
 import {SearchParamsDto} from '../../core/dto/searchParams-dto'
+import {CategoryDto} from '../../core/dto/category-dto'
 
 export interface CategoryElement {
     name: string,
+    father?: string,
     children?: CategoryElement[]
 }
 
@@ -53,12 +55,7 @@ export class SearchPageComponent implements OnInit{
     loadedEvents: EventDto[] = [];
     eventList: EventDto[] = [];
     selectedCategories: string[] = []
-    catList: CategoryElement[] = [
-        {name: 'Sport', children: [ {name: 'Calcio'}, {name: 'Basket'} ]},
-        {name: 'Musica', children: [ {name: 'Concerti'}, {name: 'Rave'} ]},
-        {name: 'Comizio'},
-        {name: 'Giochi', children: [{name: 'Bambini'}]}
-    ]
+    catList: CategoryElement[] = []
 
     constructor(private _router: Router,
                 private _activatedRoute: ActivatedRoute,
@@ -87,9 +84,30 @@ export class SearchPageComponent implements OnInit{
         if (!!category) {
             this.selectedCategories = [category]
         }
+        this._categoryService.filter({pageSize:100}).subscribe(res => {
+            //Inserisce le categorie padre nella lista di CategoryElement
+            let fathers = res.content.filter(cat => !cat.father)
+            if (!!fathers) {
+                this.catList.push(...fathers.map(elem => this.categoryToElement(elem)))
+                //Inserisce le categorie figlie nella lista
+                let children = res.content.filter(cat => !!cat.father).map(elem => this.categoryToElement(elem))
+                //trovare il father nell'array e pusharlo come children
+                children.forEach(child => {
+                    this.catList.map(parent => {
+                        if (parent.name === child.father) {
+                            parent.children.push(child)
+                        }
+                        return parent
+                })})
+            }
+        })
 
         this.loadedEvents = data['eventList'].content
         this._loadEventList()
+    }
+
+    categoryToElement(origin: CategoryDto): CategoryElement {
+        return {name: origin.name, father: origin.father?.name, children: []};
     }
 
     onSliderChange() {
