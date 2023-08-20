@@ -1,12 +1,12 @@
-<div class="home-container">
-    <div class="header-text">
-        <h3> Scegli una categoria per iniziare </h3>
+<div fxLayout="column" class="home-container">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <div fxFlex="20%" fxLayoutAlign="center center" class="header-text dark-text">Scegli una categoria per iniziare</div>
     </div>
 
     <div fxLayout="row" fxLayoutAlign="space-evenly center">
         <mat-icon class="arrow" (click)="changeCategory(-1)">keyboard_arrow_left</mat-icon>
-        <div *ngFor="let c of categorieCarosello.slice(0, 3)">
-            <div class="carousel-card" fxFlex="25%" fxLayoutAlign="center center" (click)="loadEvents(c)">
+        <div fxFlex="20%" *ngFor="let c of categorieCarosello.slice(0, 3)">
+            <div class="carousel-card" fxLayoutAlign="center center" (click)="loadEvents(c)">
                 {{c.name}}
             </div>
         </div>
@@ -14,11 +14,13 @@
     </div>
 
     <div *ngIf="showCreateButton()">
-        <div class="center-text">
-            <h4>oppure</h4>
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <div class="center-text dark-text">oppure</div>
         </div>
-        <div class="event-button" routerLink="/editevent">
-            <button>Organizza un evento...</button>
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <div fxFlex="20%" fxLayoutAlign="center center" class="event-button" routerLink="/editevent">
+                Organizza un evento...
+            </div>
         </div>
     </div>
 </div>
