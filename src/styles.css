@@ -3,6 +3,16 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.palette-text{
+    font-weight: bold;
+    color: #ff5b5b;
+}
+
+.dark-text{
+    font-weight: bold;
+    color: #333333;
+}
+
 
 /** {*/
 /*    border: 2px solid #cc0000 !important;*/
