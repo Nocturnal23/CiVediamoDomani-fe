@@ -29,20 +29,29 @@
 }
 
 .imageBox {
-    max-width: 128px;
-    max-height: 128px;
+    margin: 5px;
     overflow: hidden;
+    border-radius: 10px;
 }
-
-.eventImg:hover{
-    transform: scale(2);
+.eventImg{
     /*width: 100%;*/
-    /*height: 100%;*/
-    object-fit: cover;
-    overflow: hidden;
+    /*border-radius: 10px;*/
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.eventImg:hover{
+    -ms-transform: scale(1.4);
+    transform: scale(1.4);
+    -webkit-transition: all .4s;
+    transition: all .4s;
 }
 
 .ticketing {
     margin: 2px;
     font-weight: bold;
+}
+
+.buttons-box {
+    transform: scale(1.4);
+    margin-left: 5px;
 }
