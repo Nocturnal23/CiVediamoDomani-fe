@@ -12,14 +12,12 @@
             <input matInput type="datetime-local" formControlName="datetime"/>
         </mat-form-field>
 
-<!--        <mat-form-field>-->
-<!--            <mat-label>Luogo</mat-label>-->
-<!--            <input matInput type="text" placeholder="Luogo" formControlName="place">-->
-<!--        </mat-form-field>-->
+        <div fxLayout="row" fxLayoutAlign="space-between" class="containerDialog">
+            <label>{{place_name}}</label>
+            <div (click)="changeLocation('Cambia la tua città', 'Inserisci nome città')" class="dialog" fxLayoutAlign="end center">Scegli luogo</div>
+        </div>
 
-        <div id="geocoder"></div>
-
-        <mat-form-field>
+        <mat-form-field class="price">
             <mat-label>Prezzo</mat-label>
             <input matInput type="number" placeholder="Prezzo" formControlName="price">
         </mat-form-field>

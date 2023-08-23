@@ -8,31 +8,33 @@
     align-items: center;
 }
 
+.formGroup{
+    width: 25%;
+}
+
 .mat-form-field {
     width: 100%;
+}
+
+.containerDialog{
+    border-bottom: 1px solid #000000;
+    padding: 10px;
+    min-height: 50px;
+    background-color: whitesmoke;
+}
+
+.dialog{
+    align-items: center;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }
 
 .description{
     min-height: 150px;
 }
 
-.formGroup{
-    width: 25%;
-}
-
-.geocoder {
-    position: absolute;
-    z-index: 1;
-    width: 50%;
-    left: 50%;
-    margin-left: -25%;
-    top: 10px;
-}
-
-.mapboxgl-ctrl-geocoder {
-    min-width: 100%;
-}
-
-#map {
-    margin-top: 75px;
+.price{
+    margin-top: 20px;
 }
