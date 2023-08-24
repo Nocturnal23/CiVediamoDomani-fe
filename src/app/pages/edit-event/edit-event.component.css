@@ -24,11 +24,18 @@
 }
 
 .dialog{
+    border: 1px solid #00798a;
     align-items: center;
     text-align: center;
-    width: 20px;
-    height: 20px;
     cursor: pointer;
+    background-color: #00798a;
+    color: #e6ebf1;
+}
+
+.dialog:hover{
+    box-shadow: 5px 5px 5px 5px #646363;
+    background-color: #0199ad;
+
 }
 
 .description{
