@@ -22,7 +22,7 @@ export class DashboardUserComponent implements OnInit {
         { name: 'Stato utente', id: 'state', sort: 'state' , path: 'state', visible: true, isModelProperty: true }
     ]
     search: FormGroup
-    orderBy = 'name'
+    orderBy = 'firstName'
     sortDirection = 'ASC'
     pageIndex = 0
     userPageSize = 5

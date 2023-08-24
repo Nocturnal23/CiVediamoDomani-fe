@@ -22,7 +22,7 @@ export class DashboardEventComponent implements OnInit {
         { name: 'Partecipanti', id: 'attendees.length', sort: 'attendees.length' , path: 'attendees.length', visible: true, isModelProperty: true },
     ]
     search: FormGroup;
-    orderBy = 'name'
+    orderBy = 'title'
     sortDirection = 'ASC'
     pageIndex = 0
     eventPageSize: number = 5
