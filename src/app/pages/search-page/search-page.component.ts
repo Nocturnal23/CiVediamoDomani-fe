@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core'
+import {Component} from '@angular/core'
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router'
 import {EventService} from '../../core/services/event.service'
 import {EventDto} from '../../core/dto/event-dto'
@@ -39,7 +39,7 @@ function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: numbe
     templateUrl: './search-page.component.html',
     styleUrls: ['./search-page.component.css']
 })
-export class SearchPageComponent implements OnInit{
+export class SearchPageComponent {
     searchRange: number = 10;
     sliderMinRange: number = 10;
     sliderMaxRange: number = 150;
@@ -60,12 +60,12 @@ export class SearchPageComponent implements OnInit{
                 private _categoryService: CategoryService) {
         this._router.events.subscribe((e: any) => {
             if (e instanceof NavigationEnd) {
-                this.ngOnInit();
+                this.loadData();
             }
         });
-    }
-    ngOnInit() {
-        this.loadData()
+
+        this.loadTree()
+
     }
 
     async loadData() {
@@ -81,6 +81,11 @@ export class SearchPageComponent implements OnInit{
         if (!!category) {
             this.selectedCategories = [category]
         }
+        this.loadedEvents = data['eventList'].content
+        this._loadEventList()
+    }
+
+    private loadTree() {
         this._categoryService.filter({pageSize:100}).subscribe(res => {
             //Inserisce le categorie padre nella lista di CategoryElement
             let fathers = res.content.filter(cat => !cat.father)
@@ -95,12 +100,9 @@ export class SearchPageComponent implements OnInit{
                             parent.children.push(child)
                         }
                         return parent
-                })})
+                    })})
             }
         })
-
-        this.loadedEvents = data['eventList'].content
-        this._loadEventList()
     }
 
     categoryToElement(origin: CategoryDto): CategoryElement {
