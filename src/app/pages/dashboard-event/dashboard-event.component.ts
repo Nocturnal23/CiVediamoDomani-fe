@@ -4,7 +4,6 @@ import {EventDto} from "../../core/dto/event-dto";
 import {Column, LazyLoadEvent} from "../../layout/table";
 import {ActivatedRoute, Router} from "@angular/router";
 import {EventService} from "../../core/services/event.service";
-import {EventCriteria} from "../../core/criteria/event-criteria";
 import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
