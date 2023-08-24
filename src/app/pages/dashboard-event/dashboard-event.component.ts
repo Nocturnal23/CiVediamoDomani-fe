@@ -4,7 +4,6 @@ import {EventDto} from "../../core/dto/event-dto";
 import {Column, LazyLoadEvent} from "../../layout/table";
 import {ActivatedRoute, Router} from "@angular/router";
 import {EventService} from "../../core/services/event.service";
-import {EventCriteria} from "../../core/criteria/event-criteria";
 import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
@@ -22,7 +21,7 @@ export class DashboardEventComponent implements OnInit {
         { name: 'Partecipanti', id: 'attendees.length', sort: 'attendees.length' , path: 'attendees.length', visible: true, isModelProperty: true },
     ]
     search: FormGroup;
-    orderBy = 'name'
+    orderBy = 'title'
     sortDirection = 'ASC'
     pageIndex = 0
     eventPageSize: number = 5

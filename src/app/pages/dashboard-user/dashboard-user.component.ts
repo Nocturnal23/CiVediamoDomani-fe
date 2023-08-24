@@ -4,7 +4,6 @@ import {UserDto} from "../../core/dto/user-dto";
 import {Column, LazyLoadEvent} from "../../layout/table";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../core/services/user.service";
-import {UserCriteria} from "../../core/criteria/user-criteria";
 import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
@@ -22,7 +21,7 @@ export class DashboardUserComponent implements OnInit {
         { name: 'Stato utente', id: 'state', sort: 'state' , path: 'state', visible: true, isModelProperty: true }
     ]
     search: FormGroup
-    orderBy = 'name'
+    orderBy = 'firstName'
     sortDirection = 'ASC'
     pageIndex = 0
     userPageSize = 5
