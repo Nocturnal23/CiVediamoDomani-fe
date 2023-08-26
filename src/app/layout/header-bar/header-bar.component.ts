@@ -39,7 +39,9 @@ export class HeaderBarComponent {
             lon: this._searchService.searchLongitude,
             lat: this._searchService.searchLatitude
         }
-        this._router.navigate(['/search'], {queryParams: params})
+        this._router.navigate(["/loading"], {skipLocationChange: true}).then( () =>
+            this._router.navigate( ["/search"], {queryParams: params})
+        )
     }
 
     isLogged() {
