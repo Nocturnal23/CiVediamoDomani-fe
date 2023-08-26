@@ -57,7 +57,7 @@ export class HomePageComponent {
 
     loadEvents(category: CategoryDto) {
         let params: SearchParamsDto = {
-            category: category.name,
+            categories: [category.name],
             place: this._searchService.searchLocation,
             lat: this._searchService.searchLatitude,
             lon: this._searchService.searchLongitude

@@ -77,9 +77,9 @@ export class SearchPageComponent {
         this.searchLocation = params.get("place")
         this.searchLongitude = params.get("lon")
         this.searchLatitude = params.get("lat")
-        let category = params.get("category")
-        if (!!category) {
-            this.selectedCategories = [category]
+        let categories = params.getAll("categories")
+        if (!!categories) {
+            this.selectedCategories = categories
         }
         this.loadedEvents = data['eventList'].content
         this._loadEventList()
