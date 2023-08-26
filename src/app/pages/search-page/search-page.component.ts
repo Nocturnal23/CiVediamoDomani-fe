@@ -1,10 +1,12 @@
-import {Component} from '@angular/core'
+import {Component, OnInit} from '@angular/core'
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router'
 import {EventService} from '../../core/services/event.service'
 import {EventDto} from '../../core/dto/event-dto'
 import {CategoryService} from '../../core/services/category.service'
 import {firstValueFrom} from 'rxjs'
 import {CategoryDto} from '../../core/dto/category-dto'
+import {SearchService} from "../../core/services/search.service";
+import {SearchParamsDto} from "../../core/dto/searchParams-dto";
 
 export interface CategoryElement {
     name: string,
@@ -39,7 +41,7 @@ function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: numbe
     templateUrl: './search-page.component.html',
     styleUrls: ['./search-page.component.css']
 })
-export class SearchPageComponent {
+export class SearchPageComponent implements OnInit {
     searchRange: number = 10;
     sliderMinRange: number = 10;
     sliderMaxRange: number = 150;
@@ -57,15 +59,15 @@ export class SearchPageComponent {
     constructor(private _router: Router,
                 private _activatedRoute: ActivatedRoute,
                 private _eventService: EventService,
-                private _categoryService: CategoryService) {
-        this._router.events.subscribe((e: any) => {
-            if (e instanceof NavigationEnd) {
-                this.loadData();
-            }
-        });
+                private _categoryService: CategoryService,
+                private _searchService: SearchService) {
 
+
+    }
+
+    ngOnInit() {
+        this.loadData()
         this.loadTree()
-
     }
 
     async loadData() {
@@ -131,7 +133,29 @@ export class SearchPageComponent {
         return `Tutti gli eventi su: ${this.searchLocation}`
     }
 
-    toogleElement(elem: CategoryElement) {
-        console.log(elem.name)
+    toogleElement(elem: CategoryElement | string) {
+        let catname
+        if( typeof elem === "string" )
+            catname = elem
+        else
+            catname = elem.name
+
+        let index = this.selectedCategories.indexOf( catname )
+
+        if( !!index && index == -1 ) {
+            this.selectedCategories.push(catname)
+        } else {
+            this.selectedCategories.splice(index, 1)
+        }
+
+        let params: SearchParamsDto = {
+            categories: this.selectedCategories,
+            place: this._searchService.searchLocation,
+            lat: this._searchService.searchLatitude,
+            lon: this._searchService.searchLongitude
+        }
+        this._router.navigate(["/loading"], {skipLocationChange: true}).then( () =>
+            this._router.navigate( ["/search"], {queryParams: params})
+        )
     }
 }
