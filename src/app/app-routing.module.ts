@@ -54,8 +54,6 @@ const routes: Routes = [
             {path: 'categoryinfo/:url', component: InfoCategoryComponent}
         ]},
 
-    { path: 'loading', component: DummyComponent },
-
     { path: '', component: HeaderContainerComponent, children: [
             { path: 'helloworld', component: HelloworldComponent },
             { path: RoutingEnums.HOMEPAGE, component: HomePageComponent },
@@ -63,6 +61,7 @@ const routes: Routes = [
                 runGuardsAndResolvers: "always",
                 resolve: { eventList: searchResolver }
             },
+            { path: 'loading', component: DummyComponent },
             { path: 'infoevent/:url', component: InfoEventComponent },
             { path: 'editevent', component: EditEventComponent },
             { path: '**', redirectTo: `/${RoutingEnums.HOMEPAGE}`, pathMatch: 'full' }
