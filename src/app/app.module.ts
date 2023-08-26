@@ -49,6 +49,7 @@ import { DialogAddCategoryComponent } from './layout/dialog-add-category/dialog-
 import {MatSelectModule} from "@angular/material/select";
 import {ShareButtonsModule} from "ngx-sharebuttons/buttons";
 import {ShareIconsModule} from "ngx-sharebuttons/icons";
+import { DummyComponent } from './layout/dummy/dummy.component';
 
 export const MATERIAL_MODULES = [
     MatToolbarModule,
@@ -93,7 +94,8 @@ export const MATERIAL_MODULES = [
         EventCardComponent,
         DashboardCategoriesComponent,
         InfoCategoryComponent,
-        DialogAddCategoryComponent
+        DialogAddCategoryComponent,
+        DummyComponent
     ],
     imports: [
         ...MATERIAL_MODULES,

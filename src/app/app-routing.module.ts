@@ -20,6 +20,7 @@ import {LeftMenuDashboardComponent} from "./layout/left-menu-dashboard/left-menu
 import {RoutingEnums} from "./core/utils/Enums";
 import {DashboardCategoriesComponent} from "./pages/dashboard-categories/dashboard-categories.component";
 import {InfoCategoryComponent} from "./pages/info-category/info-category.component";
+import {DummyComponent} from "./layout/dummy/dummy.component";
 
 const routes: Routes = [
     { path: 'not_found', component: NotFoundComponent},
@@ -53,6 +54,8 @@ const routes: Routes = [
             {path: 'categoryinfo/:url', component: InfoCategoryComponent}
         ]},
 
+    { path: 'loading', component: DummyComponent },
+
     { path: '', component: HeaderContainerComponent, children: [
             { path: 'helloworld', component: HelloworldComponent },
             { path: RoutingEnums.HOMEPAGE, component: HomePageComponent },
@@ -64,7 +67,7 @@ const routes: Routes = [
             { path: 'editevent', component: EditEventComponent },
             { path: '**', redirectTo: `/${RoutingEnums.HOMEPAGE}`, pathMatch: 'full' }
         ]
-    },
+    }
 ];
 
 @NgModule({
