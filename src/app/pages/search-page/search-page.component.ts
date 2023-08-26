@@ -75,7 +75,7 @@ export class SearchPageComponent implements OnInit {
         const dataPromise = firstValueFrom(this._activatedRoute.data)
         const [params, data] = await Promise.all([paramsPromise,dataPromise])
 
-        this.searchValue = params.get("searchValue")
+        this.searchValue = params.get("eventTitle")
         this.searchLocation = params.get("place")
         this.searchLongitude = params.get("lon")
         this.searchLatitude = params.get("lat")
@@ -149,6 +149,7 @@ export class SearchPageComponent implements OnInit {
         }
 
         let params: SearchParamsDto = {
+            eventTitle: [this.searchValue],
             categories: this.selectedCategories,
             place: this._searchService.searchLocation,
             lat: this._searchService.searchLatitude,

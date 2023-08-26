@@ -10,7 +10,7 @@ import {CategoryService} from "../services/category.service";
 
 export const searchResolver: ResolveFn<Page<EventDto>> =
     (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-        let entries = route.queryParamMap.keys.map( key => { return [key, route.queryParamMap.get(key)] })
+        let entries = route.queryParamMap.keys.map( key => { return [key, route.queryParamMap.getAll(key)] })
         let criteria = Object.fromEntries(entries)
         return inject(EventService).filter( criteria );
     };

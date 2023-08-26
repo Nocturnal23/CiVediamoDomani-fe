@@ -1,5 +1,5 @@
 export interface SearchParamsDto {
-    eventTitle?: string;
+    eventTitle?: Array<string>;
     categories?: Array<string>;
     place?: string;
     lat?: string;
