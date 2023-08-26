@@ -34,7 +34,7 @@ export class HeaderBarComponent {
     }
     search() {
         let params: SearchParamsDto = {
-            searchValue: this.searchForm.value.searchBar,
+            eventTitle: this.searchForm.value.searchBar,
             place: this.searchLocation,
             lon: this._searchService.searchLongitude,
             lat: this._searchService.searchLatitude

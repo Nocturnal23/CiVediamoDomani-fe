@@ -1,5 +1,5 @@
 export interface SearchParamsDto {
-    searchValue?: string;
+    eventTitle?: string;
     category?: string;
     place?: string;
     lat?: string;

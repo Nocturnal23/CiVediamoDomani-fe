@@ -1,7 +1,7 @@
 import {BaseCriteria} from "./base-criteria";
 
 export interface EventCriteria extends BaseCriteria {
-    searchValue?: string
+    eventTitle?: string
     organiserId?: number
     followerId?: number
     attendeeId?: number
