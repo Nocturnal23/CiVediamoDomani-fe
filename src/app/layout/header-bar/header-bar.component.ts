@@ -56,11 +56,11 @@ export class HeaderBarComponent {
         this._router.navigate([RoutingEnums.USER_EVENTS] );
     }
 
-    changeLocation(title:string, placeholder:string) {
+    changeLocation() {
         let dialogContent = this._dialog.open(DialogAddCategoryComponent, {
             data: {
-                dialogTitle: title,
-                placeholder: placeholder,
+                dialogTitle: 'Cambia la tua città',
+                placeholder: 'Inserisci nome città',
                 inputType: 'map'
             }
         })
