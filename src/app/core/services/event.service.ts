@@ -42,4 +42,10 @@ export class EventService implements AbstractService<EventDto, EventCriteria> {
         const url = this.baseUrl + '/' + dto.url
         return this._http.put<EventDto>(url, dto);
     }
+
+    addImage(uniqueUrl: string, file: FormData) {
+        const url = this.baseUrl + '/' + uniqueUrl + '/' + 'addImage'
+        return this._http.put<EventDto>(url, file);
+
+    }
 }
