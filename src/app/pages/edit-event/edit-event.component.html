@@ -36,6 +36,8 @@
             <textarea class="description" matInput placeholder="Descrizione" formControlName="description"> </textarea>
         </mat-form-field>
 
+        <input (change)="uploadfile($event)" type="file">
+
         <button (click)="createEvent()">Pubblica</button>
     </form>
 </div>

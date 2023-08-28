@@ -23,6 +23,7 @@ export class EditEventComponent {
     longitude: number;
     place_name: string;
     test = "ROMA"
+    uploadImage: FormData
 
     constructor(private _formBuilder: FormBuilder,
                 private _eventService: EventService,
@@ -88,7 +89,12 @@ export class EditEventComponent {
             coordinates: this.longitude + ", " + this.latitude,
             organiser: AuthenticationService.getAppUser
         }
-        this._eventService.save(event).subscribe( event => this._router.navigate(['infoevent/'+event.url]) )
+        this._eventService.save(event).subscribe( event => {
+            if (!!this.uploadImage) {
+                this._eventService.addImage(event.url, this.uploadImage).subscribe()
+            }
+            this._router.navigate(['infoevent/' + event.url])
+        } )
     }
 
     changeLocation(title:string, placeholder:string) {
@@ -105,5 +111,12 @@ export class EditEventComponent {
             this.latitude = dialogContent.componentInstance.selectedPosition.lat
             this.longitude = dialogContent.componentInstance.selectedPosition.lon
         })
+    }
+
+    uploadfile($event: any) {
+        if ($event.target.files && $event.target.files.length > 0) {
+            this.uploadImage = new FormData();
+            this.uploadImage.append('file', $event.target.files[0], $event.target.files[0].name);
+        }
     }
 }
