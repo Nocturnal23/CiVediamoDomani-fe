@@ -3,6 +3,7 @@ import {EventDto} from "../../core/dto/event-dto";
 import {UserService} from "../../core/services/user.service";
 import {AuthenticationService} from "../../core/services/authentication.service";
 import {Router} from "@angular/router";
+import {DomSanitizer, SafeUrl} from '@angular/platform-browser'
 
 @Component({
     selector: 'app-event-card',
@@ -16,12 +17,13 @@ export class EventCardComponent implements OnInit {
     favorite: boolean;
     ticketing: string;
     eventDate: string;
-    photo: string;
+    photo: SafeUrl;
     titleMaxLen = 80;
     descrMaxLen = 150;
 
     constructor(private _userService: UserService,
-                private _router: Router) {
+                private _router: Router,
+                private _sanitizer: DomSanitizer) {
     }
 
     ngOnInit() {
@@ -31,7 +33,13 @@ export class EventCardComponent implements OnInit {
             this.favorite = this.eventDto.followers.includes(AuthenticationService.getAppUser.url)
         }
         this.ticketing = !this.eventDto?.price ? 'Evento aperto a tutti' : `Costo biglietto: ${this.eventDto.price} €`;
-        this.photo = 'https://cinematroisi.it/wp-content/uploads/2021/09/%C2%A9Flavia-Rossi_Cinema-Troisi_013-Copia-1024x831.jpg';
+
+        if (!!this.eventDto.image) {
+            this.photo = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' + this.eventDto.image)
+        } else {
+            this.photo = 'assets/Comic_image_missing.svg.png';
+        }
+
     }
 
     isLogged() {
