@@ -1,12 +1,14 @@
 import {AfterViewInit, Component, Inject} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import mapboxgl from 'mapbox-gl'
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import {SafeUrl} from "@angular/platform-browser";
 
 enum InputType {
     Text = 'text',
-    Map = 'map'
+    Map = 'map',
+    Img = 'img'
 }
 @Component({
     selector: 'app-dialog-add-category',
@@ -25,7 +27,7 @@ export class DialogAddCategoryComponent implements AfterViewInit{
 
 
     constructor(private formBuilder: FormBuilder,
-                @Inject(MAT_DIALOG_DATA) public data: { dialogTitle: string, placeholderText: string, inputType: InputType }) {
+                @Inject(MAT_DIALOG_DATA) public data: { dialogTitle: string, placeholderText: string, image: SafeUrl, inputType: InputType }) {
         this.newCategory = formBuilder.group({
             name: ['']
         })
@@ -61,4 +63,6 @@ export class DialogAddCategoryComponent implements AfterViewInit{
             });
         }
     }
+
+    protected readonly MatDialogRef = MatDialogRef;
 }

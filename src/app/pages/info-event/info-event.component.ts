@@ -4,7 +4,10 @@ import {EventService} from "../../core/services/event.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../core/services/authentication.service";
 import {faFacebook, faStaylinked, faTwitter} from "@fortawesome/free-brands-svg-icons";
-import mapboxgl from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
+import mapboxgl from 'mapbox-gl';
+import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogAddCategoryComponent} from "../../layout/dialog-add-category/dialog-add-category.component"; // or "const mapboxgl = require('mapbox-gl');"
 
 @Component({
     selector: 'app-info-event',
@@ -23,11 +26,14 @@ export class InfoEventComponent implements AfterViewInit {
     longitude: number
     latitude: number
     map = document.getElementById("map")
+    photo: SafeUrl
 
     constructor(private eventService: EventService,
                 private router: Router,
                 private activatdRoute: ActivatedRoute,
-                private changeDetectorRef: ChangeDetectorRef) {
+                private changeDetectorRef: ChangeDetectorRef,
+                private _sanitizer: DomSanitizer,
+                private dialog: MatDialog) {
 
         this.eventDto = this.router.getCurrentNavigation()?.extras?.state?.['event']
 
@@ -41,6 +47,7 @@ export class InfoEventComponent implements AfterViewInit {
             this.isFree()
             this.getCoordinates()
             this.loadMap()
+            this.loadImg()
         } else {
             this.activatdRoute.params.subscribe(({url}) => {
                 this.url = url;
@@ -52,6 +59,7 @@ export class InfoEventComponent implements AfterViewInit {
                     this.isFree()
                     this.getCoordinates()
                     this.loadMap()
+                    this.loadImg()
                 });
             });
         }
@@ -89,5 +97,23 @@ export class InfoEventComponent implements AfterViewInit {
         console.log( this.eventDto.coordinates.split(',') )
         this.longitude = Number( this.eventDto.coordinates.split(',')[0] )
         this.latitude = Number( this.eventDto.coordinates.split(',')[1] )
+    }
+
+    private loadImg() {
+        if (!!this.eventDto.image) {
+            this.photo = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' + this.eventDto.image)
+        } else {
+            this.photo = 'assets/Comic_image_missing.svg.png';
+        }
+    }
+
+    openImage() {
+        let dialogContent = this.dialog.open(DialogAddCategoryComponent,
+            { data: {
+                    image: this.photo,
+                    inputType: 'img'}
+            })
+
+        dialogContent.afterClosed().subscribe(() => {});
     }
 }

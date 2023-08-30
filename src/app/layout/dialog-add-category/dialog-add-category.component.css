@@ -1,3 +1,12 @@
 .geocoder{
     margin-left: 5%;
 }
+
+.closeMap {
+    z-index: 0;
+}
+
+.closeImg {
+    margin-left: auto;
+    margin-top: -925px;
+}

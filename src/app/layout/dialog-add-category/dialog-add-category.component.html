@@ -1,6 +1,7 @@
 <h2 mat-dialog-title>{{data.dialogTitle}}</h2>
 
 <div>
+
     <form [formGroup]="newCategory">
         <div *ngIf="data.inputType === InputType.Text">
             <mat-dialog-content>
@@ -11,13 +12,25 @@
                 <button mat-button mat-dialog-close="{{newName}}" (click)="createCat()">Crea</button>
             </mat-dialog-actions>
         </div>
-
-        <div *ngIf="data.inputType === InputType.Map">
-            <div id="geocoder" class="geocoder"></div>
-
-            <mat-dialog-actions>
-                <button mat-button mat-dialog-close="{{selectedPosition}}">Cambia</button>
-            </mat-dialog-actions>
-        </div>
     </form>
+
+    <div *ngIf="data.inputType === InputType.Map">
+        <div id="geocoder" class="geocoder"></div>
+        <mat-dialog-actions>
+            <button mat-button mat-dialog-close="{{selectedPosition}}" class="closeMap">Cambia</button>
+        </mat-dialog-actions>
+    </div>
+
+    <div *ngIf="data.inputType === InputType.Img">
+        <mat-dialog-content>
+            <img [src]="data.image">
+        </mat-dialog-content>
+
+        <mat-dialog-actions>
+            <button mat-icon-button mat-dialog-close class="closeImg">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-dialog-actions>
+    </div>
+
 </div>

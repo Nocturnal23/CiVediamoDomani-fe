@@ -85,8 +85,12 @@
             </div>
         </div>
 
-        <div fxFlex="50%" class="mapColumn">
+        <div fxLayout="row" fxLayoutAlign="space-evenly center" fxFlex="50%" class="mapColumn">
             <div id="map"></div>
+
+            <div>
+                <img [src]='photo' width="256" height="256" (click)="openImage()">
+            </div>
         </div>
     </div>
 </div>
