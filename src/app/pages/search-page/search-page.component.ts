@@ -7,6 +7,7 @@ import {firstValueFrom} from 'rxjs'
 import {CategoryDto} from '../../core/dto/category-dto'
 import {SearchService} from "../../core/services/search.service";
 import {SearchParamsDto} from "../../core/dto/searchParams-dto";
+import {coerceStringArray} from "@angular/cdk/coercion";
 
 export interface CategoryElement {
     name: string,
@@ -61,8 +62,6 @@ export class SearchPageComponent implements OnInit {
                 private _eventService: EventService,
                 private _categoryService: CategoryService,
                 private _searchService: SearchService) {
-
-
     }
 
     ngOnInit() {
@@ -149,12 +148,13 @@ export class SearchPageComponent implements OnInit {
         }
 
         let params: SearchParamsDto = {
-            eventTitle: [this.searchValue],
+            eventTitle: !!this.searchValue ? [this.searchValue] : null,
             categories: this.selectedCategories,
-            place: this._searchService.searchLocation,
-            lat: this._searchService.searchLatitude,
-            lon: this._searchService.searchLongitude
+            place: this.searchLocation,
+            lat: this.searchLatitude,
+            lon: this.searchLongitude
         }
+
         this._router.navigate(["/loading"], {skipLocationChange: true}).then( () =>
             this._router.navigate( ["/search"], {queryParams: params})
         )
