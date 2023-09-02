@@ -1,19 +1,19 @@
 <mat-toolbar class="toolbar" fxLayoutAlign="center center">
     <div fxLayout="row" fxLayoutAlign="space-between center" class="headerContainer">
-        <div fxLayoutAlign="start center" fxFlex="25%" routerLink="/">
+        <div fxLayoutAlign="center center" fxFlex="20%" routerLink="/">
             <img fxFlex="100%" src="assets/logo.png" class="projectLogo" fxHide.lt-sm>
             <mat-icon class="homeIcon" fxHide.gt-xs>home</mat-icon>
         </div>
 
-        <div fxLayout="row" fxLayoutAlign="center center" fxFlex="40%">
-            <div fxLayout="row" fxLayoutAlign="end center" fxFlex="30%" (click)="changeLocation()">
+        <div fxLayout="row" fxLayoutAlign="center center" fxFlex="50%">
+            <div fxLayout="row" fxLayoutAlign="end center" fxFlex="55%" (click)="changeLocation()">
                 <div fxLayout="row" fxLayoutAlign="center center" fxFlex="50%" class="position">
                     <div fxHide.lt-sm><mat-icon>room</mat-icon></div>
                     <div fxHide.lt-sm>{{searchLocation}}</div>
                     <div fxHide.gt-xs style="transform: scale(1.4);"><mat-icon>room</mat-icon></div>
                 </div>
             </div>
-            <div fxFlex="70%">
+            <div fxFlex="50%">
                 <form [formGroup]="searchForm">
                     <div fxLayout="row" fxLayoutAlign="start center">
                         <div fxFlex="60%" class="search-bar">
@@ -25,12 +25,14 @@
             </div>
         </div>
 
-        <div fxFlex="35%" *ngIf="isLogged()" fxLayoutAlign="space-between center">
-            <div fxFlex="20%" fxLayoutAlign="center center" class="headerButtons" (click)="goToEvent()">
+        <div fxFlex="25%" *ngIf="isLogged()" fxLayoutAlign="space-between center">
+            <div fxFlex="25%" fxLayoutAlign="center center" class="headerButtons" (click)="goToEvent()">
                 <div fxHide.lt-sm>I miei eventi</div>
                 <mat-icon fxHide.gt-xs>event</mat-icon>
             </div>
-            <div><app-profile-card></app-profile-card></div>
+            <div fxFlex="45%" fxLayoutAlign="end center">
+                <div><app-profile-card></app-profile-card></div>
+            </div>
         </div>
 
         <div fxFlex="35%" *ngIf="!isLogged()" fxLayoutAlign="end center">
