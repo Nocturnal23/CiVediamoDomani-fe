@@ -1,6 +1,6 @@
 <div fxLayout="row" fxLayoutAlign="start center"  class="box">
-    <div (click)="goToInfo()" fxLayout="row" class="details">
-        <div fxLayout="column">
+    <div (click)="goToInfo()" fxLayout="row" fxFlex="90%" class="details">
+        <div fxLayout="column" fxFlex="70%" fxFlex.lt-sm="100%">
             <div fxLayoutAlign="start center" class="title">{{getTitle()}}</div>
             <div fxLayout="row" fxLayoutAlign="start center" >
                 <div class="descr-box" fxFlex="80%">
@@ -11,7 +11,8 @@
                 <div *ngIf="!isOngoin()" class="ticketing">Evento Terminato</div>
             </div>
         </div>
-        <div fxFlex="25" fxLayoutAlign="center center" class="imageBox">
+
+        <div fxFlex="25%" fxLayoutAlign="center center" class="imageBox" fxHide.lt-sm >
             <div><img [src]='photo' class="eventImg" width="128" height="128"></div>
         </div>
     </div>

@@ -7,7 +7,7 @@
                 <mat-slider [min]="sliderMinRange" [max]="sliderMaxRange" [step]="sliderStep">
                     <input matSliderThumb [(value)]="searchRange" (valueChange)="onSliderChange()">
                 </mat-slider>
-                Cerca entro: {{searchRange}} KM
+                Raggio: {{searchRange}} KM
             </div>
 
             <div class="treeContainer">
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div fxLayout="column">
-            <div *ngIf="selectedCategories.length > 0" fxLayout="row">
+            <div *ngIf="selectedCategories.length > 0" fxLayout="row" class="filterCategories">
                 Filtra per:
                 <div *ngFor="let cat of selectedCategories" class="selectedCat">{{cat}}</div>
             </div>

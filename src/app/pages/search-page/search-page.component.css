@@ -12,6 +12,10 @@ p {
     padding: 10px;
 }
 
+.filterCategories{
+    margin-left: 25px;
+}
+
 .selectedCat{
     margin-left: 5px;
     padding: 1px;
