@@ -1,14 +1,16 @@
-<mat-toolbar class="toolbar">
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="headerContainer" fxHide.lt-sm>
-        <div fxLayoutAlign="start center" fxFlex="25%" class="toolbarLeft" routerLink="/">
-            <img fxFlex="100%" src="assets/logo.png" class="projectLogo">
+<mat-toolbar class="toolbar" fxLayoutAlign="center center">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="headerContainer">
+        <div fxLayoutAlign="start center" fxFlex="25%" routerLink="/">
+            <img fxFlex="100%" src="assets/logo.png" class="projectLogo" fxHide.lt-sm>
+            <mat-icon class="homeIcon" fxHide.gt-xs>home</mat-icon>
         </div>
 
         <div fxLayout="row" fxLayoutAlign="center center" fxFlex="40%">
             <div fxLayout="row" fxLayoutAlign="end center" fxFlex="30%" (click)="changeLocation()">
                 <div fxLayout="row" fxLayoutAlign="center center" fxFlex="50%" class="position">
-                    <div><mat-icon>room</mat-icon></div>
-                    <div>{{searchLocation}}</div>
+                    <div fxHide.lt-sm><mat-icon>room</mat-icon></div>
+                    <div fxHide.lt-sm>{{searchLocation}}</div>
+                    <div fxHide.gt-xs style="transform: scale(1.4);"><mat-icon>room</mat-icon></div>
                 </div>
             </div>
             <div fxFlex="70%">
@@ -16,7 +18,7 @@
                     <div fxLayout="row" fxLayoutAlign="start center">
                         <div fxFlex="60%" class="search-bar">
                             <input matInput type="text" formControlName="searchBar" placeholder="Cosa stai cercando?" (keydown.enter)="search()" >
-                            <mat-icon (click)="search()">search</mat-icon>
+                            <div fxHide.lt-sm><mat-icon (click)="search()">search</mat-icon></div>
                         </div>
                     </div>
                 </form>
@@ -24,41 +26,18 @@
         </div>
 
         <div fxFlex="35%" *ngIf="isLogged()" fxLayoutAlign="space-between center">
-            <div fxFlex="20%" fxLayoutAlign="center center" class="eventsButton" (click)="goToEvent()">I miei eventi</div>
+            <div fxFlex="20%" fxLayoutAlign="center center" class="headerButtons" (click)="goToEvent()">
+                <div fxHide.lt-sm>I miei eventi</div>
+                <mat-icon fxHide.gt-xs>event</mat-icon>
+            </div>
             <div><app-profile-card></app-profile-card></div>
         </div>
 
         <div fxFlex="35%" *ngIf="!isLogged()" fxLayoutAlign="end center">
-            <button (click)="goToLogin()">Login</button>
-        </div>
-    </div>
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="headerContainer" fxHide.gt-xs>
-        <div fxLayoutAlign="center center" fxFlex="15%" class="toolbarLeft" routerLink="/">
-            <mat-icon class="homeIcon">home</mat-icon>
-        </div>
-
-        <div fxLayout="row" fxLayoutAlign="center center" fxFlex="45%">
-            <div fxLayout="row" fxLayoutAlign="center center" fxFlex="15%" class="position-xs" (click)="changeLocation()">
-                <mat-icon>room</mat-icon>
+            <div fxFlex="20%" fxLayoutAlign="center center"  (click)="goToLogin()" class="headerButtons">
+                <div fxHide.lt-sm>Accedi</div>
+                <mat-icon fxHide.gt-xs>account_circle</mat-icon>
             </div>
-            <div fxFlex="70%">
-                <form [formGroup]="searchForm">
-                    <div fxLayout="row" fxLayoutAlign="start center">
-                        <div fxFlex="60%" class="search-bar">
-                            <input matInput type="text" formControlName="searchBar" placeholder="Cosa stai cercando?" (keydown.enter)="search()" >
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div fxFlex="35%" *ngIf="isLogged()" fxLayoutAlign="space-between center">
-            <div fxFlex="20%" fxLayoutAlign="center center" class="eventsButton" (click)="goToEvent()"><mat-icon>event</mat-icon></div>
-            <div><app-profile-card></app-profile-card></div>
-        </div>
-
-        <div fxFlex="35%" *ngIf="!isLogged()" fxLayoutAlign="end center">
-            <button (click)="goToLogin()">Login</button>
         </div>
     </div>
 </mat-toolbar>

@@ -36,19 +36,6 @@
     border: 1px solid #0199ad;
 }
 
-.position-xs{
-    cursor: pointer;
-    color: #00798a;
-    font-size: larger;
-    margin-right: 5px;
-    transform: scale(1.4);
-    padding: 2px;
-}
-.position-xs:hover{
-    color: #0199ad;
-    border: 1px solid #0199ad;
-}
-
 .search-bar {
     overflow: hidden;
     display: flex;
@@ -71,7 +58,7 @@
     cursor: pointer;
 }
 
-.eventsButton {
+.headerButtons {
     font-size:1vw;
     cursor: pointer;
     border: 1px solid #00798a;
@@ -81,7 +68,7 @@
     color: #e6ebf1;
     background-color: #00798a;
 }
-.eventsButton:hover{
+.headerButtons:hover{
     background-color: #0199ad;
     box-shadow: 5px 5px 5px 5px #646363;
 }
