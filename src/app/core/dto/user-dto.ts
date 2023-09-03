@@ -1,5 +1,4 @@
 import {BaseDto} from "./base-dto";
-import {CategoryDto} from "./category-dto";
 
 export interface UserDto extends BaseDto{
   state ?: string;
@@ -19,8 +18,6 @@ export interface UserDto extends BaseDto{
   favorites ?: Array<string>;
 
   attending ?: Array<string>;
-
-  categories ?: Array<CategoryDto>;
 
   searchLocation ?: string;
 
