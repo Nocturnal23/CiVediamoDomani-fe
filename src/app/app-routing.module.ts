@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
-import {HelloworldComponent} from "./helloworld/helloworld.component";
 import {NotFoundComponent} from "./layout/not-found/not-found.component";
 import {LoginPageComponent} from "./pages/loginpage/login-page.component";
 import {HeaderContainerComponent} from "./layout/container/header-container.component";
@@ -55,7 +54,6 @@ const routes: Routes = [
         ]},
 
     { path: '', component: HeaderContainerComponent, children: [
-            { path: 'helloworld', component: HelloworldComponent },
             { path: RoutingEnums.HOMEPAGE, component: HomePageComponent },
             { path: 'search', component: SearchPageComponent,
                 runGuardsAndResolvers: "always",

@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { HeaderContainerComponent } from './layout/container/header-container.component';
 import {RouterModule} from "@angular/router";
 import { AppRoutingModule } from './app-routing.module';
-import { HelloworldComponent } from './helloworld/helloworld.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
 import {HttpClientModule} from "@angular/common/http";
 import { LoginPageComponent } from './pages/loginpage/login-page.component';
@@ -72,7 +70,6 @@ export const MATERIAL_MODULES = [
     declarations: [
         AppComponent,
         HeaderContainerComponent,
-        HelloworldComponent,
         NotFoundComponent,
         LoginPageComponent,
         HomePageComponent,
