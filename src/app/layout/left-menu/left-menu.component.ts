@@ -12,6 +12,10 @@ export class LeftMenuComponent {
     constructor(private router: Router) {
     }
 
+    goToHome() {
+        this.router.navigate([RoutingEnums.HOMEPAGE] );
+    }
+
     goToProfile() {
         this.router.navigate([RoutingEnums.USER_PROFILE, AuthenticationService.getAppUser.url] );
     }

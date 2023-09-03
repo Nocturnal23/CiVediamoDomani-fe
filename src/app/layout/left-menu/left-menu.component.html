@@ -1,11 +1,23 @@
 <mat-sidenav-container>
     <mat-sidenav position="start" mode="side" opened [disableClose]="true">
-        <h2 class="goTo" routerLink="/homepage"> <mat-icon>arrow_back</mat-icon> Homepage</h2>
-
-        <div> <h4 class="goTo" (click)="goToProfile()">Profilo</h4> </div>
-        <div> <h4 class="goTo" (click)="goToEvent()">Gestisci eventi</h4> </div>
-<!--        <div> <h4 class="goTo" routerLink="/user/category">Le tue categorie</h4> </div>-->
-        <div> <h4 class="goTo" (click)="goToSetting()">Impostazioni</h4> </div>
+        <div fxLayout="column" fxLayoutAlign="start stretch" class="menu-container">
+            <div fxFlex="12%" fxLayout="row" fxLayoutAlign="center center" class="goBack" (click)="goToHome()">
+                <div fxFlex="20%"><mat-icon>arrow_back</mat-icon></div>
+                <div fxHide.lt-sm>Torna alla Homepage</div>
+            </div>
+            <div fxFlex="8%" fxLayout="row" fxLayoutAlign="center center" class="goTo" (click)="goToProfile()">
+                <div fxFlex="20%"><mat-icon>account_circle</mat-icon></div>
+                <div fxFlex="60%" fxHide.lt-sm>Profilo</div>
+            </div>
+            <div fxFlex="8%" fxLayout="row" fxLayoutAlign="center center" class="goTo" (click)="goToEvent()">
+                <div fxFlex="20%"><mat-icon>event</mat-icon></div>
+                <div fxFlex="60%" fxHide.lt-sm>Gestisci eventi</div>
+            </div>
+            <div fxFlex="8%" fxLayout="row" fxLayoutAlign="center center" class="goTo" (click)="goToSetting()">
+                <div fxFlex="20%"><mat-icon>settings</mat-icon></div>
+                <div fxFlex="60%" fxHide.lt-sm>Impostazioni</div>
+            </div>
+        </div>
     </mat-sidenav>
 
     <mat-sidenav-content>

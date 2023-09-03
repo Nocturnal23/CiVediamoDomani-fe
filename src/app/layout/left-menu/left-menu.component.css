@@ -1,13 +1,31 @@
 .mat-sidenav-container {
     height: 100%;
-    /*width: 300px;*/
+    width: 100%;
 }
 
 .mat-sidenav {
-    /*position: fixed;*/
-    width: 155px;
+    width: 20%;
 }
 
-.goTo {
+.goBack, .goTo{
     cursor: pointer;
+    font-weight: bold;
+    font-size:1.5vw;
+    transition: all 200ms linear;
+}
+
+.goTo:hover {
+    color: #e6ebf1;
+    background-color: #0199ad;
+}
+.goBack:hover {
+    color: #333333;
+    background-color: #c4c4c4;
+    box-shadow: 2px 2px 2px 2px #646363;
+}
+
+.menu-container{
+    height: 100%;
+    width: 100%;
+    background-color: #b0b0b0;
 }
