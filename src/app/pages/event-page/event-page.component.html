@@ -1,7 +1,7 @@
 <div class="main">
-    <h2> I TUOI EVENTI </h2>
+    <div class="title" fxLayoutAlign="start center"> I TUOI EVENTI </div>
 
-    <mat-tab-group class = "bordi" (selectedTabChange)="changedTab($event)">
+    <mat-tab-group class = "border" (selectedTabChange)="changedTab($event)">
         <mat-tab label="Partecipazioni">
             <app-table
                     [data]="eventListPartecipati | async"

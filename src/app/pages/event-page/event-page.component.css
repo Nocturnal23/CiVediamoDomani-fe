@@ -1,10 +1,16 @@
 .main{
-    margin-left: 5px
+    margin-left: 25px
 }
 
-.bordi{
+.title{
+    min-height: 80px;
+    font-weight: bolder;
+    font-size: 3vw;
+    margin-bottom: 50px;
+}
+
+.border{
     border-style: solid;
-    border-color: red;
     height: 72%;
     width: 80%;
     margin-left: 10%;
