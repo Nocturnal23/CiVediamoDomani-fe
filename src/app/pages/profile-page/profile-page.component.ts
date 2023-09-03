@@ -13,6 +13,9 @@ import {RoleEnums, UserStateEnums} from "../../core/utils/Enums";
 export class ProfilePageComponent {
     user: UserDto = AuthenticationService.getAppUser
     buttonLabel: string;
+    numberEventCreated: number;
+    numberEventPartecipated: number;
+    subscriptionDate: string;
     constructor(private router: Router,
                 private activatedRoute: ActivatedRoute,
                 private userService: UserService) {
@@ -22,9 +25,15 @@ export class ProfilePageComponent {
             this.activatedRoute.params.subscribe(({url}) => {
                 if ( url === AuthenticationService.getAppUser?.url ) {
                     this.user = AuthenticationService.getAppUser
+                    this.numberEventCreated = this.user.organisedEvents.length
+                    this.numberEventPartecipated = this.user.attending.length
+                    this.subscriptionDate = new Date(this.user.createdDate).toLocaleDateString()
                 }
                 else {
                     this.userService.getByUrl(url).subscribe(user => this.user = user)
+                    this.numberEventCreated = this.user.organisedEvents.length
+                    this.numberEventPartecipated = this.user.attending.length
+                    this.subscriptionDate = new Date(this.user.createdDate).toLocaleDateString()
                 }
             });
         }

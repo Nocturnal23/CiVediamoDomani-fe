@@ -1,13 +1,19 @@
-<div class="main">
-    <h2>Profilo Utente</h2>
+<div fxLayout="column" class="main">
+    <div class="title" fxLayoutAlign="start center"> PROFILO </div>
 
-    <mat-icon class="profile">person</mat-icon>
+    <div fxLayout="column">
 
-    <div *ngIf="user">
-        <p> Nome: {{user?.firstName}} </p>
-        <p> Cognome: {{user?.lastName}} </p>
-        <p> Email: {{user?.email}} </p>
-        <p> Password: {{user?.password}} </p>
+        <div> <mat-icon class="profile">person</mat-icon> </div>
+
+        <div *ngIf="user" fxLayout="column" fxLayoutAlign="start start">
+            <div class="infoUser"> Nome: {{user?.firstName}} </div>
+            <div class="infoUser"> Cognome: {{user?.lastName}} </div>
+            <div class="infoUser"> Email: {{user?.email}} </div>
+            <div class="infoUser"> Iscritto dal: {{subscriptionDate}} </div>
+            <div class="infoUser"> Numero eventi creati: {{numberEventCreated}} </div>
+            <div class="infoUser"> Numero eventi partecipati: {{numberEventPartecipated}} </div>
+        </div>
+
     </div>
 
     <button *ngIf="canChangeState()" (click)="changeState()"> {{buttonLabel}} </button>

@@ -1,10 +1,23 @@
 .main{
-    margin-left: 5px
+    margin-left: 25px
+}
+
+.title{
+    min-height: 80px;
+    font-weight: bolder;
+    font-size: 3vw;
+    margin-bottom: 50px;
+    margin-left: 10px;
 }
 
 .profile {
-    /*transform: scale(4);*/
-    font-size: 150px;
-    height: 150px ;
-    width: 150px ;
+    font-size: 160px;
+    height: 160px;
+    width: 160px;
+}
+
+.infoUser{
+    margin-left: 25px;
+    margin-bottom: 20px;
+    font-size:1.5vw;
 }
