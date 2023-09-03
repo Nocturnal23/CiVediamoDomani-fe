@@ -5,7 +5,12 @@
 
     <div fxLayout="row" fxLayoutAlign="space-evenly center">
         <mat-icon class="arrow" (click)="changeCategory(-1)">keyboard_arrow_left</mat-icon>
-        <div fxFlex="20%" *ngFor="let c of categorieCarosello.slice(0, 3)">
+        <div fxFlex="20%" *ngFor="let c of categorieCarosello.slice(0, 3)" fxHide.lt-sm>
+            <div class="carousel-card" fxLayoutAlign="center center" (click)="loadEvents(c)">
+                {{c.name}}
+            </div>
+        </div>
+        <div fxFlex="30%" *ngFor="let c of categorieCarosello.slice(0, 2)" fxHide.gt-xs>
             <div class="carousel-card" fxLayoutAlign="center center" (click)="loadEvents(c)">
                 {{c.name}}
             </div>

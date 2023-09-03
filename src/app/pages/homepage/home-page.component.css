@@ -60,6 +60,7 @@
     min-width: 150px;
     color: #e6ebf1;
     background-color: #00798a;
+    transition: all 200ms linear;
 }
 .event-button:hover{
     background-color: #0199ad;
