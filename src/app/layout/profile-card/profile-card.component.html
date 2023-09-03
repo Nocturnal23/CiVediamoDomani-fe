@@ -1,10 +1,13 @@
-<div class="sec-center">
+<div fxLayout="column">
     <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
-    <label class="for-dropdown" for="dropdown">Dropdown Menu <i class="uil uil-arrow-down"></i></label>
+    <label class="dropdown" for="dropdown">
+        <div fxHide.lt-sm>Ciao, {{userName}}</div>
+        <mat-icon fxHide.gt-xs>account_circle</mat-icon>
+    </label>
     <div class="section-dropdown">
-        <a class="goTo" (click)="goToProfile()"> Profilo <i class="uil uil-arrow-right"></i></a>
-        <a class="goTo" *ngIf="hasDashboard()" (click)="goToDashboard()"> Dashboard <i class="uil uil-arrow-right"></i></a>
-        <a class="goTo" (click)="goToSettings()"> Impostazioni <i class="uil uil-arrow-right"></i></a>
-        <a class="goTo" (click)="doLogout()"> Disconnetti <i class="uil uil-arrow-right"></i></a>
+        <div class="goTo" (click)="goToProfile()"> Profilo </div>
+        <div class="goTo" *ngIf="hasDashboard()" (click)="goToDashboard()"> Dashboard </div>
+        <div class="goTo" (click)="goToSettings()"> Impostazioni </div>
+        <div class="goTo" (click)="doLogout()"> Disconnetti </div>
     </div>
 </div>

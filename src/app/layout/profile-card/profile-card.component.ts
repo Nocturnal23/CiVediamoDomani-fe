@@ -9,9 +9,12 @@ import {RoleEnums, RoutingEnums} from "../../core/utils/Enums";
     styleUrls: ['./profile-card.component.css']
 })
 export class ProfileCardComponent {
+    userName: string
 
     constructor(private _authService : AuthenticationService,
                 private _router : Router) {
+
+        this.userName = AuthenticationService.getAppUser.firstName
     }
 
     goToProfile() {
