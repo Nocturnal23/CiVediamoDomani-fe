@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core'
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router'
+import {ActivatedRoute, Router} from '@angular/router'
 import {EventService} from '../../core/services/event.service'
 import {EventDto} from '../../core/dto/event-dto'
 import {CategoryService} from '../../core/services/category.service'
@@ -7,7 +7,6 @@ import {firstValueFrom} from 'rxjs'
 import {CategoryDto} from '../../core/dto/category-dto'
 import {SearchService} from "../../core/services/search.service";
 import {SearchParamsDto} from "../../core/dto/searchParams-dto";
-import {coerceStringArray} from "@angular/cdk/coercion";
 
 export interface CategoryElement {
     name: string,
