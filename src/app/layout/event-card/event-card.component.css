@@ -5,7 +5,6 @@
 
 .title{
     align-items: start;
-    background-color: aquamarine;
     margin: 4px;
     font-weight: bold;
     font-size: large;
@@ -13,28 +12,31 @@
 
 .descr-box {
     margin: 5px;
-    background-color: #a9cbbf;
 }
 
 .details {
     border-radius: 10px;
     margin: 5px;
-    background-color: cornflowerblue;
+    background-color: #e6ebf1;
     box-shadow: 5px 5px 5px #646363;
-    /*width: 100%;*/
-    /*text-overflow: ellipsis;*/
-    /*overflow: hidden;*/
-    /*display: inline-block;*/
+    transition: all 200ms linear;
+    border: 2px solid #00798a;
+    /*text-shadow: 2px 2px 4px #333333;*/
+}
+
+.details:hover{
+    box-shadow: 10px 10px 10px #646363;
+    background-color: #0199ad;
 }
 
 .imageBox {
     margin: 5px;
     overflow: hidden;
     border-radius: 10px;
+    border: 1px solid #f3adad;
+    background-color: #c5c5c5;
 }
 .eventImg{
-    /*width: 100%;*/
-    /*border-radius: 10px;*/
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -53,4 +55,11 @@
 .buttons-box {
     transform: scale(1.4);
     margin-left: 5px;
+}
+
+.attend:hover{
+    color: #82fd82;
+}
+.favorite:hover{
+    color: #ff8484;
 }
