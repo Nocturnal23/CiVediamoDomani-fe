@@ -1,10 +1,26 @@
 <mat-sidenav-container>
     <mat-sidenav position="start" mode="side" opened [disableClose]="true">
-        <h2 class="goTo" routerLink="/homepage"> <mat-icon>arrow_back</mat-icon> Homepage</h2>
+        <div fxLayout="column" fxLayoutAlign="start stretch" class="menu-container">
+            <div fxFlex="12%" fxLayout="row" fxLayoutAlign="center center" class="goBack">
+                <div fxFlex="20%"><mat-icon>arrow_back</mat-icon></div>
+                <div fxHide.lt-sm routerLink="/homepage">Torna alla Homepage</div>
+            </div>
 
-        <div> <h4 class="goTo" routerLink="/dashboard/users">Utenti</h4> </div>
-        <div> <h4 class="goTo" routerLink="/dashboard/events">Eventi</h4> </div>
-        <div> <h4 class="goTo" routerLink="/dashboard/category">Categorie</h4> </div>
+            <div fxFlex="8%" fxLayout="row" fxLayoutAlign="center center" class="goTo">
+                <div fxFlex="20%"><mat-icon>account_circle</mat-icon></div>
+                <div fxFlex="60%" fxHide.lt-sm routerLink="/dashboard/users">Utenti</div>
+            </div>
+
+            <div fxFlex="8%" fxLayout="row" fxLayoutAlign="center center" class="goTo">
+                <div fxFlex="20%"><mat-icon>event</mat-icon></div>
+                <div fxFlex="60%" fxHide.lt-sm routerLink="/dashboard/events">Eventi</div>
+            </div>
+
+            <div fxFlex="8%" fxLayout="row" fxLayoutAlign="center center" class="goTo">
+                <div fxFlex="20%"><mat-icon>view_list</mat-icon></div>
+                <div fxFlex="60%" fxHide.lt-sm routerLink="/dashboard/category">Categorie</div>
+            </div>
+        </div>
     </mat-sidenav>
 
     <mat-sidenav-content>
