@@ -9,9 +9,9 @@
             <div class="infoUser"> Nome: {{user?.firstName}} </div>
             <div class="infoUser"> Cognome: {{user?.lastName}} </div>
             <div class="infoUser"> Email: {{user?.email}} </div>
-            <div class="infoUser"> Iscritto dal: {{subscriptionDate}} </div>
-            <div class="infoUser"> Numero eventi creati: {{numberEventCreated}} </div>
-            <div class="infoUser"> Numero eventi partecipati: {{numberEventPartecipated}} </div>
+            <div class="infoUser"> Iscritto dal: {{user?.createdDate}} </div>
+            <div class="infoUser"> Numero eventi creati: {{user?.organisedEvents?.length}} </div>
+            <div class="infoUser"> Numero eventi partecipati: {{user?.attending?.length}} </div>
         </div>
 
     </div>

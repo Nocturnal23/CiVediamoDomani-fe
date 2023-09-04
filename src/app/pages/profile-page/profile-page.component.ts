@@ -31,9 +31,6 @@ export class ProfilePageComponent {
                 }
             });
         }
-        this.numberEventCreated = this.user.organisedEvents.length
-        this.numberEventPartecipated = this.user.attending.length
-        this.subscriptionDate = new Date(this.user.createdDate).toLocaleDateString()
         this.buttonLabel = this.user?.state === UserStateEnums.ENABLE? "Disabilita utente" :  "Abilita utente"
     }
 
