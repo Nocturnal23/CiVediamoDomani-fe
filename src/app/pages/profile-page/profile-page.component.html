@@ -16,5 +16,9 @@
 
     </div>
 
-    <button *ngIf="canChangeState()" (click)="changeState()"> {{buttonLabel}} </button>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <div *ngIf="canChangeState()" (click)="changeState()" fxFlex="20%" fxLayoutAlign="center center" class="disableButton">
+            {{buttonLabel}}
+        </div>
+    </div>
 </div>

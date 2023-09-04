@@ -25,19 +25,15 @@ export class ProfilePageComponent {
             this.activatedRoute.params.subscribe(({url}) => {
                 if ( url === AuthenticationService.getAppUser?.url ) {
                     this.user = AuthenticationService.getAppUser
-                    this.numberEventCreated = this.user.organisedEvents.length
-                    this.numberEventPartecipated = this.user.attending.length
-                    this.subscriptionDate = new Date(this.user.createdDate).toLocaleDateString()
                 }
                 else {
-                    this.userService.getByUrl(url).subscribe(user => this.user = user)
-                    this.numberEventCreated = this.user.organisedEvents.length
-                    this.numberEventPartecipated = this.user.attending.length
-                    this.subscriptionDate = new Date(this.user.createdDate).toLocaleDateString()
+                    this.userService.getByUrl(url).subscribe(user =>this.user = user)
                 }
             });
         }
-
+        this.numberEventCreated = this.user.organisedEvents.length
+        this.numberEventPartecipated = this.user.attending.length
+        this.subscriptionDate = new Date(this.user.createdDate).toLocaleDateString()
         this.buttonLabel = this.user?.state === UserStateEnums.ENABLE? "Disabilita utente" :  "Abilita utente"
     }
 
