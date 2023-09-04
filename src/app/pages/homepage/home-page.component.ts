@@ -7,6 +7,7 @@ import {CategoryDto} from "../../core/dto/category-dto";
 import {EventService} from "../../core/services/event.service";
 import {SearchService} from "../../core/services/search.service";
 import {SearchParamsDto} from '../../core/dto/searchParams-dto'
+import {buildDate} from '../../core/utils/Functions'
 
 @Component({
     selector: 'app-homepage',
@@ -60,7 +61,8 @@ export class HomePageComponent {
             categories: [category.name],
             place: this._searchService.searchLocation,
             lat: this._searchService.searchLatitude,
-            lon: this._searchService.searchLongitude
+            lon: this._searchService.searchLongitude,
+            eventDate: [buildDate(new Date())]
         }
         this._router.navigate( ["/search"], {queryParams: params})
     }
