@@ -4,4 +4,5 @@ export interface SearchParamsDto {
     place?: string;
     lat?: string;
     lon?: string;
+    eventDate?: Array<String>;
 }

@@ -6,4 +6,5 @@ export interface EventCriteria extends BaseCriteria {
     followerId?: number
     attendeeId?: number
     categories?: Array<string>
+    eventDate?: Date
 }
