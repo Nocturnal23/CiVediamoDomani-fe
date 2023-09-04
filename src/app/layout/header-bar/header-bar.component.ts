@@ -7,6 +7,7 @@ import {SearchService} from "../../core/services/search.service";
 import {SearchParamsDto} from '../../core/dto/searchParams-dto'
 import {MatDialog} from "@angular/material/dialog";
 import {DialogAddCategoryComponent} from "../dialog-add-category/dialog-add-category.component";
+import {buildDate} from '../../core/utils/Functions'
 
 @Component({
     selector: 'app-header-bar',
@@ -37,7 +38,8 @@ export class HeaderBarComponent {
             eventTitle: [this.searchForm.value.searchBar],
             place: this.searchLocation,
             lon: this._searchService.searchLongitude,
-            lat: this._searchService.searchLatitude
+            lat: this._searchService.searchLatitude,
+            eventDate: [buildDate(new Date())]
         }
         this._router.navigate(["/loading"], {skipLocationChange: true}).then( () =>
             this._router.navigate( ["/search"], {queryParams: params})

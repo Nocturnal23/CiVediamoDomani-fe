@@ -7,6 +7,7 @@ import {firstValueFrom} from 'rxjs'
 import {CategoryDto} from '../../core/dto/category-dto'
 import {SearchService} from "../../core/services/search.service";
 import {SearchParamsDto} from "../../core/dto/searchParams-dto";
+import {buildDate} from '../../core/utils/Functions'
 
 export interface CategoryElement {
     name: string,
@@ -151,7 +152,8 @@ export class SearchPageComponent implements OnInit {
             categories: this.selectedCategories,
             place: this.searchLocation,
             lat: this.searchLatitude,
-            lon: this.searchLongitude
+            lon: this.searchLongitude,
+            eventDate: [buildDate(new Date())]
         }
 
         this._router.navigate(["/loading"], {skipLocationChange: true}).then( () =>
