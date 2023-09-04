@@ -1,32 +1,70 @@
-a {
-    position: relative;
-    top: 10%
-}
-
-p {
-    position: relative;
-    top: 20%;
-}
-
 .searchContainer{
     padding: 10px;
 }
 
-.filterCategories{
-    margin-left: 25px;
+.searchLabel{
+    font-size: 1.8vw;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.location{
+    font-size: 1.2vw;
+    font-weight: bold;
+    margin: 5px 0 5px 0;
+}
+.location-xs{
+    font-size: 1.8vw;
+}
+
+.slider{
+    padding-left: 5px;
+    font-size:1.2vw;
+    transition: all 200ms linear;
+}
+
+.filters{
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.filtersHeader{
+    font-size:1.5vw;
+    font-weight: bold;
 }
 
 .selectedCat{
     margin-left: 5px;
-    padding: 1px;
+    padding: 2px;
     border-radius: 5px;
     border: 1px solid #333333;
-    background-color: #e6ebf1;
+    background-color: #c4c4c4;
+    font-weight: bold;
+    font-size:1.5vw;
     box-shadow: 5px 5px 5px #646363;
+    transition: all 200ms linear;
+}
+.selectedCat:hover{
+    background-color: #e6ebf1;
+    color: #333333;
+}
+.selectedCat mat-icon {
+    cursor: pointer;
+    transition: all 200ms linear;
+}
+.selectedCat mat-icon:hover {
+    transform: scale(1.2);
+}
+
+.treeHeader{
+    padding-top: 10px;
+    font-size:1.5vw;
+    font-weight: bold;
 }
 
 .treeContainer {
     box-shadow: 5px 5px 5px #888888;
+    border: 1px solid #333333;
 }
 
 .upperNode {/* Remove default list bullets */
@@ -36,4 +74,11 @@ p {
 li {
     cursor: pointer;
     user-select: none; /* Prevent text selection */
+    font-size:1.5vw;
+    transition: all 200ms linear;
+}
+
+li:hover{
+    color: #e6ebf1;
+    background-color: #0199ad;
 }

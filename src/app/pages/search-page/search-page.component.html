@@ -1,16 +1,26 @@
-<div class="searchContainer">
-    <div><h1>{{getSearchLabel()}}</h1></div>
+<div fxLayout="column" class="searchContainer">
+    <div fxFlex="8%" class="searchLabel">{{getSearchLabel()}}</div>
     <div fxLayout="row">
-        <div fxLayout="column">
-            <div><mat-icon>room</mat-icon> Stai cercando su {{searchLocation}}</div>
-            <div>
-                <mat-slider [min]="sliderMinRange" [max]="sliderMaxRange" [step]="sliderStep">
-                    <input matSliderThumb [(value)]="searchRange" (valueChange)="onSliderChange()">
-                </mat-slider>
-                Raggio: {{searchRange}} KM
+        <div fxFlex="25%" fxLayout="column" class="filters">
+            <div fxLayout="column" fxLayoutAlign="center start">
+                <div class="location" fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon>room</mat-icon>
+                    <div fxHide.lt-sm>Stai cercando su {{searchLocation}}</div>
+                    <div class="location-xs" fxHide.gt-xs>{{searchLocation}}</div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayout.lt-sm="column" class="slider">
+                    <div>
+                        <mat-slider [min]="sliderMinRange" [max]="sliderMaxRange" [step]="sliderStep">
+                            <input style="display: flex;" matSliderThumb [(value)]="searchRange" (valueChange)="onSliderChange()">
+                        </mat-slider>
+                    </div>
+                    <div fxHide.lt-sm>Raggio: {{searchRange}} KM</div>
+                    <div style="min-height: 20px; font-size:1.8vw;" fxHide.gt-xs>Raggio: {{searchRange}} KM</div>
+                </div>
             </div>
 
-            <div class="treeContainer">
+            <div fxLayout="column" class="treeContainer">
+                <div fxFlex="10%" fxLayoutAlign="center start" class="treeHeader">Filtra per categoria:</div>
                 <ul *ngFor="let elem of catList">
                     <li (click)="toogleElement(elem)" class="upperNode">{{elem.name}}</li>
                     <div *ngIf="elem.children">
@@ -21,10 +31,12 @@
                 </ul>
             </div>
         </div>
-        <div fxLayout="column">
-            <div *ngIf="selectedCategories.length > 0" fxLayout="row" class="filterCategories">
-                Filtra per:
-                <div *ngFor="let cat of selectedCategories" class="selectedCat">{{cat}}</div>
+        <div fxFlex="65%" fxLayout="column">
+            <div *ngIf="selectedCategories.length > 0" fxLayout="row" fxLayoutAlign="start center" class="filters">
+                <div class="filtersHeader">Filtra per:</div>
+                <div fxLayout="row" fxLayoutAlign="center center" *ngFor="let cat of selectedCategories" class="selectedCat">
+                    {{cat}}<mat-icon (click)="toogleElement(cat)">clear</mat-icon>
+                </div>
             </div>
             <div fxFlex="70%">
                 <div *ngFor="let event of eventList">
